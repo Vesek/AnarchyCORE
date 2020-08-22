@@ -18,6 +18,8 @@ commands:
   acorehelp:
     description: Shows help message.
     aliases: [acore, acore help]
+  info:
+    description: Shows info about server.
 permissions:
   AnarchyCORE.*:
     children:
