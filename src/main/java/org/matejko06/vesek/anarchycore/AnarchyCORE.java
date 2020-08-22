@@ -1,4 +1,4 @@
-package org.matejko06.vesek.anarchycore; //hehe
+package org.matejko06.vesek.anarchycore;
 
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
