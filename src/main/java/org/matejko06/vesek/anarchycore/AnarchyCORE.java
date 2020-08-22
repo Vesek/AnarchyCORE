@@ -88,11 +88,11 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             }
         } else if (command.getName().equalsIgnoreCase("queue")) {
             if (sender instanceof Player) {
-                if (sender.hasPermission("AnarchyCOREQueue..admin")) {
+                if (sender.hasPermission("AnarchyCORE.queue.admin")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue..priority")) {
+                } else if (sender.hasPermission("AnarchyCORE.queue.priority")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue..regular")) {
+                } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
