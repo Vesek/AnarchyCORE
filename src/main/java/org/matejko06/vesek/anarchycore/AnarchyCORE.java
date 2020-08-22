@@ -120,7 +120,14 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                         }
                     }
                     if (diffInDays / 365 < 1) {
-                        time.append(diffInDays / 30 + " months");
+                        if (diffInDays / 30 < 1) {
+                            time.append(diffInDays + " days");
+                        }
+                        else{
+                            time.append(diffInDays / 30 + " months and ");
+                            diffInDays %= 30;
+                            time.append(diffInDays + " days");
+                        }
                     }
                     else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
