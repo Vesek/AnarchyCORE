@@ -1,0 +1,18 @@
+# AnarchyCORE - by Vesek and Matejko06 #
+# VERSION 1.0                          #
+kill-message: "&6You killed yourself!"
+killsomeone-message: "&6You were killed!"
+tps-message: "&6Server TPS is: "
+#TPS color is from amount up to next color
+tps-green: 16.00
+tps-green-color: "&a&l"
+tps-yellow: 8.00
+tps-yellow-color: "&e&l"
+tps-red-color: "&c&l"
+#Queue priority messages
+queue-message: "&6Your queue priority is: "
+regural-message: "&7&lRegular"
+priority-message: "&6&lPriority"
+admin-message: "&c&lAdmin"
+#If false, commands needs to set /tps to /finshhim:tps in commands.yml
+command-preprocessing:  true

@@ -1,0 +1,38 @@
+name: AnarchyCORE
+version: ${project.version}
+main: org.matejko06.vesek.anarchycore.AnarchyCORE
+
+commands:
+  kill:
+    description: Suicide.
+    aliases: [suicide, killme]
+  tps:
+    description: Shows server TPS
+  queue:
+    description: Shows players priority in queue.
+    aliases: [queuepriority, priority]
+permissions:
+  AnarchyCORE.*:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.killSomeone: true
+      AnarchyCORE.tps: true
+    default: false
+  AnarchyCORE.kill:
+    description: Allows player to use /kill or /suicide.
+    default: true
+  AnarchyCORE.killSomeone:
+    description: Allows player to use /kill on someone else.
+    default: false
+  AnarchyCORE.tps:
+    description: Allows player to use /tps.
+    default: true
+  AnarchyCORE.queue.regular:
+    description: Sets player priority level in queue.
+    default: true
+  AnarchyCORE.queue.priority:
+    description: Sets player priority level in queue.
+    default: false
+  AnarchyCORE.queue.admin:
+    description: Sets player priority level in queue.
+    default: false
