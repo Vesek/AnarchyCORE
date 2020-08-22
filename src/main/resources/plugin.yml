@@ -7,17 +7,47 @@ commands:
     description: Suicide.
     aliases: [suicide, killme]
   tps:
-    description: Shows server TPS
+    description: Shows server TPS.
+    aliases: [servertps]
   queue:
     description: Shows players priority in queue.
     aliases: [queuepriority, priority]
+  acoreversion:
+    description: Shows plugin version.
+    aliases: [acversion, acore version]
+  acorehelp:
+    description: Shows help message.
+    aliases: [acore, acore help]
 permissions:
   AnarchyCORE.*:
     children:
       AnarchyCORE.kill: true
       AnarchyCORE.killSomeone: true
       AnarchyCORE.tps: true
-    default: false
+      AnarchyCORE.version: true
+      AnarchyCORE.help: true
+      AnarchyCORE.queue.admin: true
+      default: false
+    AnarchyCORE.regular:
+      children:
+        AnarchyCORE.kill: true
+        AnarchyCORE.tps: true
+        AnarchyCORE.version: true
+        AnarchyCORE.queue.regular: true
+      default: true
+    AnarchyCORE.priority:
+      children:
+        AnarchyCORE.kill: true
+        AnarchyCORE.tps: true
+        AnarchyCORE.version: true
+        AnarchyCORE.queue.priority: true
+      default: false
+  AnarchyCORE.help:
+    description: Allows player to use /acore help.
+    default: op
+  AnarchyCORE.version:
+    description: Allows player to use /acore version.
+    default: true
   AnarchyCORE.kill:
     description: Allows player to use /kill or /suicide.
     default: true

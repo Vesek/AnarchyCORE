@@ -1,4 +1,4 @@
-package org.matejko06.vesek.anarchycore;
+package org.matejko06.vesek.anarchycore; //hehe
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,6 +17,7 @@ import java.util.List;
 public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     boolean command_preprocessing = false;
+
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
@@ -25,7 +26,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void onEnable() {
         getConfig().options().copyDefaults(true);
         saveConfig();
-        getServer().getPluginManager().registerEvents(this,this);
+        getServer().getPluginManager().registerEvents(this, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
         log("AnarchyCORE turned on!");
     }
@@ -38,65 +39,58 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(command.getName().equalsIgnoreCase("kill")){
-            if(sender instanceof Player){
+        if (command.getName().equalsIgnoreCase("kill")) {
+            if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if(args.length == 0){
-                    if(p.hasPermission("AnarchyCORE.kill") || p.isOp()){
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&',getConfig().getString("kill-message")));
+                if (args.length == 0) {
+                    if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("kill-message")));
                         p.setHealth(0.00);
                     }
                 }
-                if(args.length >= 1){
-                    if(p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()){
-                        for(String s : args){
+                if (args.length >= 1) {
+                    if (p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()) {
+                        for (String s : args) {
                             Player victim = getServer().getPlayer(s);
-                            if(victim != null){
-                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&',getConfig().getString("killsomeone-message")));
+                            if (victim != null) {
+                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("killsomeone-message")));
                                 victim.setHealth(0.00);
                             }
                         }
                     }
                 }
-            }
-            else{
+            } else {
                 sender.sendMessage("Only players can use this command!");
             }
-        }
-        else if(command.getName().equalsIgnoreCase("tps")){
-            if(sender.hasPermission("AnarchyCORE.tps") || sender.isOp()){
+        } else if (command.getName().equalsIgnoreCase("tps")) {
+            if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
                 StringBuilder sb = new StringBuilder();
                 double[] TPS = getServer().getTPS();
-                if(TPS[0] >= getConfig().getDouble("tps-green")){
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&',getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
-                }
-                else if(TPS[0] >= getConfig().getDouble("tps-yellow")){
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&',getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
-                }
-                else if(TPS[0] >= 0.00){
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&',getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
+                if (TPS[0] >= getConfig().getDouble("tps-green")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
+                } else if (TPS[0] >= getConfig().getDouble("tps-yellow")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
+                } else if (TPS[0] >= 0.00) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
                 }
                 sender.sendMessage(sb.toString());
             }
-        }
-        else if(command.getName().equalsIgnoreCase("queue")){
-            if(sender instanceof Player){
-                if(sender.hasPermission("AnarchyCORE.queue.admin")){
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&',getConfig().getString("admin-message")));
-                }
-                else if(sender.hasPermission("AnarchyCORE.queue.priority")){
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&',getConfig().getString("priority-message")));
-                }
-                else if(sender.hasPermission("AnarchyCORE.queue.regular")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&',getConfig().getString("regural-message")));
-                }
-                else{
-                    sender.sendMessage("Cant find your priority! :(");
+        } else if (command.getName().equalsIgnoreCase("queue")) {
+            if (sender instanceof Player) {
+                if (sender.hasPermission("AnarchyCORE.queue.admin")) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
+                } else if (sender.hasPermission("AnarchyCORE.queue.priority")) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
+                } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
+                } else {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
                 }
             }
         }
         return false;
     }
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if(sender instanceof Player){
@@ -112,6 +106,8 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         }
         return null;
     }
+
+
 
     @EventHandler
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event){
