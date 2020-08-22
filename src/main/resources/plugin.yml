@@ -27,21 +27,21 @@ permissions:
       AnarchyCORE.version: true
       AnarchyCORE.help: true
       AnarchyCORE.queue.admin: true
-      default: false
-    AnarchyCORE.regular:
-      children:
-        AnarchyCORE.kill: true
-        AnarchyCORE.tps: true
-        AnarchyCORE.version: true
-        AnarchyCORE.queue.regular: true
-      default: true
-    AnarchyCORE.priority:
-      children:
-        AnarchyCORE.kill: true
-        AnarchyCORE.tps: true
-        AnarchyCORE.version: true
-        AnarchyCORE.queue.priority: true
-      default: false
+    default: false
+  AnarchyCORE.regular:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.tps: true
+      AnarchyCORE.version: true
+      AnarchyCORE.queue.regular: true
+    default: true
+  AnarchyCORE.priority:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.tps: true
+      AnarchyCORE.version: true
+      AnarchyCORE.queue.priority: true
+    default: false
   AnarchyCORE.help:
     description: Allows player to use /acore help.
     default: op
