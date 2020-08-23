@@ -39,12 +39,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(this, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        log("AnarchyCORE turned on!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a&l turned on!"));
     }
 
     @Override
     public void onDisable() {
-        log("AnarchyCORE turned off!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c&l turned off!"));
 
     }
 
