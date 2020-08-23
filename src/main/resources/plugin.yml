@@ -5,10 +5,14 @@ main: org.matejko06.vesek.anarchycore.AnarchyCORE
 commands:
   acore:
     description: Acore.
-    aliases: [ac]
-  acorereload:
+  ac:
+    description: Acore.
+  acreload:
     description: Reloads the plugin.
-    aliases: [acreload]
+    aliases: [acorereload]
+  acversion:
+    description: Shows plugin version.
+    aliases: [acoreversion]
   help:
     description: Help for players.
   adminhelp:
