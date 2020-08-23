@@ -8,20 +8,22 @@ commands:
     aliases: [suicide, killme]
   tps:
     description: Shows server TPS.
-    aliases: [servertps]
+    aliases: [servertps, server tps]
   queue:
     description: Shows players priority in queue.
     aliases: [queuepriority, priority]
   acoreversion:
     description: Shows plugin version.
-    aliases: [acversion, acore version]
+    aliases: [acversion, acore version, ac version]
   acorehelp:
     description: Shows help message.
-    aliases: [acore, acore help]
+    aliases: [acore, acore help, ac]
   info:
     description: Shows info about server.
-  reloadac:
+    aliases: [serverinfo, server info, serverstats, server stats, server statistics, statistics]
+  acreload:
     description: Reloads AnarchyCORE config.
+    aliases: [acore reload, ac reload]
 permissions:
   AnarchyCORE.*:
     children:
