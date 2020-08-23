@@ -3,6 +3,7 @@ package org.matejko06.vesek.anarchycore;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.defaults.ReloadCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
@@ -14,13 +15,11 @@ public final class AnarchyCORE extends JavaPlugin{
 
     public static boolean command_preprocessing = false;
 
-    VersionCommand vc = new VersionCommand(this);
     TPSCommand tc = new TPSCommand(this);
     QueueCommand qc = new QueueCommand(this);
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
-    HelpCommand hc = new HelpCommand(this);
-    ReloadCommand rc = new ReloadCommand(this);
+    AcoreCommand ac = new AcoreCommand(this);
     Events events = new Events(this);
 
     public void log(String text) {
@@ -33,13 +32,11 @@ public final class AnarchyCORE extends JavaPlugin{
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        //getCommand("acversion").setExecutor(vc);
         getCommand("tps").setExecutor(tc);
         getCommand("queue").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
-        getCommand("reloadac").setExecutor(rc);
-        //getCommand("achelp").setExecutor(hc);
+        getCommand("acore").setExecutor(ac);
         log("AnarchyCORE turned on!");
     }
 
@@ -61,6 +58,13 @@ public final class AnarchyCORE extends JavaPlugin{
                     return tab;
                 }
             }
+            /*else if(command.getName().equalsIgnoreCase("acore")){
+                List<String> tab = new ArrayList<>();
+                tab.add("reload");
+                tab.add("help");
+                tab.add("version");
+                return tab;
+            }*/
         }
         return null;
     }
