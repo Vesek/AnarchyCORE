@@ -15,10 +15,14 @@ public class Events implements Listener {
     }
 
     @EventHandler
-    public void onCommandPreProcess(PlayerCommandPreprocessEvent event){
-        if(event.getMessage().toLowerCase().startsWith("/tps") && AnarchyCORE.command_preprocessing){
+    public void onCommandPreProcess(PlayerCommandPreprocessEvent event) {
+        if (event.getMessage().toLowerCase().startsWith("/tps") && AnarchyCORE.command_preprocessing) {
             event.setCancelled(true);
             event.getPlayer().chat("/anarchycore:tps");
+        }
+        if (event.getMessage().toLowerCase().startsWith("/help") && AnarchyCORE.command_preprocessing) {
+            event.setCancelled(true);
+            event.getPlayer().chat("/anarchycore:help");
         }
     }
 
