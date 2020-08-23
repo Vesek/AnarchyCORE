@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -23,7 +24,15 @@ import java.util.List;
 
 public final class AnarchyCORE extends JavaPlugin implements Listener {
 
-    boolean command_preprocessing = false;
+    public static boolean command_preprocessing = false;
+
+    VersionCommand vc = new VersionCommand(this);
+    TPSCommand tc = new TPSCommand(this);
+    QueueCommand qc = new QueueCommand(this);
+    KillCommand kc = new KillCommand(this);
+    InfoCommand ic = new InfoCommand(this);
+    HelpCommand hc = new HelpCommand(this);
+    ReloadCommand rc = new ReloadCommand(this);
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
@@ -35,6 +44,13 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(this, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
+        //getCommand("acversion").setExecutor(vc);
+        getCommand("tps").setExecutor(tc);
+        getCommand("queue").setExecutor(qc);
+        getCommand("kill").setExecutor(kc);
+        getCommand("info").setExecutor(ic);
+        getCommand("reloadac").setExecutor(rc);
+        //getCommand("achelp").setExecutor(hc);
         log("AnarchyCORE turned on!");
     }
 
@@ -42,109 +58,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void onDisable() {
         log("AnarchyCORE turned off!");
 
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("kill")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("kill-message")));
-                        p.setHealth(0.00);
-                    }
-                }
-                if (args.length >= 1) {
-                    if (p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()) {
-                        for (String s : args) {
-                            Player victim = getServer().getPlayer(s);
-                            if (victim != null) {
-                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("killsomeone-message")));
-                                victim.setHealth(0.00);
-                            }
-                        }
-                    }
-                }
-            } else {
-                sender.sendMessage("Only players can use this command!");
-            }
-        } else if (command.getName().equalsIgnoreCase("tps")) {
-            if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
-                StringBuilder sb = new StringBuilder();
-                double[] TPS = getServer().getTPS();
-                if (TPS[0] >= getConfig().getDouble("tps-green")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
-                } else if (TPS[0] >= getConfig().getDouble("tps-yellow")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
-                } else if (TPS[0] >= 0.00) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
-                }
-                sender.sendMessage(sb.toString());
-            }
-        } else if (command.getName().equalsIgnoreCase("queue")) {
-            if (sender instanceof Player) {
-                if (sender.hasPermission("AnarchyCORE.queue.admin")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
-                } else if (sender.hasPermission("AnarchyCORE.queue.priority")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
-                } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
-                } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
-                }
-            }
-        }  else if (command.getName().equalsIgnoreCase("info")) {
-            if(sender instanceof Player){
-                Player p = (Player) sender;
-                String s = this.getConfig().getString("info-message");
-                try {
-                    File world = p.getWorld().getWorldFolder();
-                    File playerData = new File(world.getAbsolutePath() + "\\playerdata");
-                    File data = new File(this.getServer().getWorldContainer().getAbsolutePath() + "/eula.txt");
-                    BasicFileAttributes attr = Files.readAttributes(data.toPath(), BasicFileAttributes.class);
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date firstDate = sdf.parse(attr.creationTime().toString());
-                    Date secondDate = sdf.parse(LocalDate.now().toString());
-                    int diffInDays = (int)((secondDate.getTime() - firstDate.getTime()) / 86400000L);
-                    StringBuilder time = new StringBuilder();
-                    String[] sa = playerData.list();
-                    int people = 0;
-                    if (sa != null) {
-                        for(String sas : sa){
-                            if(sas.split("\\.")[1].equals("dat")){
-                                people++;
-                            }
-                        }
-                    }
-                    if (diffInDays / 365 < 1) {
-                        if (diffInDays / 30 >= 1) {
-                            time.append(diffInDays / 30).append(" months and ");
-                            diffInDays %= 30;
-                        }
-                        time.append(diffInDays).append(" days");
-                    }
-                    else if (diffInDays / 365 == 1) {
-                        diffInDays -= 365;
-                        time.append("1 year and ");
-                        time.append(diffInDays / 30).append(" months");
-                    }
-                    else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365).append(" years and ");
-                        diffInDays %= 365;
-                        time.append(diffInDays / 30).append(" months");
-                    }
-                    s = s.replace("<players>", String.valueOf(people));
-                    s = s.replace("<time>", time.toString());
-                    s = s.replace("<size>", FileUtils.byteCountToDisplaySize(world.length()));
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
     }
 
     @Override

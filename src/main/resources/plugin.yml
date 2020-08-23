@@ -20,6 +20,8 @@ commands:
     aliases: [acore, acore help]
   info:
     description: Shows info about server.
+  reloadac:
+    description: Reloads AnarchyCORE config.
 permissions:
   AnarchyCORE.*:
     children:
