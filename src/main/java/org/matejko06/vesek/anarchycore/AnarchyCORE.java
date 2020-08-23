@@ -39,12 +39,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(this, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a&l turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lValueSkinsCORE&a&l turned on!"));
     }
 
     @Override
     public void onDisable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c&l turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lValueSkinsCORE&c&l turned off!"));
 
     }
 
@@ -54,13 +54,13 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
-                    if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
+                    if (p.hasPermission("ValueSkinsCORE.kill") || p.isOp()) {
                         p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("kill-message")));
                         p.setHealth(0.00);
                     }
                 }
                 if (args.length >= 1) {
-                    if (p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()) {
+                    if (p.hasPermission("ValueSkinsCORE.killSomeone") || p.isOp()) {
                         for (String s : args) {
                             Player victim = getServer().getPlayer(s);
                             if (victim != null) {
@@ -74,7 +74,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                 sender.sendMessage("Only players can use this command!");
             }
         } else if (command.getName().equalsIgnoreCase("tps")) {
-            if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
+            if (sender.hasPermission("ValueSkinsCORE.tps") || sender.isOp()) {
                 StringBuilder sb = new StringBuilder();
                 double[] TPS = getServer().getTPS();
                 if (TPS[0] >= getConfig().getDouble("tps-green")) {
@@ -88,11 +88,11 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             }
         } else if (command.getName().equalsIgnoreCase("queue")) {
             if (sender instanceof Player) {
-                if (sender.hasPermission("AnarchyCOREQueue.admin")) {
+                if (sender.hasPermission("ValueSkinsCOREQueue.admin")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue.priority")) {
+                } else if (sender.hasPermission("ValueSkinsCOREQueue.priority")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue.regular")) {
+                } else if (sender.hasPermission("ValueSkinsCOREQueue.regular")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
@@ -156,7 +156,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if(sender instanceof Player){
             if(command.getName().equalsIgnoreCase("kill") || command.getName().equalsIgnoreCase("suicide")){
-                if(sender.hasPermission("AnarchyCORE.killSomeone") || sender.isOp()){
+                if(sender.hasPermission("ValueSkinsCORE.killSomeone") || sender.isOp()){
                     List<String> tab = new ArrayList<>();
                     for(Player p : getServer().getOnlinePlayers()){
                         tab.add(p.getDisplayName());
@@ -174,7 +174,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event){
         if(event.getMessage().toLowerCase().startsWith("/tps") && command_preprocessing){
             event.setCancelled(true);
-            event.getPlayer().chat("/anarchycore:tps");
+            event.getPlayer().chat("/ValueSkinsCORE:tps");
         }
     }
 
