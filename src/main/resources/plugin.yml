@@ -12,16 +12,8 @@ commands:
   queue:
     description: Shows players priority in queue.
     aliases: [queuepriority, priority]
-  acoreversion:
-    description: Shows plugin version.
-    aliases: [acversion, acore version]
-  acorehelp:
-    description: Shows help message.
-    aliases: [acore, acore help]
   info:
     description: Shows info about server.
-  reloadac:
-    description: Reloads AnarchyCORE config.
   acore:
     description: Acore.
     aliases: [ac]

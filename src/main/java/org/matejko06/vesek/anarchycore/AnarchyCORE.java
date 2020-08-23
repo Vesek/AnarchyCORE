@@ -3,7 +3,6 @@ package org.matejko06.vesek.anarchycore;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.ReloadCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
