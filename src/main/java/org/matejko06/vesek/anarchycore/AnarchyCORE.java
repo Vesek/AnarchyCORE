@@ -11,8 +11,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
@@ -35,12 +39,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(this, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        log("AnarchyCORE turned on!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a&l turned on!"));
     }
 
     @Override
     public void onDisable() {
-        log("AnarchyCORE turned off!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c&l turned off!"));
 
     }
 
@@ -84,17 +88,17 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             }
         } else if (command.getName().equalsIgnoreCase("queue")) {
             if (sender instanceof Player) {
-                if (sender.hasPermission("AnarchyCORE.queue.admin")) {
+                if (sender.hasPermission("AnarchyCOREQueue.admin")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
-                } else if (sender.hasPermission("AnarchyCORE.queue.priority")) {
+                } else if (sender.hasPermission("AnarchyCOREQueue.priority")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
-                } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
+                } else if (sender.hasPermission("AnarchyCOREQueue.regular")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
                 }
             }
-        }  else if (command.getName().equalsIgnoreCase("info")) {
+        }  else if (command.getName().equalsIgnoreCase("info") && sender instanceof Player) {
             if(sender instanceof Player){
                 Player p = (Player) sender;
                 String s = this.getConfig().getString("info-message");
@@ -110,29 +114,30 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                     StringBuilder time = new StringBuilder();
                     String[] sa = playerData.list();
                     int people = 0;
-                    if (sa != null) {
-                        for(String sas : sa){
-                            if(sas.split("\\.")[1].equals("dat")){
-                                people++;
-                            }
+                    for(String sas : sa){
+                        if(sas.split("\\.")[1].equals("dat")){
+                            people++;
                         }
                     }
                     if (diffInDays / 365 < 1) {
-                        if (diffInDays / 30 >= 1) {
-                            time.append(diffInDays / 30).append(" months and ");
-                            diffInDays %= 30;
+                        if (diffInDays / 30 < 1) {
+                            time.append(diffInDays + " days");
                         }
-                        time.append(diffInDays).append(" days");
+                        else{
+                            time.append(diffInDays / 30 + " months and ");
+                            diffInDays %= 30;
+                            time.append(diffInDays + " days");
+                        }
                     }
                     else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
                         time.append("1 year and ");
-                        time.append(diffInDays / 30).append(" months");
+                        time.append(diffInDays / 30 + " months");
                     }
                     else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365).append(" years and ");
+                        time.append(diffInDays / 365 + " years and ");
                         diffInDays %= 365;
-                        time.append(diffInDays / 30).append(" months");
+                        time.append(diffInDays / 30 + " months");
                     }
                     s = s.replace("<players>", String.valueOf(people));
                     s = s.replace("<time>", time.toString());
