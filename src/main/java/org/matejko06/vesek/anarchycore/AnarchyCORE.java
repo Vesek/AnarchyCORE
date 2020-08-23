@@ -1,6 +1,7 @@
 package org.matejko06.vesek.anarchycore;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -36,12 +37,12 @@ public final class AnarchyCORE extends JavaPlugin{
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
         getCommand("acore").setExecutor(ac);
-        log("AnarchyCORE turned on!");
+        log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
     }
 
     @Override
     public void onDisable() {
-        log("AnarchyCORE turned off!");
+        log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&c turned off!"));
 
     }
 

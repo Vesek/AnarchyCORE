@@ -3,6 +3,12 @@ version: ${project.version}
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
 
 commands:
+  acore:
+    description: Acore.
+    aliases: [ac]
+  acorereload:
+    description: Reloads the plugin.
+    aliases: [acreload]
   kill:
     description: Suicide.
     aliases: [suicide, killme]
@@ -14,9 +20,6 @@ commands:
     aliases: [queuepriority, priority]
   info:
     description: Shows info about server.
-  acore:
-    description: Acore.
-    aliases: [ac]
 permissions:
   AnarchyCORE.*:
     children:
@@ -25,6 +28,7 @@ permissions:
       AnarchyCORE.tps: true
       AnarchyCORE.version: true
       AnarchyCORE.help: true
+      AnarchyCORE.reload: true
       AnarchyCORE.queue.admin: true
     default: false
   AnarchyCORE.regular:
@@ -47,6 +51,9 @@ permissions:
   AnarchyCORE.version:
     description: Allows player to use /acore version.
     default: true
+  AnarchyCORE.reload:
+    description: Allows player to reload the plugin.
+    default: false
   AnarchyCORE.kill:
     description: Allows player to use /kill or /suicide.
     default: true
