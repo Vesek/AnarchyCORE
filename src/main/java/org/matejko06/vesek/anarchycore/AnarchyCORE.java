@@ -51,12 +51,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("info").setExecutor(ic);
         getCommand("reloadac").setExecutor(rc);
         //getCommand("achelp").setExecutor(hc);
-        log("AnarchyCORE turned on!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a&l turned on!"));
     }
 
     @Override
     public void onDisable() {
-        log("AnarchyCORE turned off!");
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c&l turned off!"));
 
     }
 
