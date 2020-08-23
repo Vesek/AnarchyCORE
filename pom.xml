@@ -6,7 +6,7 @@
 
     <groupId>org.matejko06.vesek</groupId>
     <artifactId>AnarchyCORE</artifactId>
-    <version>DEV.1_1.3.0</version>
+    <version>DEV_1.3.0</version>
     <packaging>jar</packaging>
 
     <name>AnarchyCORE</name>

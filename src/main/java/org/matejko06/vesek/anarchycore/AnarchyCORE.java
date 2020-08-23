@@ -57,13 +57,13 @@ public final class AnarchyCORE extends JavaPlugin{
                     return tab;
                 }
             }
-            /*else if(command.getName().equalsIgnoreCase("acore")){
+            else if(command.getName().equalsIgnoreCase("acore")){
                 List<String> tab = new ArrayList<>();
                 tab.add("reload");
                 tab.add("help");
                 tab.add("version");
                 return tab;
-            }*/
+            }
         }
         return null;
     }
