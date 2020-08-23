@@ -19,7 +19,7 @@ public class ReloadCommand implements CommandExecutor {
             plugin.reloadConfig();
             plugin.saveConfig();
             AnarchyCORE.command_preprocessing = plugin.getConfig().getBoolean("command-preprocessing");
-            sender.sendMessage(ChatColor.RED + "AnarchyCORE has been reloaded!");
+            sender.sendMessage(ChatColor.GOLD + "AnarchyCORE" + ChatColor.GREEN + " has been reloaded!");
         }
         return false;
     }

@@ -36,7 +36,7 @@ public class KillCommand implements CommandExecutor {
                     }
                 }
             } else {
-                sender.sendMessage("Only players can use this command!");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cOnly players can use this command!"));
             }
         }
         return false;
