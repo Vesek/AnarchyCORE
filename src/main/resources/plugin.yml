@@ -23,7 +23,7 @@ commands:
     aliases: [serverinfo, server info, serverstats, server stats, server statistics, statistics]
   acreload:
     description: Reloads AnarchyCORE config.
-    aliases: [acore reload, ac reload]
+    aliases: [acorereload, acore reload, ac reload]
 permissions:
   AnarchyCORE.*:
     children:
