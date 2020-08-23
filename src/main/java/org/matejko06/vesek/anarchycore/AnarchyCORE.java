@@ -11,12 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
@@ -98,7 +94,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
                 }
             }
-        }  else if (command.getName().equalsIgnoreCase("info") && sender instanceof Player) {
+        }  else if (command.getName().equalsIgnoreCase("info")) {
             if(sender instanceof Player){
                 Player p = (Player) sender;
                 String s = this.getConfig().getString("info-message");
@@ -114,30 +110,29 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                     StringBuilder time = new StringBuilder();
                     String[] sa = playerData.list();
                     int people = 0;
-                    for(String sas : sa){
-                        if(sas.split("\\.")[1].equals("dat")){
-                            people++;
+                    if (sa != null) {
+                        for(String sas : sa){
+                            if(sas.split("\\.")[1].equals("dat")){
+                                people++;
+                            }
                         }
                     }
                     if (diffInDays / 365 < 1) {
-                        if (diffInDays / 30 < 1) {
-                            time.append(diffInDays + " days");
-                        }
-                        else{
-                            time.append(diffInDays / 30 + " months and ");
+                        if (diffInDays / 30 >= 1) {
+                            time.append(diffInDays / 30).append(" months and ");
                             diffInDays %= 30;
-                            time.append(diffInDays + " days");
                         }
+                        time.append(diffInDays).append(" days");
                     }
                     else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
                         time.append("1 year and ");
-                        time.append(diffInDays / 30 + " months");
+                        time.append(diffInDays / 30).append(" months");
                     }
                     else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365 + " years and ");
+                        time.append(diffInDays / 365).append(" years and ");
                         diffInDays %= 365;
-                        time.append(diffInDays / 30 + " months");
+                        time.append(diffInDays / 30).append(" months");
                     }
                     s = s.replace("<players>", String.valueOf(people));
                     s = s.replace("<time>", time.toString());
