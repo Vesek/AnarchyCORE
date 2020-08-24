@@ -1,6 +1,5 @@
 package org.matejko06.vesek.anarchycore.commands;
 
-import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -64,7 +63,7 @@ public class InfoCommand implements CommandExecutor {
                     }
                     s = s.replace("<players>", String.valueOf(people));
                     s = s.replace("<time>", time.toString());
-                    s = s.replace("<size>", FileUtils.byteCountToDisplaySize(world.length()));
+                    s = s.replace("<size>", String.valueOf(folderSize(world)/1048576)+ " MB"); //TODO better convert
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -72,5 +71,16 @@ public class InfoCommand implements CommandExecutor {
             }
         }
         return false;
+    }
+
+    public static long folderSize(File directory) {
+        long length = 0;
+        for (File file : directory.listFiles()) {
+            if (file.isFile())
+                length += file.length();
+            else
+                length += folderSize(file);
+        }
+        return length;
     }
 }

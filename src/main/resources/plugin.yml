@@ -77,7 +77,7 @@ permissions:
     description: Allows player to use /acore help.
     default: true
   AnarchyCORE.adminhelp:
-    description: Allows player to use /acore adminhelp.
+    description: Allows player to use better /acore help.
     default: op
   AnarchyCORE.version:
     description: Allows player to use /acore version.
