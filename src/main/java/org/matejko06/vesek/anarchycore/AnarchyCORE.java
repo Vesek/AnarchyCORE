@@ -4,15 +4,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.FileConfigurationOptions;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.YamlConfigurationOptions;
+import org.bukkit.configuration.file.YamlConstructor;
+import org.bukkit.configuration.file.YamlRepresenter;
 import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.util.ArrayList;
@@ -35,12 +35,16 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
+//    private File customConfigFile
+//    private FileConfiguration customConfig;
+
     @Override
     public void onEnable() {
         getConfig().options().copyDefaults(true);
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
+//        createCustomConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("queue").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
@@ -52,8 +56,23 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
     }
 
+//    private void createCustomConfig() {
+//        customConfigFile = new File(getDataFolder(), "messages.yml");
+//        if (!customConfigFile.exists()) {
+//            customConfigFile.getParentFile().mkdirs();
+//            saveResource("messages.yml", false);
+//        }
+//        customConfig= new YamlConfiguration();
+//        try {
+//            customConfig.load(customConfigFile);
+//        } catch (IOException | InvalidConfigurationException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     @Override
     public void onDisable() {
+        saveConfig();
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&c turned off!"));
 
     }
