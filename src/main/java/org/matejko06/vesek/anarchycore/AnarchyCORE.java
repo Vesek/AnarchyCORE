@@ -5,14 +5,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.FileConfigurationOptions;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.configuration.file.YamlConfigurationOptions;
-import org.bukkit.configuration.file.YamlConstructor;
-import org.bukkit.configuration.file.YamlRepresenter;
 import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.util.ArrayList;
@@ -29,14 +26,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     HelpCommand hc = new HelpCommand(this);
     AcoreCommand acorec = new AcoreCommand(this);
     AcCommand ac = new AcCommand(this);
-    Events events = new Events(this);
+    EventsClass events = new EventsClass(this);
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
-
-//    private File customConfigFile
-//    private FileConfiguration customConfig;
+    private ConfigManager cfgm;
 
     @Override
     public void onEnable() {
@@ -44,7 +39,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-//        createCustomConfig();
+        loadConfigManager();
+        getServer().getPluginManager().registerEvents(new EventsClass(this), this);
+        loadConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("queue").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
@@ -53,29 +50,45 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("acore").setExecutor(acorec);
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
+        getServer().getPluginManager().registerEvents(this, this);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
     }
 
-//    private void createCustomConfig() {
-//        customConfigFile = new File(getDataFolder(), "messages.yml");
-//        if (!customConfigFile.exists()) {
-//            customConfigFile.getParentFile().mkdirs();
-//            saveResource("messages.yml", false);
-//        }
-//        customConfig= new YamlConfiguration();
-//        try {
-//            customConfig.load(customConfigFile);
-//        } catch (IOException | InvalidConfigurationException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e){
+        Player p = e.getPlayer();
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e){
+        Player p = e.getPlayer();
+        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
+    }
 
     @Override
     public void onDisable() {
         saveConfig();
-        log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&c turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
+    }
+
+    public void loadConfigManager() {
+        cfgm = new ConfigManager();
+        cfgm.setup();
+//        cfgm.saveMessages();
+//        cfgm.reloadMessages();
 
     }
+
+    public void loadConfig() {
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+    }
+
+//    public void loadMessages() {
+//        getMessages().options().copyDefaults(true);
+//        saveMessages();
+//    }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

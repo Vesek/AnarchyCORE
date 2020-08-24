@@ -18,22 +18,17 @@ public class AcoreCommand implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("acore")){
             if(args.length < 1){
                 sender.sendMessage("Not enough arguments.");
-            }
-            else if(args.length == 1){
-                if(args[0].equalsIgnoreCase("help")){
-
                 }
                 else if(args[0].equalsIgnoreCase("reload")){
                     plugin.reloadConfig();
                     plugin.saveConfig();
                     AnarchyCORE.command_preprocessing = plugin.getConfig().getBoolean("command-preprocessing");
-                    sender.sendMessage(ChatColor.RED + "AnarchyCORE has been reloaded!");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
                 }
                 else if(args[0].equalsIgnoreCase("version")){
 
                 }
             }
-        }
         return false;
     }
 }

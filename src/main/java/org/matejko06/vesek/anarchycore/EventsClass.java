@@ -6,13 +6,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.ChatColor;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerItemBreakEvent;
 
-public class Events implements Listener {
+    public class EventsClass implements Listener {
+        public int blocksbroke = 0;
 
-    org.bukkit.plugin.Plugin plugin;
-    public Events (Plugin plugin){
-        this.plugin = plugin;
-    }
+        @EventHandler
+        public void blockbreak(PlayerJoinEvent event) {
+            Player player = event.getPlayer();
+        }
 
     @EventHandler
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event) {
@@ -26,12 +30,16 @@ public class Events implements Listener {
         }
     }
 
+        org.bukkit.plugin.Plugin plugin;
+        public EventsClass (Plugin plugin) {
+        }
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){
-        String dm = event.getDeathMessage();
-        event.setDeathMessage(null);
-        for(Player p : plugin.getServer().getOnlinePlayers()){
-            p.sendMessage(dm);
-        }
+                String dm = event.getDeathMessage();
+                event.setDeathMessage(null);
+                for (Player p : plugin.getServer().getOnlinePlayers()) {
+                    p.sendMessage(dm);
+                }
     }
 }

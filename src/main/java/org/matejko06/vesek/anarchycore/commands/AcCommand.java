@@ -19,10 +19,6 @@ public class AcCommand implements CommandExecutor {
             if(args.length < 1){
                 sender.sendMessage("Not enough arguments.");
             }
-            else if(args.length == 1){
-                if(args[0].equalsIgnoreCase("help")){
-
-                }
                 else if(args[0].equalsIgnoreCase("reload")){
                     plugin.reloadConfig();
                     plugin.saveConfig();
@@ -33,7 +29,6 @@ public class AcCommand implements CommandExecutor {
 
                 }
             }
-        }
         return false;
     }
 }

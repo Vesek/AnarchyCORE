@@ -15,16 +15,13 @@ public class HelpCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("help")) {
-                if (args.length == 0) {
                     if (sender.hasPermission("AnarchyCORE.help") || sender.isOp()) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("help-message")));
-                        //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("help-message")));
+                    }
+                    else if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("invalid-message")));
                     }
                 }
-            } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("help-message")));
-            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("help-message")));
-            }
         return false;
     }
 }
