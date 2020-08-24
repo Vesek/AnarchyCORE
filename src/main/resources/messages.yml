@@ -19,3 +19,614 @@ admin-message: "&c&lAdmin"
 invalid-command: "&4This command does not exist! Use &6/help&4 for help."
 #Message for /info #
 info-message: "&3Already <players> have connected to the server, server runs for <time> and world has <size> so far."
+# Join and Leave messages #
+join-message: "&8<player> &7has joined!"
+leave-message: "&8<player> &7has left!"
+# Death messages #
+  mob:
+    Bat:
+      - "&3%plrtag%&4 was slain by Bat"
+    Bee:
+      - "&3%plrtag%&4 was stung to death"
+    BlazeMelee:
+      - "&3%plrtag%&4 was slain by Blaze"
+    BlazeFireball:
+      - "&3%plrtag%&4 was fireballed by Blaze"
+    Cat:
+      - "&3%plrtag%&4 was slain by Cat"
+    CaveSpider:
+      - "&3%plrtag%&4 was slain by Cave Spider"
+    Chicken:
+      - "&3%plrtag%&4 was slain by Chicken"
+    Cod:
+      - "&3%plrtag%&4 was slain by Cod"
+    Cow:
+      - "&3%plrtag%&4 was slain by Cow"
+    Creeper:
+      - "&3%plrtag%&4 was blown up by Creeper"
+    CreeperCharged: # charged Creeper
+      - "&3%plrtag%&4 was blown up by Creeper"
+    Dolphin:
+      - "&3%plrtag%&4 was slain by Dolphin"
+    Donkey:
+      - "&3%plrtag%&4 was slain by Donkey"
+    DrownedMelee:
+      - "&3%plrtag%&4 was slain by Drowned"
+    DrownedTrident:
+      - "&3%plrtag%&4 was impaled by Drowned"
+    DrownedMeleeCustom:
+      - "&3%plrtag%&4 was slain by Drowned using &b[&6%weapon%&b]&4."
+    DrownedTridentCustom:
+      - "&3%plrtag%&4 was impaled by Drowned using &b[&6%weapon%&b]&4."
+    ElderGuardian:
+      - "&3%plrtag%&4 was slain by Elder Guardian"
+    EnderDragon:
+      - "&3%plrtag%&4 was slain by Ender Dragon"
+    EnderDragonBreath:
+      - "&3%plrtag%&4 was roasted in dragon breath"
+    Enderman:
+      - "&3%plrtag%&4 was slain by Enderman"
+    Endermite:
+      - "&3%plrtag%&4 was slain by Endermite"
+    Evoker:
+      - "&3%plrtag%&4 was slain by Evoker"
+    Fox:
+      - "&3%plrtag%&4 was slain by Fox"
+    Ghast:
+      - "&3%plrtag%&4 was fireballed by Ghast"
+    Giant:
+      - "&3%plrtag%&4 was slain by Giant"
+    Guardian:
+      - "&3%plrtag%&4 was slain by Guardian"
+    Hoglin:
+      - "&3%plrtag%&4 was slain by Hoglin"
+    Horse:
+      - "&3%plrtag%&4 was slain by Horse"
+    HuskMelee:
+      - "&3%plrtag%&4 was slain by Husk"
+    HuskCustom:
+      - "&3%plrtag%&4 was slain by Husk using &b[&6%weapon%&b]&4."
+    Illusioner:
+      - "&3%plrtag%&4 was shot by Illusioner"
+    IronGolem:
+      - "&3%plrtag%&4 was slain by Iron Golem"
+    Llama:
+      - "&3%plrtag%&4 was slain by Llama"
+    MagmaCube:
+      - "&3%plrtag%&4 was slain by Magma Cube"
+    Mooshroom:
+      - "&3%plrtag%&4 was slain by Mooshroom"
+    Mule:
+      - "&3%plrtag%&4 was slain by Mule"
+    Panda:
+      - "&3%plrtag%&4 was slain by Panda"
+    Parrot:
+      - "&3%plrtag%&4 was slain by Parrot"
+    Phantom:
+      - "&3%plrtag%&4 was slain by Phantom"
+    Pig:
+      - "&3%plrtag%&4 was slain by Pig"
+    PiglinMelee:
+      - "&3%plrtag%&4 was slain by Piglin"
+    PiglinCustom:
+      - "&3%plrtag%&4 was slain by Piglin using &b[&6%weapon%&b]&4."
+    PiglinBruteMelee:
+      - "&3%plrtag%&4 was slain by Piglin Brute"
+    PiglinBruteCustom:
+      - "&3%plrtag%&4 was slain by Piglin Brute using &b[&6%weapon%&b]&4."
+    PillagerArrow:
+      - "&3%plrtag%&4 was shot by Pillager"
+    PillagerMelee:
+      - "&3%plrtag%&4 was slain by Pillager"
+    PillagerArrowCustom:
+      - "&3%plrtag%&4 was shot by Pillager using &b[&6%weapon%&b]&4."
+    PillagerCustom:
+      - "&3%plrtag%&4 was slain by Pillager using &b[&6%weapon%&b]&4."
+    PolarBear:
+      - "&3%plrtag%&4 was slain by Polar Bear"
+    PufferFish:
+      - "&3%plrtag%&4 was slain by Puffer Fish"
+    Rabbit:
+      - "&3%plrtag%&4 was slain by Rabbit"
+    Ravager:
+      - "&3%plrtag%&4 was slain by Ravager"
+    Salmon:
+      - "&3%plrtag%&4 was slain by Salmon"
+    Sheep:
+      - "&3%plrtag%&4 was slain by Sheep"
+    Shulker:
+      - "&3%plrtag%&4 was slain by Shulker"
+    Silverfish:
+      - "&3%plrtag%&4 was slain by Silverfish"
+    SkeletonArrow:
+      - "&3%plrtag%&4 was shot by Skeleton"
+    SkeletonArrowCustom:
+      - "&3%plrtag%&4 was shot by Skeleton using &b[&6%weapon%&b]&4."
+    SkeletonMelee:
+      - "&3%plrtag%&4 was slain by Skeleton"
+    SkeletonCustom:
+      - "&3%plrtag%&4 was slain by Skeleton using &b[&6%weapon%&b]&4."
+    SkeletonHorse:
+      - "&3%plrtag%&4 was slain by Skeleton Horse"
+    Slime:
+      - "&3%plrtag%&4 was slain by Slime"
+    SnowGolem:
+      - "&3%plrtag%&4 was pummeled by Snow Golem"
+    Spider:
+      - "&3%plrtag%&4 was slain by Spider"
+    Squid:
+      - "&3%plrtag%&4 was slain by Squid"
+    StrayArrow:
+      - "&3%plrtag%&4 was shot by Stray"
+    StrayMelee:
+      - "&3%plrtag%&4 was slain by Stray"
+    StrayCustom:
+      - "&3%plrtag%&4 was slain by Stray using &b[&6%weapon%&b]&4."
+    Strider:
+      - "&3%plrtag%&4 was slain by Strider"
+    TropicalFish:
+      - "&3%plrtag%&4 was slain by Tropical Fish"
+    Turtle:
+      - "&3%plrtag%&4 was slain by Turtle"
+    Vex:
+      - "&3%plrtag%&4 was slain by Vex"
+    Vindicator:
+      - "&3%plrtag%&4 was slain by Vindicator"
+    WanderingTrader:
+      - "&3%plrtag%&4 was slain by Wandering Trader"
+    Witch:
+      - "&3%plrtag%&4 was killed by Witch using magic"
+    Wither:
+      - "&3%plrtag%&4 was slain by Wither"
+    WitherSpawnBoom: # Dies from wither spawn explosion
+      - "&3%plrtag%&4 was blown up by Wither"
+    WitherSkeletonMelee:
+      - "&3%plrtag%&4 was slain by Wither Skeleton"
+    WitherSkeletonCustom:
+      - "&3%plrtag%&4 was slain by Wither Skeleton using &b[&6%weapon%&b]&4."
+    Wolf:
+      - "&3%plrtag%&4 was slain by Wolf"
+    Zoglin:
+      - "&3%plrtag%&4 was slain by Zoglin"
+    ZombieMelee:
+      - "&3%plrtag%&4 was slain by Zombie"
+    ZombieCustom:
+      - "&3%plrtag%&4 was slain by Zombie using &b[&6%weapon%&b]&4."
+    ZombiePigManMelee: # used in versions older than 1.16
+      - "&3%plrtag%&4 was slain by Zombie Pigman"
+    ZombiePigManCustom: # used in versions older than 1.16
+      - "&3%plrtag%&4 was slain by Zombie Pigman using &b[&6%weapon%&b]&4."
+    ZombifiedPiglinMelee: # used in 1.16 and newer
+      - "&3%plrtag%&4 was slain by Zombified Piglin"
+    ZombifiedPiglinCustom: # used in 1.16 and newer
+      - "&3%plrtag%&4 was slain by Zombified Piglin using &b[&6%weapon%&b]&4."
+    ZombieVillagerMelee:
+      - "&3%plrtag%&4 was slain by Zombie Villager"
+    ZombieVillagerCustom:
+      - "&3%plrtag%&4 was slain by Zombie Villager using &b[&6%weapon%&b]&4."
+    ZombieHorse:
+      - "&3%plrtag%&4 was slain by Zombie Horse"
+  namedmob: # For named mobs, use %killer% as mob
+    Bat:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Bee:
+      - "&3%plrtag%&4 was stung to death"
+    BlazeMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    BlazeFireball:
+      - "&3%plrtag%&4 was fireballed by &3%killer%&4."
+    Cat:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    CaveSpider:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Chicken:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Cod:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Cow:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Creeper:
+      - "&3%plrtag%&4 was blown up by &3%killer%&4."
+    CreeperCharged: # charged Creeper
+      - "&3%plrtag%&4 was blown up by &3%killer%&4."
+    Dolphin:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Donkey:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    DrownedMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    DrownedTrident:
+      - "&3%plrtag%&4 was impaled by &3%killer%&4."
+    DrownedMeleeCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    DrownedTridentCustom:
+      - "&3%plrtag%&4 was impaled by %killer% using &b[&6%weapon%&b]&4."
+    ElderGuardian:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    EnderDragon:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    EnderDragonBreath:
+      - "&3%plrtag%&4 was killed by %killer% using magic"
+    Enderman:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Endermite:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Evoker:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Fox:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Ghast:
+      - "&3%plrtag%&4 was fireballed by &3%killer%&4."
+    Giant:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Guardian:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Hoglin:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Horse:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    HuskMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    HuskCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    Illusioner:
+      - "&3%plrtag%&4 was shot by &3%killer%&4."
+    IronGolem:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Llama:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    MagmaCube:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Mooshroom:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Mule:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Panda:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Parrot:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Phantom:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Pig:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PiglinMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PiglinCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    PiglinBruteMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PiglinBruteCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    PillagerArrow:
+      - "&3%plrtag%&4 was shot by &3%killer%&4."
+    PillagerMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PillagerArrowCustom:
+      - "&3%plrtag%&4 was shot by %killer% using &b[&6%weapon%&b]&4."
+    PillagerCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    PolarBear:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PufferFish:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Rabbit:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Ravager:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Salmon:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Sheep:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Shulker:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Silverfish:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    SkeletonArrow:
+      - "&3%plrtag%&4 was shot by &3%killer%&4."
+    SkeletonMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    SkeletonArrowCustom:
+      - "&3%plrtag%&4 was shot by %killer% using &b[&6%weapon%&b]&4."
+    SkeletonCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    SkeletonHorse:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Slime:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    SnowGolem:
+      - "&3%plrtag%&4 was pummeled by &3%killer%&4."
+    Spider:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Squid:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    StrayArrow:
+      - "&3%plrtag%&4 was shot by &3%killer%&4."
+    StrayMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    StrayCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    Strider:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    TropicalFish:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Turtle:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Vex:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Villager:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Vindicator:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    WanderingTrader:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Witch:
+      - "&3%plrtag%&4 was killed by %killer% using magic"
+    Wither:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    WitherSpawnBoom: # Dies from wither spawn explosion
+      - "&3%plrtag%&4 was blown up by &3%killer%&4."
+    WitherSkeletonMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    WitherSkeletonCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    Wolf:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    Zoglin:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    ZombieMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    ZombieCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    ZombiePigManMelee: # used in versions older than 1.16
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    ZombiePigManCustom: # used in versions older than 1.16
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    ZombifiedPiglinMelee: # used in 1.16 and newer
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    ZombifiedPiglinCustom: # used in 1.16 and newer
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    ZombieVillagerMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    ZombieVillagerCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    ZombieHorse:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+  pvp:
+    PlayerMelee:
+      - "&3%plrtag%&4 was slain by &3%killer%&4."
+    PlayerCustom:
+      - "&3%plrtag%&4 was slain by %killer% using &b[&6%weapon%&b]&4."
+    PlayerArrow:
+      - "&3%plrtag%&4 was shot by &3%killer%&4."
+    PlayerTrident:
+      - "&3%plrtag%&4 was impaled by &3%killer%&4."
+    PlayerTridentCustom:
+      - "&3%plrtag%&4 was impaled by %killer% using &b[&6%weapon%&b]&4."
+    PlayerFireball: # Just in case
+      - "&3%plrtag%&4 was fireballed by &3%killer%&4."
+    PlayerSnowball: # Just in case
+      - "&3%plrtag%&4 was pummeled by &3%killer%&4."
+    PlayerProjectileCustom: # Bows, plugins like CrackShot
+      - "&3%plrtag%&4 was shot by &3%killer%&4 using &b[&6%weapon%&b]&4."
+    PlayerPotion:
+      - "&3%plrtag%&4 was killed by &3%killer%&4 using magic,"
+  natural:
+    Thorns:
+      - "&3%plrtag%&4 was killed while trying to hurt &3%killer%&4."
+    TNT:
+      - "&3%plrtag%&4 blew up."
+    TNTKill:
+      - "&3%plrtag%&4 was blown up by &3%killer%&4."
+    WitherSkull:
+      - "&3%plrtag%&4 was shot by a %killer%'s skull"
+    EnderCrystal:
+      - "&3%plrtag%&4 blew up"
+    Bed: # exploding beds or respawn anchors
+      - "&3%plrtag%&4 was killed by [Intentional Game Design]&4."
+    Cactus:
+      - "&3%plrtag%&4 was pricked to death"
+    CactusKill:
+      - "&3%plrtag%&4 walked into a cactus whilst trying to escape &3%killer%&4."
+    Anvil:
+      - "&3%plrtag%&4 was squashed by a falling anvil"
+    AnvilKill:
+      - "&3%plrtag%&4 was squashed by a falling block whilst fighting &3%killer%&4."
+    FallingBlock: # Only when a FallingBlock is modified to cause damage
+      - "&3%plrtag%&4 was squashed by a falling block"
+    FallingBlockKill: # as above
+      - "&3%plrtag%&4 was squashed by a falling block whilst fighting &3%killer%&4."
+    UnknownArrow: # arrow from unknown entity or source, /summon?
+      - "&3%plrtag%&4 was shot by arrow"
+    DispenserArrow:
+      - "&3%plrtag%&4 was shot by arrow"
+    DispenserFireball:
+      - "&3%plrtag%&4 burned to death"
+    DispenserSnowball:
+      - "&3%plrtag%&4 died"
+    Drowning:
+      - "&3%plrtag%&4 drowned"
+    DrowningKill:
+      - "&3%plrtag%&4 drowned whilst trying to escape &3%killer%&4."
+    PotionPoison: # Normally impossible
+      - "&3%plrtag%&4 died"
+    PotionWither:
+      - "&3%plrtag%&4 withered away"
+    PotionWitherKill:
+      - "&3%plrtag%&4 withered away whilst fighting &3%killer%&4."
+    PotionHarming:
+      - "&3%plrtag%&4 was killed by magic"
+    PotionHarmingKill:
+      - "&3%plrtag%&4 was killed by magic whilst trying to escape &3%killer%&4."
+    EvokerFang:
+      - "&3%plrtag%&4 was killed by %killer% using magic"
+    FireBlock:
+      - "&3%plrtag%&4 went up in flames"
+    FireBlockKill:
+      - "&3%plrtag%&4 walked into a fire whilst fighting &3%killer%&4."
+    FireTick:
+      - "&3%plrtag%&4 burned to death"
+    FireTickKill:
+      - "&3%plrtag%&4 burnt into a crisp whilst fighting &3%killer%&4."
+    Magma:
+      - "&3%plrtag%&4 discovered floor was lava"
+    MagmaKill:
+      - "&3%plrtag%&4 walked into danger zone due to &3%killer%&4."
+    BerryBush:
+      - "&3%plrtag%&4 was poked to death by a sweet berry bush"
+    BerryBushKill:
+      - "&3%plrtag%&4 was poked to death by a sweet berry bush whilst trying to escape &3%killer%&4."
+    Lava:
+      - "&3%plrtag%&4 tried to swim in lava"
+    LavaKill:
+      - "&3%plrtag%&4 tried to swim in lava while trying to escape &3%killer%&4."
+    Lightning: # Happens when struck by lightning, vanilla: FireTick/FireBlock
+      - "&3%plrtag%&4 went up in flames"
+    Starvation:
+      - "&3%plrtag%&4 starved to death"
+    Suffocation:
+      - "&3%plrtag%&4 suffocated in a wall"
+    Cramming: # maxEntityCramming
+      - "&3%plrtag%&4 was squished too much"
+    CrammingKill:
+      - "&3%plrtag%&4 was squished too much"
+    Void:
+      - "&3%plrtag%&4 fell out of the world"
+    VoidFall: # in DMP, if entity falls over y>=64 to the void
+      - "&3%plrtag%&4 fell from a high place and fell out of the world"
+    VoidKill:
+      - "&3%plrtag%&4 didn't want to live in the same world as &3%killer%&4."
+    FallShort: # Fall distance 5 blocks or less, or ender pearl
+      - "&3%plrtag%&4 hit the ground too hard"
+    FallLong: # Fall distance over 5 blocks
+      - "&3%plrtag%&4 fell from a high place"
+    FallLadder:
+      - "&3%plrtag%&4 fell off a ladder"
+    FallVine:
+      - "&3%plrtag%&4 fell off some vines"
+    FallWeepingVine:
+      - "&3%plrtag%&4 fell off some weeping vines"
+    FallTwistingVine:
+      - "&3%plrtag%&4 fell off some twisting vines"
+    FallClimbing: # currently unused
+      - "&3%plrtag%&4 fell while climbing"
+    FallWater:
+      - "&3%plrtag%&4 fell out of the water"
+    FallTrapdoor:
+      - "&3%plrtag%&4 fell out a trapdoor"
+    FallScaffolding:
+      - "&3%plrtag%&4 fell out scaffolding"
+    FallFire:
+      - "&3%plrtag%&4 fell into a patch of fire"
+    FallCacti:
+      - "&3%plrtag%&4 fell into a patch of cacti"
+    FallBerryBush:
+      - "&3%plrtag%&4 fell into a sweet berry bush"
+    FallKill:
+      - "&3%plrtag%&4 was doomed to fall by &3%killer%&4."
+    FallKillWeapon:
+      - "&3%plrtag%&4 was doomed to fall by %killer% using &b[&6%weapon%&b]&4."
+    FallFinishKill:
+      - "&3%plrtag%&4 fell too far and was finished by &3%killer%&4."
+    FallFinishKillWeapon:
+      - "&3%plrtag%&4 fell too far and was finished by %killer% using &b[&6%weapon%&b]&4."
+    FallExplosionKill: # FallKill caused by entity explosion
+      - "&3%plrtag%&4 was blown from a high place by &3%killer%&4."
+    FallLadderKill:
+      - "&3%plrtag%&4 was shot off a ladder by &3%killer%&4."
+    FallVineKill:
+      - "&3%plrtag%&4 was shot off some vines by &3%killer%&4."
+    Firework:
+      - "&3%plrtag%&4 went off with a bang"
+    FireworkKill:
+      - "&3%plrtag%&4 went off with a bang whilst fighting &3%killer%&4."
+    CrossbowFirework:
+      - "&3%plrtag%&4 went off with a bang due to a firework fired by &3%killer%&4."
+    CrossbowFireworkCustom:
+      - "&3%plrtag%&4 went off with a bang due to a firework fired from &b[&6%weapon%&b]&4 by &3%killer%&4."
+    Elytra:
+      - "&3%plrtag%&4 experienced kinetic energy"
+    ElytraKill:
+      - "&3%plrtag%&4 experienced kinetic energy whilst trying to escape &3%killer%&4."
+    Suicide: # Some plugins may use this one, /suicide and /kill for example
+      - "&3%plrtag%&4&4 died."
+    Melting: # Some plugins may use this one, orig. Snowmans + hot biomes
+      - "&3%plrtag%&4&4 died."
+    DryOut: # Some plugins may use this one, orig. fish outside water
+      - "&3%plrtag%&4&4 died."
+    Custom: # Some plugins may use this one
+      - "&3%plrtag%&4&4 died."
+  unknown:
+    - "&3%plrtag%&4&4 died."
+
+mob-names:
+  Bat: "Bat"
+  Bee: "Bee"
+  Blaze: "Blaze"
+  Cat: "Cat"
+  CaveSpider: "Cave Spider"
+  Chicken: "Chicken"
+  Cod: "Cod"
+  Cow: "Cow"
+  Creeper: "Creeper"
+  Dolphin: "Dolphin"
+  Donkey: "Donkey"
+  Drowned: "Drowned"
+  ElderGuardian: "Elder Guardian"
+  EnderDragon: "Ender Dragon"
+  Enderman: "Enderman"
+  Endermite: "Endermite"
+  Evoker: "Evoker"
+  Fox: "Fox"
+  Ghast: "Ghast"
+  Giant: "Giant"
+  Guardian: "Guardian"
+  Hoglin: "Hoglin"
+  Horse: "Horse"
+  Husk: "Husk"
+  Illusioner: "Illusioner"
+  IronGolem: "Iron Golem"
+  Llama: "Llama"
+  MagmaCube: "Magma Cube"
+  Mooshroom: "Mooshroom"
+  Mule: "Mule"
+  Panda: "Panda"
+  Parrot: "Parrot"
+  Phantom: "Phantom"
+  Pig: "Pig"
+  Piglin: "Piglin"
+  PiglinBrute: "Piglin Brute"
+  Pillager: "Pillager"
+  PolarBear: "Polar Bear"
+  PufferFish: "Puffer Fish"
+  Ocelot: "Ocelot"
+  Rabbit: "Rabbit"
+  Ravager: "Ravager"
+  Salmon: "Salmon"
+  Sheep: "Sheep"
+  Shulker: "Shulker"
+  Silverfish: "Silverfish"
+  Skeleton: "Skeleton"
+  SkeletonHorse: "Skeleton Horse"
+  Slime: "Slime"
+  SnowGolem: "Snow Golem"
+  Spider: "Spider"
+  Squid: "Squid"
+  Stray: "Stray"
+  Strider: "Strider"
+  TraderLlama: "Trader Llama"
+  TropicalFish: "Tropical Fish"
+  Turtle: "Turtle"
+  Vex: "Vex"
+  Villager: "Villlager"
+  Vindicator: "Vindicator"
+  WanderingTrader: "Wandering Trader"
+  Witch: "Witch"
+  Wither: "Wither"
+  WitherSkeleton: "Wither Skeleton"
+  Wolf: "Wolf"
+  Zoglin: "Zoglin"
+  Zombie: "Zombie"
+  ZombieHorse: "Zombie Horse"
+  ZombiePigMan: "Zombie Pigman"
+  ZombifiedPiglin: "Zombified Piglin"
+  ZombieVillager: "Zombie Villager"
