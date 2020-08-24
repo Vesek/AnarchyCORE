@@ -4,6 +4,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
@@ -11,7 +18,7 @@ import org.matejko06.vesek.anarchycore.commands.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class AnarchyCORE extends JavaPlugin{
+public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     public static boolean command_preprocessing = false;
 
@@ -41,6 +48,7 @@ public final class AnarchyCORE extends JavaPlugin{
         getCommand("help").setExecutor(hc);
         getCommand("acore").setExecutor(acorec);
         getCommand("ac").setExecutor(ac);
+        Bukkit.getPluginManager().registerEvents(this, this);
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
     }
 
