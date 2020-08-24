@@ -7,15 +7,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
-public class AcoreCommand implements CommandExecutor {
+public class AcCommand implements CommandExecutor {
     Plugin plugin;
-    public AcoreCommand(Plugin plugin) {
+    public AcCommand(Plugin plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("acore")) {
+        if (command.getName().equalsIgnoreCase("ac")) {
             if (args[0].equalsIgnoreCase("")) {
                 if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCOREd&a&l V1.3.0 &6&lADMINHELP\n&6By Matejko06 and Vesek\n \n&6&o/help &a- Shows server help.\n&6&o/adminhelp &a- Shows this.\n&6&o/kill &a- Kills the player.\n&6&o/kill <player> &a- Kills someone.\n&6&o/tps &a- Shows server TPS.\n&6&o/info &a- Shows some info about the server.\n&6&o/priority &aor &6&o/queue &a- Shows players queue priority.\n \n&3&lDISCORD SUPPORT: &ahttps://discord.com/invite/dh5u3as\n&6&l<----------------------->"));

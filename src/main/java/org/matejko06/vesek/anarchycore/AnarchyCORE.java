@@ -19,7 +19,9 @@ public final class AnarchyCORE extends JavaPlugin{
     QueueCommand qc = new QueueCommand(this);
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
+    HelpCommand hc = new HelpCommand(this);
     AcoreCommand acorec = new AcoreCommand(this);
+    AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
 
     public void log(String text) {
@@ -36,7 +38,9 @@ public final class AnarchyCORE extends JavaPlugin{
         getCommand("queue").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
+        getCommand("help").setExecutor(hc);
         getCommand("acore").setExecutor(acorec);
+        getCommand("ac").setExecutor(ac);
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
     }
 

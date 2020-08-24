@@ -11,11 +11,15 @@ commands:
     aliases: [acoreversion]
   help:
     description: Help for players.
-  adminhelp:
+  acadminhelp:
     description: Help for admin.
+    aliases: [acoreadminhelp]
+  acdiscord:
+    description: Support Discord server.
+    aliases: [acorediscord]
   acreload:
     description: Reloads the plugin.
-    aliases: [acorereload, ac reload]
+    aliases: [acorereload]
   kill:
     description: Suicide.
     aliases: [suicide, killme]
@@ -38,7 +42,7 @@ permissions:
       AnarchyCORE.adminhelp: true
       AnarchyCORE.help: true
       AnarchyCORE.reload: true
-      AnarchyCORE.queue.admin: true
+      AnarchyCOREQueue.admin: true
     default: false
   AnarchyCORE.regular:
     children:
@@ -46,7 +50,7 @@ permissions:
       AnarchyCORE.tps: true
       AnarchyCORE.version: true
       AnarchyCORE.help: true
-      AnarchyCORE.queue.regular: true
+      AnarchyCOREQueue.regular: true
     default: true
   AnarchyCORE.priority:
     children:
@@ -54,7 +58,7 @@ permissions:
       AnarchyCORE.tps: true
       AnarchyCORE.version: true
       AnarchyCORE.help: true
-      AnarchyCORE.queue.priority: true
+      AnarchyCOREQueue.priority: true
     default: false
   AnarchyCORE.help:
     description: Allows player to use /acore help.
