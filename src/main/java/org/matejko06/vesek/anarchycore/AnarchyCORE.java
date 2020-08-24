@@ -1,5 +1,6 @@
 package org.matejko06.vesek.anarchycore;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,6 +16,8 @@ import org.bukkit.configuration.file.YamlConstructor;
 import org.bukkit.configuration.file.YamlRepresenter;
 import org.matejko06.vesek.anarchycore.commands.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +31,14 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     InfoCommand ic = new InfoCommand(this);
     HelpCommand hc = new HelpCommand(this);
     AcoreCommand acorec = new AcoreCommand(this);
-    AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-//    private File customConfigFile
-//    private FileConfiguration customConfig;
+    private File messageFile;
+    private static FileConfiguration messageConfig;
 
     @Override
     public void onEnable() {
@@ -44,37 +46,34 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-//        createCustomConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("queue").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
         getCommand("help").setExecutor(hc);
         getCommand("acore").setExecutor(acorec);
-        getCommand("ac").setExecutor(ac);
+        messageFile = new File(getDataFolder(),"messages.yml");
+        if(!messageFile.exists()){
+            try {
+                messageFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        messageConfig = YamlConfiguration.loadConfiguration(messageFile);
         Bukkit.getPluginManager().registerEvents(this, this);
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&a turned on!"));
     }
-
-//    private void createCustomConfig() {
-//        customConfigFile = new File(getDataFolder(), "messages.yml");
-//        if (!customConfigFile.exists()) {
-//            customConfigFile.getParentFile().mkdirs();
-//            saveResource("messages.yml", false);
-//        }
-//        customConfig= new YamlConfiguration();
-//        try {
-//            customConfig.load(customConfigFile);
-//        } catch (IOException | InvalidConfigurationException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @Override
     public void onDisable() {
         saveConfig();
         log(ChatColor.translateAlternateColorCodes('&',"&6&lAnarchyCORE&c turned off!"));
 
+    }
+
+    public static FileConfiguration getMessageConfig(){
+        return messageConfig;
     }
 
     @Override
