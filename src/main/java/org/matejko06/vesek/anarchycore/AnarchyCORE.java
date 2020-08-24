@@ -37,7 +37,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-    private File messageFile;
+    private static File messageFile;
     private static FileConfiguration messageConfig;
 
     @Override
@@ -74,6 +74,10 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     public static FileConfiguration getMessageConfig(){
         return messageConfig;
+    }
+
+    public static void reloadMessageConfig(){
+        messageConfig = YamlConfiguration.loadConfiguration(messageFile);
     }
 
     @Override

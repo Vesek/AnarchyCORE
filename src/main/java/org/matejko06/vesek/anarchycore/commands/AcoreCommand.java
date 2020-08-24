@@ -37,6 +37,7 @@ public class AcoreCommand implements CommandExecutor {
                         if(p.hasPermission("AnarchyCORE.reload") || p.isOp()){
                             plugin.reloadConfig();
                             plugin.saveConfig();
+                            AnarchyCORE.reloadMessageConfig();
                             AnarchyCORE.command_preprocessing = plugin.getConfig().getBoolean("command-preprocessing");
                             sender.sendMessage(ChatColor.RED + "AnarchyCORE has been reloaded!");
                         }
