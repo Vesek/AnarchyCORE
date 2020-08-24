@@ -1,0 +1,25 @@
+# ==================================== #
+# AnarchyCORE - by Vesek and Matejko06 #
+# VERSION 1.3.0                        #
+# ==================================== #
+# Help command #
+adminhelp-message: "&6&l<----------------------->\n&6&lAnarchyCORE&a&l V1.3.0 &6&lADMINHELP\n\n&6&o/help &a- Shows server help.\n&6&o/adminhelp &a- Shows this.\n&6&o/kill &a- Kills the player.\n&6&o/kill <player> &a- Kills someone.\n&6&o/tps &a- Shows server TPS.\n&6&o/info &a- Shows some info about the server.\n&6&o/priority &aor &6&o/queue &a- Shows players queue priority.\n&6&l<----------------------->"
+help-message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &6&o/queue &3- Shows players queue priority.\n&3<----------------------->"
+# Suicide and Admin kill messages. #
+kill-message: "&6You killed yourself!"
+killsomeone-message: "&6You were killed!"
+# TPS message.
+tps-message: "&6Server TPS is: "
+# Queue priority messages. #
+queue-message: "&6Your queue priority is: "
+regular-message: "&7&lRegular"
+priority-message: "&6&lPriority"
+admin-message: "&c&lAdmin"
+# Invalid command message. #
+invalid-command: "&4This command does not exist! Use &6/help&4 for help."
+#Message for /info #
+info-message: "&3Already <players> have connected to the server, server runs for <time> and world has <size> so far."
+# Join and Leave messages #
+join-message: "&8<player> &7has joined!"
+leave-message: "&8<player> &7has left!"
+# Death messages #
