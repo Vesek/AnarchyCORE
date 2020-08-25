@@ -6,11 +6,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
 public class KillCommand implements CommandExecutor {
-    Plugin plugin;
-    public KillCommand (Plugin plugin){
-        this.plugin = plugin;
+    AnarchyCORE ac;
+    public KillCommand(AnarchyCORE ac) {
+        this.ac = ac;
     }
 
     @Override
@@ -20,16 +21,16 @@ public class KillCommand implements CommandExecutor {
                 Player p = (Player) sender;
                 if (args.length == 0) {
                     if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("kill-message")));
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("kill-message")));
                         p.setHealth(0.00);
                     }
                 }
                 if (args.length >= 1) {
                     if (p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()) {
                         for (String s : args) {
-                            Player victim = plugin.getServer().getPlayer(s);
+                            Player victim = ac.getServer().getPlayer(s);
                             if (victim != null) {
-                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("killsomeone-message")));
+                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("killsomeone-message")));
                                 victim.setHealth(0.00);
                             }
                         }

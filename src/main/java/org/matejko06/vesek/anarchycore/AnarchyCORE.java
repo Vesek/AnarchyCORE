@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,28 +45,12 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         loadConfigManager();
         getServer().getPluginManager().registerEvents(new Events(this), this);
         loadConfig();
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded &6config.yml&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6tps&a."));
         getCommand("tps").setExecutor(tc);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6tps&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6priority&a."));
         getCommand("priority").setExecutor(qc);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6priority&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6kill&a."));
         getCommand("kill").setExecutor(kc);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6kill&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6info&a."));
         getCommand("info").setExecutor(ic);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6info&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6help&a."));
         getCommand("help").setExecutor(hc);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6help&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command prefix &6acore&a."));
-        getCommand("acore").setExecutor(ac);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command prefix &6acore&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command prefix &6ac&a."));
         getCommand("ac").setExecutor(ac);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command prefix &6ac&a."));
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
@@ -125,6 +108,10 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void loadConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    public ConfigManager getCfgm(){
+        return cfgm;
     }
 
     @Override

@@ -5,11 +5,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
 public class TPSCommand implements CommandExecutor {
-    Plugin plugin;
-    public TPSCommand (Plugin plugin){
-        this.plugin = plugin;
+    AnarchyCORE ac;
+    public TPSCommand(AnarchyCORE ac) {
+        this.ac = ac;
     }
 
     @Override
@@ -17,15 +18,15 @@ public class TPSCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("tps")) {
             if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
                 StringBuilder sb = new StringBuilder();
-                double[] TPS = plugin.getServer().getTPS();
-                if (TPS[0] >= plugin.getConfig().getDouble("tps-green")) {
-                                   sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
-                } else if (TPS[0] >= plugin.getConfig().getDouble("tps-yellow")) {
-                                   sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
+                double[] TPS = ac.getServer().getTPS();
+                if (TPS[0] >= ac.getConfig().getDouble("tps-green")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
+                } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
                 } else if (TPS[0] >= 0.00) {
-                                   sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
                 }
-                           sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("invalid-message")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-message")));
             }
     }
         return false;

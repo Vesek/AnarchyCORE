@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -15,10 +16,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class InfoCommand implements CommandExecutor {
-    Plugin plugin;
+    AnarchyCORE ac;
 
-    public InfoCommand(Plugin plugin) {
-        this.plugin = plugin;
+    public InfoCommand(AnarchyCORE ac) {
+        this.ac = ac;
     }
 
     @Override
@@ -26,11 +27,11 @@ public class InfoCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("info")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                String s = plugin.getConfig().getString("info-message");
+                String s = ac.getConfig().getString("info-message");
                 try {
                     File world = p.getWorld().getWorldFolder();
                     File playerData = new File(world.getAbsolutePath() + "/playerdata");
-                    File data = new File(plugin.getServer().getWorldContainer().getAbsolutePath() + "/eula.txt");
+                    File data = new File(ac.getServer().getWorldContainer().getAbsolutePath() + "/eula.txt");
                     BasicFileAttributes attr = Files.readAttributes(data.toPath(), BasicFileAttributes.class);
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date firstDate = sdf.parse(attr.creationTime().toString());
@@ -61,9 +62,16 @@ public class InfoCommand implements CommandExecutor {
                         diffInDays %= 365;
                         time.append(diffInDays / 30).append(" months");
                     }
+                    Long length = folderSize(world);
+                    StringBuilder sb = new StringBuilder();
+                    if((length >= 1073741824)){
+                        sb.append(length/1073741824).append(" GB and ");
+                        length %= 1073741824;
+                    }
+                    sb.append(length/1048576).append(" MB");
                     s = s.replace("<players>", String.valueOf(people));
                     s = s.replace("<time>", time.toString());
-                    s = s.replace("<size>", String.valueOf(folderSize(world)/1048576)+ " MB"); //TODO better convert
+                    s = s.replace("<size>", sb.toString());
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
                 } catch (Exception e) {
                     e.printStackTrace();

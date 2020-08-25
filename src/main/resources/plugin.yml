@@ -3,6 +3,7 @@ version: ${project.version}
 authors: [Matejko06, Vesek]
 softdepend: [AnarchyCOREQueue]
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
+loadbefore: [WorldEdit]
 
 commands:
   ac:
