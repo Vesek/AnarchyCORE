@@ -17,18 +17,22 @@ public class AcCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equalsIgnoreCase("ac")){
             if(args.length < 1){
-                sender.sendMessage("Not enough arguments.");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNot enough arguments!"));
             }
                 else if(args[0].equalsIgnoreCase("reload")){
                     plugin.reloadConfig();
                     plugin.saveConfig();
                     AnarchyCORE.command_preprocessing = plugin.getConfig().getBoolean("command-preprocessing");
-                    sender.sendMessage(ChatColor.RED + "AnarchyCORE has been reloaded!");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
                 }
                 else if(args[0].equalsIgnoreCase("version")){
 
                 }
+            else if(args[0].equalsIgnoreCase("discord")) {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0 &6&lSUPPORT\n&6By Matejko06 and Vesek.\n&3&lDISCORD: &1https://discord.gg/dh5u3as\n&6&l<----------------------->"));
+
             }
+        }
         return false;
     }
 }

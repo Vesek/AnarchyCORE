@@ -4,87 +4,84 @@ main: org.matejko06.vesek.anarchycore.AnarchyCORE
 
 commands:
   acore:
-    description: Acore.
+    description: AnarchyCORE.
     aliases: [ac]
   acversion:
     description: Shows plugin version.
     aliases: [acoreversion]
-  help:
-    description: Help for players.
-  acadminhelp:
-    description: Help for admin.
-    aliases: [acoreadminhelp]
   acdiscord:
     description: Support Discord server.
     aliases: [acorediscord]
   acreload:
     description: Reloads the plugin.
     aliases: [acorereload]
+  help:
+    description: Help for players.
   kill:
     description: Suicide.
     aliases: [suicide, killme]
   tps:
     description: Shows server TPS.
     aliases: [servertps]
-  queue:
+  priority:
     description: Shows players priority in queue.
-    aliases: [queuepriority, priority]
+    aliases: [queuepriority]
   info:
-    description: Shows info about server.
+    description: Shows info about the server.
     aliases: [serverinfo, serverstats, serverstatistics]
   togglechat:
-    description: Toggles the chat
+    description: Toggles the chat.
     aliases: [chattoggle]
+  toggledeathmsg:
+    description: Toggles the death messages in chat.
+    aliases: [deathmsgtoggle]
 permissions:
   AnarchyCORE.*:
     children:
       AnarchyCORE.kill: true
-      AnarchyCORE.killSomeone: true
-      AnarchyCORE.tps: true
-      AnarchyCORE.version: true
-      AnarchyCORE.adminhelp: true
-      AnarchyCORE.help: true
-      AnarchyCORE.reload: true
       AnarchyCORE.togglechat: true
-      AnarchyCORE.mutechat: true
-      AnarchyCORE.slowchat: true
+      AnarchyCORE.toggledeathmsg: true
+      AnarchyCORE.help: true
+      AnarchyCORE.tps: true
       AnarchyCOREQueue.admin: true
+      AnarchyCORE.killSomeone: true
+      AnarchyCORE.version: true
+      AnarchyCORE.reload: true
+      AnarchyCORE.discord: true
+    default: false
+  AnarchyCORE.priority:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.togglechat: true
+      AnarchyCORE.toggledeathmsg: true
+      AnarchyCORE.help: true
+      AnarchyCORE.tps: true
+      AnarchyCOREQueue.priority: true
+      AnarchyCORE.killSomeone: false
+      AnarchyCORE.version: false
+      AnarchyCORE.reload: false
+      AnarchyCORE.discord: false
     default: false
   AnarchyCORE.regular:
     children:
       AnarchyCORE.kill: true
-      AnarchyCORE.tps: true
-      AnarchyCORE.version: true
       AnarchyCORE.togglechat: true
+      AnarchyCORE.toggledeathmsg: true
       AnarchyCORE.help: true
-      AnarchyCOREQueue.regular: true
-    default: true
-  AnarchyCORE.priority:
-    children:
-      AnarchyCORE.kill: true
       AnarchyCORE.tps: true
-      AnarchyCORE.version: true
-      AnarchyCORE.help: true
-      AnarchyCOREQueue.priority: true
-    default: false
+      AnarchyCOREQueue.regular: true
+      AnarchyCORE.killSomeone: false
+      AnarchyCORE.version: false
+      AnarchyCORE.reload: false
+      AnarchyCORE.discord: false
+    default: true
   AnarchyCORE.togglechat:
-    description: Allows player to use /chattoggle.
-  AnarchyCORE.mutechat:
-    description: Allows player to use /chat mute.
-  AnarchyCORE.slowchat:
-    description: Allows player to use /chat slow.
+    description: Allows player to use /togglechat.
+  AnarchyCORE.toggledeathmsg:
+    description: Allows player to use /toggledeathmsg.
   AnarchyCORE.help:
-    description: Allows player to use /acore help.
+    description: Allows player to use /help.
     default: true
-  AnarchyCORE.adminhelp:
-    description: Allows player to use better /acore help.
-    default: op
-  AnarchyCORE.version:
-    description: Allows player to use /acore version.
-    default: true
-  AnarchyCORE.reload:
-    description: Allows player to reload the plugin.
-    default: false
   AnarchyCORE.kill:
     description: Allows player to use /kill or /suicide.
     default: true
@@ -102,4 +99,13 @@ permissions:
     default: false
   AnarchyCORE.queue.admin:
     description: Sets player priority level in queue.
+    default: false
+  AnarchyCORE.version:
+    description: Allows player to use /acore version.
+    default: false
+  AnarchyCORE.reload:
+    description: Allows player to reload the plugin.
+    default: false
+  AnarchyCORE.discord:
+    description: Allows player to use /acorediscord.
     default: false
