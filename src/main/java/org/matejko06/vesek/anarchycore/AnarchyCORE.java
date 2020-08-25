@@ -24,7 +24,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
     HelpCommand hc = new HelpCommand(this);
-    AcoreCommand acorec = new AcoreCommand(this);
+    AcCommand acorec = new AcCommand(this);
     AcCommand ac = new AcCommand(this);
     EventsClass events = new EventsClass(this);
 
