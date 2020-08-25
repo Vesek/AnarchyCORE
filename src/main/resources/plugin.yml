@@ -17,6 +17,9 @@ commands:
   acreload:
     description: Reloads the plugin.
     aliases: [acorereload]
+  acadminhelp:
+    description: Reloads the plugin.
+    aliases: [acoreadminhelp]
   help:
     description: Help for players.
   kill:
@@ -30,23 +33,16 @@ commands:
     aliases: [queuepriority]
   info:
     description: Shows info about the server.
-    aliases: [serverinfo, serverstats, serverstatistics]
-  togglechat:
-    description: Toggles the chat.
-    aliases: [chattoggle]
-  toggledeathmsg:
-    description: Toggles the death messages in chat.
-    aliases: [deathmsgtoggle]
+    aliases: [stats, statistics, serverstats, serverstatistics]
 permissions:
   AnarchyCORE.*:
     children:
       AnarchyCORE.kill: true
-      AnarchyCORE.togglechat: true
-      AnarchyCORE.toggledeathmsg: true
+      AnarchyCORE.killsomeone: true
+      AnarchyCORE.colorsymbol: true
       AnarchyCORE.help: true
       AnarchyCORE.tps: true
       AnarchyCOREQueue.admin: true
-      AnarchyCORE.killSomeone: true
       AnarchyCORE.version: true
       AnarchyCORE.reload: true
       AnarchyCORE.discord: true
@@ -54,8 +50,8 @@ permissions:
   AnarchyCORE.priority:
     children:
       AnarchyCORE.kill: true
-      AnarchyCORE.togglechat: true
-      AnarchyCORE.toggledeathmsg: true
+      AnarchyCORE.killsomeone: false
+      AnarchyCORE.colorsymbol: true
       AnarchyCORE.help: true
       AnarchyCORE.tps: true
       AnarchyCOREQueue.priority: true
@@ -67,20 +63,15 @@ permissions:
   AnarchyCORE.regular:
     children:
       AnarchyCORE.kill: true
-      AnarchyCORE.togglechat: true
-      AnarchyCORE.toggledeathmsg: true
+      AnarchyCORE.killsomeone: false
+      AnarchyCORE.colorsymbol: true
       AnarchyCORE.help: true
       AnarchyCORE.tps: true
       AnarchyCOREQueue.regular: true
-      AnarchyCORE.killSomeone: false
       AnarchyCORE.version: false
       AnarchyCORE.reload: false
       AnarchyCORE.discord: false
     default: true
-  AnarchyCORE.togglechat:
-    description: Allows player to use /togglechat.
-  AnarchyCORE.toggledeathmsg:
-    description: Allows player to use /toggledeathmsg.
   AnarchyCORE.help:
     description: Allows player to use /help.
     default: true
@@ -90,6 +81,9 @@ permissions:
   AnarchyCORE.killSomeone:
     description: Allows player to use /kill on someone else.
     default: false
+  AnarchyCORE.colorsymbol:
+    description: Allows the player to use symbol in config to write green.
+    default: true
   AnarchyCORE.tps:
     description: Allows player to use /tps.
     default: true

@@ -23,11 +23,12 @@ admin-message: "&c&lAdmin"
 # Invalid command message. #
 invalid-command: "&4This command does not exist! Use &6/help&4 for help."
 #Message for /info #
-info-message: "&3Already <players> have connected to the server, server runs for <time> and world has <size> so far."
+info-message: "&3Already <players> players have connected to the server, server runs for <time> and world has <size> so far."
 # If false, commands needs to set /tps and /help to /anarchycore:tps and /anarchycore:help in commands.yml. #
 command-preprocessing:  true
 # Join message #
 join-message: "has joined!"
 # Leave message #
 leave-message: "has left!"
-# f #
+# CHAT #
+chat-colorsymbol: ">"
