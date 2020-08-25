@@ -3,6 +3,170 @@
 # VERSION 1.3.0                        #
 # ==================================== #
 # Death Messages #
+player:
+  PlayerMelee:
+    - "&3%playername%&4 was slain by %killer%"
+  PlayerCustom:
+    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+  PlayerArrow:
+    - "&3%playername%&4 was shot by %killer%"
+  PlayerTrident:
+    - "&3%playername%&4 was impaled by %killer%"
+  PlayerTridentCustom:
+    - "&3%playername%&4 was impaled by %killer% using [%weapon%&f]"
+  PlayerFireball: # Just in case
+    - "&3%playername%&4 was fireballed by %killer%"
+  PlayerSnowball: # Just in case
+    - "&3%playername%&4 was pummeled by %killer%"
+  PlayerProjectileCustom: # Bows, plugins like CrackShot
+    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
+  PlayerPotion:
+    - "&3%playername%&4 was killed by %killer% using magic"
+natural:
+  Suicide:
+    - "&3%playername%&4 died&4."
+  Melting:
+    - "&3%playername%&4 died&4."
+  DryOut:
+    - "&3%playername%&4 died&4."
+  Thorns:
+    - "&3%playername%&4 was killed while trying to hurt %killer%"
+  TNT:
+    - "&3%playername%&4 blew up"
+  TNTKill:
+    - "&3%playername%&4 was blown up by %killer%"
+  WitherSkull:
+    - "&3%playername%&4 was shot by a %killer%'s skull"
+  EnderCrystal:
+    - "&3%playername%&4 blew up"
+  Bed: # exploding beds or respawn anchors
+    - "&3%playername%&4 was killed by [Intentional Game Design]"
+  Cactus:
+    - "&3%playername%&4 was pricked to death"
+  CactusKill:
+    - "&3%playername%&4 walked into a cactus whilst trying to escape %killer%"
+  Anvil:
+    - "&3%playername%&4 was squashed by a falling anvil"
+  AnvilKill:
+    - "&3%playername%&4 was squashed by a falling block whilst fighting %killer%"
+  FallingBlock: # Only when a FallingBlock is modified to cause damage
+    - "&3%playername%&4 was squashed by a falling block"
+  FallingBlockKill: # as above
+    - "&3%playername%&4 was squashed by a falling block whilst fighting %killer%"
+  UnknownArrow: # arrow from unknown entity or source, /summon?
+    - "&3%playername%&4 was shot by arrow"
+  DispenserArrow:
+    - "&3%playername%&4 was shot by arrow"
+  DispenserFireball:
+    - "&3%playername%&4 burned to death"
+  DispenserSnowball:
+    - "&3%playername%&4 died"
+  Drowning:
+    - "&3%playername%&4 drowned"
+  DrowningKill:
+    - "&3%playername%&4 drowned whilst trying to escape %killer%"
+  PotionPoison: # Normally impossible
+    - "&3%playername%&4 died"
+  PotionWither:
+    - "&3%playername%&4 withered away"
+  PotionWitherKill:
+    - "&3%playername%&4 withered away whilst fighting %killer%"
+  PotionHarming:
+    - "&3%playername%&4 was killed by magic"
+  PotionHarmingKill:
+    - "&3%playername%&4 was killed by magic whilst trying to escape %killer%"
+  EvokerFang:
+    - "&3%playername%&4 was killed by %killer% using magic"
+  FireBlock:
+    - "&3%playername%&4 went up in flames"
+  FireBlockKill:
+    - "&3%playername%&4 walked into a fire whilst fighting %killer%"
+  FireTick:
+    - "&3%playername%&4 burned to death"
+  FireTickKill:
+    - "&3%playername%&4 burnt into a crisp whilst fighting %killer%"
+  Magma:
+    - "&3%playername%&4 discovered floor was lava"
+  MagmaKill:
+    - "&3%playername%&4 walked into danger zone due to %killer%"
+  BerryBush:
+    - "&3%playername%&4 was poked to death by a sweet berry bush"
+  BerryBushKill:
+    - "&3%playername%&4 was poked to death by a sweet berry bush whilst trying to escape %killer%"
+  Lava:
+    - "&3%playername%&4 tried to swim in lava"
+  LavaKill:
+    - "&3%playername%&4 tried to swim in lava while trying to escape %killer%"
+  Lightning: # Happens when struck by lightning, vanilla: FireTick/FireBlock
+    - "&3%playername%&4 went up in flames"
+  Starvation:
+    - "&3%playername%&4 starved to death"
+  Suffocation:
+    - "&3%playername%&4 suffocated in a wall"
+  Cramming: # maxEntityCramming
+    - "&3%playername%&4 was squished too much"
+  CrammingKill:
+    - "&3%playername%&4 was squished too much"
+  Void:
+    - "&3%playername%&4 fell out of the world"
+  VoidFall: # in DMP, if entity falls over y>=64 to the void
+    - "&3%playername%&4 fell from a high place and fell out of the world"
+  VoidKill:
+    - "&3%playername%&4 didn't want to live in the same world as %killer%"
+  FallShort: # Fall distance 5 blocks or less, or ender pearl
+    - "&3%playername%&4 hit the ground too hard"
+  FallLong: # Fall distance over 5 blocks
+    - "&3%playername%&4 fell from a high place"
+  FallLadder:
+    - "&3%playername%&4 fell off a ladder"
+  FallVine:
+    - "&3%playername%&4 fell off some vines"
+  FallWeepingVine:
+    - "&3%playername%&4 fell off some weeping vines"
+  FallTwistingVine:
+    - "&3%playername%&4 fell off some twisting vines"
+  FallClimbing: # currently unused
+    - "&3%playername%&4 fell while climbing"
+  FallWater:
+    - "&3%playername%&4 fell out of the water"
+  FallTrapdoor:
+    - "&3%playername%&4 fell out a trapdoor"
+  FallScaffolding:
+    - "&3%playername%&4 fell out scaffolding"
+  FallFire:
+    - "&3%playername%&4 fell into a patch of fire"
+  FallCacti:
+    - "&3%playername%&4 fell into a patch of cacti"
+  FallBerryBush:
+    - "&3%playername%&4 fell into a sweet berry bush"
+  FallKill:
+    - "&3%playername%&4 was doomed to fall by %killer%"
+  FallKillWeapon:
+    - "&3%playername%&4 was doomed to fall by %killer% using [%weapon%&f]"
+  FallFinishKill:
+    - "&3%playername%&4 fell too far and was finished by %killer%"
+  FallFinishKillWeapon:
+    - "&3%playername%&4 fell too far and was finished by %killer% using [%weapon%&f]"
+  FallExplosionKill: # FallKill caused by entity explosion
+    - "&3%playername%&4 was blown from a high place by %killer%"
+  FallLadderKill:
+    - "&3%playername%&4 was shot off a ladder by %killer%"
+  FallVineKill:
+    - "&3%playername%&4 was shot off some vines by %killer%"
+  Firework:
+    - "&3%playername%&4 went off with a bang"
+  FireworkKill:
+    - "&3%playername%&4 went off with a bang whilst fighting %killer%"
+  CrossbowFirework:
+    - "&3%playername%&4 went off with a bang due to a firework fired by %killer%"
+  CrossbowFireworkCustom:
+    - "&3%playername%&4 went off with a bang due to a firework fired from [%weapon%&f] by %killer%"
+  Elytra:
+    - "&3%playername%&4 experienced kinetic energy"
+  ElytraKill:
+    - "&3%playername%&4 experienced kinetic energy whilst trying to escape %killer%"
+unknown:
+  - "&3%playername%&4 died&4."
 mobs:
   Bat:
     - "&3&3%playername%&4&4 was slain by &3Bat&4."
@@ -158,7 +322,7 @@ mobs:
     - "&3%playername%&4 was killed by Witch using magic"
   Wither:
     - "&3%playername%&4 was slain by Wither"
-  WitherSpawnBoom: # Dies from wither spawn explosion
+  WitherSpawnExplosion:
     - "&3%playername%&4 was blown up by Wither"
   WitherSkeletonMelee:
     - "&3%playername%&4 was slain by Wither Skeleton"
@@ -172,13 +336,13 @@ mobs:
     - "&3%playername%&4 was slain by Zombie"
   ZombieCustom:
     - "&3%playername%&4 was slain by Zombie using [%weapon%&f]"
-  ZombiePigManMelee: # used in versions older than 1.16
+  ZombiePigManMelee: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombie Pigman"
-  ZombiePigManCustom: # used in versions older than 1.16
+  ZombiePigManCustom: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombie Pigman using [%weapon%&f]"
-  ZombifiedPiglinMelee: # used in 1.16 and newer
+  ZombifiedPiglinMelee: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombified Piglin"
-  ZombifiedPiglinCustom: # used in 1.16 and newer
+  ZombifiedPiglinCustom: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombified Piglin using [%weapon%&f]"
   ZombieVillagerMelee:
     - "&3%playername%&4 was slain by Zombie Villager"
@@ -371,172 +535,6 @@ namedmobs:
     - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
   ZombieHorse:
     - "&3%playername%&4 was slain by %killer%"
-player:
-  PlayerMelee:
-    - "&3%playername%&4 was slain by %killer%"
-  PlayerCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
-  PlayerArrow:
-    - "&3%playername%&4 was shot by %killer%"
-  PlayerTrident:
-    - "&3%playername%&4 was impaled by %killer%"
-  PlayerTridentCustom:
-    - "&3%playername%&4 was impaled by %killer% using [%weapon%&f]"
-  PlayerFireball: # Just in case
-    - "&3%playername%&4 was fireballed by %killer%"
-  PlayerSnowball: # Just in case
-    - "&3%playername%&4 was pummeled by %killer%"
-  PlayerProjectileCustom: # Bows, plugins like CrackShot
-    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
-  PlayerPotion:
-    - "&3%playername%&4 was killed by %killer% using magic"
-natural:
-  Thorns:
-    - "&3%playername%&4 was killed while trying to hurt %killer%"
-  TNT:
-    - "&3%playername%&4 blew up"
-  TNTKill:
-    - "&3%playername%&4 was blown up by %killer%"
-  WitherSkull:
-    - "&3%playername%&4 was shot by a %killer%'s skull"
-  EnderCrystal:
-    - "&3%playername%&4 blew up"
-  Bed: # exploding beds or respawn anchors
-    - "&3%playername%&4 was killed by [Intentional Game Design]"
-  Cactus:
-    - "&3%playername%&4 was pricked to death"
-  CactusKill:
-    - "&3%playername%&4 walked into a cactus whilst trying to escape %killer%"
-  Anvil:
-    - "&3%playername%&4 was squashed by a falling anvil"
-  AnvilKill:
-    - "&3%playername%&4 was squashed by a falling block whilst fighting %killer%"
-  FallingBlock: # Only when a FallingBlock is modified to cause damage
-    - "&3%playername%&4 was squashed by a falling block"
-  FallingBlockKill: # as above
-    - "&3%playername%&4 was squashed by a falling block whilst fighting %killer%"
-  UnknownArrow: # arrow from unknown entity or source, /summon?
-    - "&3%playername%&4 was shot by arrow"
-  DispenserArrow:
-    - "&3%playername%&4 was shot by arrow"
-  DispenserFireball:
-    - "&3%playername%&4 burned to death"
-  DispenserSnowball:
-    - "&3%playername%&4 died"
-  Drowning:
-    - "&3%playername%&4 drowned"
-  DrowningKill:
-    - "&3%playername%&4 drowned whilst trying to escape %killer%"
-  PotionPoison: # Normally impossible
-    - "&3%playername%&4 died"
-  PotionWither:
-    - "&3%playername%&4 withered away"
-  PotionWitherKill:
-    - "&3%playername%&4 withered away whilst fighting %killer%"
-  PotionHarming:
-    - "&3%playername%&4 was killed by magic"
-  PotionHarmingKill:
-    - "&3%playername%&4 was killed by magic whilst trying to escape %killer%"
-  EvokerFang:
-    - "&3%playername%&4 was killed by %killer% using magic"
-  FireBlock:
-    - "&3%playername%&4 went up in flames"
-  FireBlockKill:
-    - "&3%playername%&4 walked into a fire whilst fighting %killer%"
-  FireTick:
-    - "&3%playername%&4 burned to death"
-  FireTickKill:
-    - "&3%playername%&4 burnt into a crisp whilst fighting %killer%"
-  Magma:
-    - "&3%playername%&4 discovered floor was lava"
-  MagmaKill:
-    - "&3%playername%&4 walked into danger zone due to %killer%"
-  BerryBush:
-    - "&3%playername%&4 was poked to death by a sweet berry bush"
-  BerryBushKill:
-    - "&3%playername%&4 was poked to death by a sweet berry bush whilst trying to escape %killer%"
-  Lava:
-    - "&3%playername%&4 tried to swim in lava"
-  LavaKill:
-    - "&3%playername%&4 tried to swim in lava while trying to escape %killer%"
-  Lightning: # Happens when struck by lightning, vanilla: FireTick/FireBlock
-    - "&3%playername%&4 went up in flames"
-  Starvation:
-    - "&3%playername%&4 starved to death"
-  Suffocation:
-    - "&3%playername%&4 suffocated in a wall"
-  Cramming: # maxEntityCramming
-    - "&3%playername%&4 was squished too much"
-  CrammingKill:
-    - "&3%playername%&4 was squished too much"
-  Void:
-    - "&3%playername%&4 fell out of the world"
-  VoidFall: # in DMP, if entity falls over y>=64 to the void
-    - "&3%playername%&4 fell from a high place and fell out of the world"
-  VoidKill:
-    - "&3%playername%&4 didn't want to live in the same world as %killer%"
-  FallShort: # Fall distance 5 blocks or less, or ender pearl
-    - "&3%playername%&4 hit the ground too hard"
-  FallLong: # Fall distance over 5 blocks
-    - "&3%playername%&4 fell from a high place"
-  FallLadder:
-    - "&3%playername%&4 fell off a ladder"
-  FallVine:
-    - "&3%playername%&4 fell off some vines"
-  FallWeepingVine:
-    - "&3%playername%&4 fell off some weeping vines"
-  FallTwistingVine:
-    - "&3%playername%&4 fell off some twisting vines"
-  FallClimbing: # currently unused
-    - "&3%playername%&4 fell while climbing"
-  FallWater:
-    - "&3%playername%&4 fell out of the water"
-  FallTrapdoor:
-    - "&3%playername%&4 fell out a trapdoor"
-  FallScaffolding:
-    - "&3%playername%&4 fell out scaffolding"
-  FallFire:
-    - "&3%playername%&4 fell into a patch of fire"
-  FallCacti:
-    - "&3%playername%&4 fell into a patch of cacti"
-  FallBerryBush:
-    - "&3%playername%&4 fell into a sweet berry bush"
-  FallKill:
-    - "&3%playername%&4 was doomed to fall by %killer%"
-  FallKillWeapon:
-    - "&3%playername%&4 was doomed to fall by %killer% using [%weapon%&f]"
-  FallFinishKill:
-    - "&3%playername%&4 fell too far and was finished by %killer%"
-  FallFinishKillWeapon:
-    - "&3%playername%&4 fell too far and was finished by %killer% using [%weapon%&f]"
-  FallExplosionKill: # FallKill caused by entity explosion
-    - "&3%playername%&4 was blown from a high place by %killer%"
-  FallLadderKill:
-    - "&3%playername%&4 was shot off a ladder by %killer%"
-  FallVineKill:
-    - "&3%playername%&4 was shot off some vines by %killer%"
-  Firework:
-    - "&3%playername%&4 went off with a bang"
-  FireworkKill:
-    - "&3%playername%&4 went off with a bang whilst fighting %killer%"
-  CrossbowFirework:
-    - "&3%playername%&4 went off with a bang due to a firework fired by %killer%"
-  CrossbowFireworkCustom:
-    - "&3%playername%&4 went off with a bang due to a firework fired from [%weapon%&f] by %killer%"
-  Elytra:
-    - "&3%playername%&4 experienced kinetic energy"
-  ElytraKill:
-    - "&3%playername%&4 experienced kinetic energy whilst trying to escape %killer%"
-  Suicide:
-    - "&3%playername%&4 died&4."
-  Melting:
-    - "&3%playername%&4 died&4."
-  DryOut:
-    - "&3%playername%&4 died&4."
-  Custom:
-    - "&3%playername%&4 died&4."
-unknown:
-  - "&3%playername%&4 died&4."
 mob-displaynames:
   Bat: "Bat"
   Bee: "Bee"
