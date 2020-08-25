@@ -24,9 +24,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
     HelpCommand hc = new HelpCommand(this);
-    AcCommand acorec = new AcCommand(this);
     AcCommand ac = new AcCommand(this);
-    EventsClass events = new EventsClass(this);
+    Events events = new Events(this);
+
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
@@ -35,20 +35,37 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading &6config.yml&a."));
         getConfig().options().copyDefaults(true);
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
         loadConfigManager();
-        getServer().getPluginManager().registerEvents(new EventsClass(this), this);
+        getServer().getPluginManager().registerEvents(new Events(this), this);
         loadConfig();
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6tps&a."));
         getCommand("tps").setExecutor(tc);
-        getCommand("queue").setExecutor(qc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6tps&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6priority&a."));
+        getCommand("priority").setExecutor(qc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6priority&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6kill&a."));
         getCommand("kill").setExecutor(kc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6kill&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6info&a."));
         getCommand("info").setExecutor(ic);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6info&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command &6help&a."));
         getCommand("help").setExecutor(hc);
-        getCommand("acore").setExecutor(acorec);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command &6help&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command prefix &6acore&a."));
+        getCommand("acore").setExecutor(ac);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command prefix &6acore&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading command prefix &6ac&a."));
         getCommand("ac").setExecutor(ac);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded command prefix &6ac&a."));
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
@@ -68,7 +85,32 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving &6config.yml&a."));
         saveConfig();
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unloading &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unoading command &6tps&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command &6tps&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unloading command &6priority&a."));
+        getCommand("priority").setExecutor(qc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command &6priority&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unlooading command &6kill&a."));
+        getCommand("kill").setExecutor(kc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command &6kill&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unlooading command &6info&a."));
+        getCommand("info").setExecutor(ic);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command &6info&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unlooading command &6help&a."));
+        getCommand("help").setExecutor(hc);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command &6help&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unlooading command prefix &6acore&a."));
+        getCommand("acore").setExecutor(ac);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command prefix &6acore&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Unlooading command prefix &6ac&a."));
+        getCommand("ac").setExecutor(ac);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully unloaded command prefix &6ac&a."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
     }
 
@@ -107,6 +149,16 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                 tab.add("reload");
                 tab.add("help");
                 tab.add("version");
+                tab.add("discord");
+                tab.add("support");
+                return tab;
+            }
+            else if(command.getName().equalsIgnoreCase("ac")){
+                List<String> tab = new ArrayList<>();
+                tab.add("reload");
+                tab.add("help");
+                tab.add("version");
+                tab.add("discord");
                 return tab;
             }
         }

@@ -15,7 +15,7 @@ public class QueueCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("queue")) {
+        if (command.getName().equalsIgnoreCase("priority")) {
             if (sender instanceof Player) {
                 if (sender.hasPermission("AnarchyCORE.queue.admin")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("admin-message")));
@@ -25,6 +25,19 @@ public class QueueCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("regular-message")));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("invalid-command")));
+                }
+            }
+            else if (command.getName().equalsIgnoreCase("queuepriority")) {
+                if (sender instanceof Player) {
+                    if (sender.hasPermission("AnarchyCORE.queue.admin")) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("admin-message")));
+                    } else if (sender.hasPermission("AnarchyCORE.queue.priority")) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("priority-message")));
+                    } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("regular-message")));
+                    } else {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("invalid-command")));
+                    }
                 }
             }
         }

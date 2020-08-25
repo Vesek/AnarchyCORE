@@ -3,15 +3,15 @@ version: ${project.version}
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
 
 commands:
-  acore:
+  ac:
     description: AnarchyCORE.
-    aliases: [ac]
+    aliases: [acore]
   acversion:
     description: Shows plugin version.
     aliases: [acoreversion]
   acdiscord:
     description: Support Discord server.
-    aliases: [acorediscord]
+    aliases: [acorediscord, acsupport, acoresupport]
   acreload:
     description: Reloads the plugin.
     aliases: [acorereload]

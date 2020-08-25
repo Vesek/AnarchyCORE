@@ -21,16 +21,7 @@ public class Events implements Listener {
             event.setCancelled(true);
             event.getPlayer().chat("/anarchycore:tps");
         }
-        if (event.getMessage().toLowerCase().startsWith("/help") && AnarchyCORE.command_preprocessing) {
-            event.setCancelled(true);
-            event.getPlayer().chat("/anarchycore:help");
-        }
     }
-
-//    @EventHandler
-//    public void on( event){
-//  PRO VESKA <3 JSEM AMATÉR
-//        }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){

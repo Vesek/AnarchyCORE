@@ -19,16 +19,12 @@ public class TPSCommand implements CommandExecutor {
                 StringBuilder sb = new StringBuilder();
                 double[] TPS = plugin.getServer().getTPS();
                 if (TPS[0] >= plugin.getConfig().getDouble("tps-green")) {
-                    //               sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
                                    sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
                 } else if (TPS[0] >= plugin.getConfig().getDouble("tps-yellow")) {
-                    //               sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
                                    sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
                 } else if (TPS[0] >= 0.00) {
-                    //               sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
                                    sb.append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
                 }
-                //           sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getCustomConfig().getString("invalid-message")));
                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("invalid-message")));
             }
     }
