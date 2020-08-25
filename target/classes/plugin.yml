@@ -1,0 +1,108 @@
+name: AnarchyCORE
+version: 1.3.0
+authors: [Matejko06, Vesek]
+softdepend: [AnarchyCOREQueue]
+main: org.matejko06.vesek.anarchycore.AnarchyCORE
+loadbefore: [WorldEdit]
+
+commands:
+  ac:
+    description: AnarchyCORE.
+    aliases: [acore]
+  acversion:
+    description: Shows plugin version.
+    aliases: [acoreversion]
+  acdiscord:
+    description: Support Discord server.
+    aliases: [acorediscord, acsupport, acoresupport]
+  acreload:
+    description: Reloads the plugin.
+    aliases: [acorereload]
+  acadminhelp:
+    description: Reloads the plugin.
+    aliases: [acoreadminhelp]
+  help:
+    description: Help for players.
+  kill:
+    description: Suicide.
+    aliases: [suicide, killme]
+  tps:
+    description: Shows server TPS.
+    aliases: [servertps]
+  priority:
+    description: Shows players priority in queue.
+    aliases: [queuepriority]
+  info:
+    description: Shows info about the server.
+    aliases: [stats, statistics, serverstats, serverstatistics]
+permissions:
+  AnarchyCORE.*:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.killsomeone: true
+      AnarchyCORE.colorsymbol: true
+      AnarchyCORE.help: true
+      AnarchyCORE.tps: true
+      AnarchyCOREQueue.admin: true
+      AnarchyCORE.version: true
+      AnarchyCORE.reload: true
+      AnarchyCORE.discord: true
+    default: false
+  AnarchyCORE.priority:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.killsomeone: false
+      AnarchyCORE.colorsymbol: true
+      AnarchyCORE.help: true
+      AnarchyCORE.tps: true
+      AnarchyCOREQueue.priority: true
+      AnarchyCORE.killSomeone: false
+      AnarchyCORE.version: false
+      AnarchyCORE.reload: false
+      AnarchyCORE.discord: false
+    default: false
+  AnarchyCORE.regular:
+    children:
+      AnarchyCORE.kill: true
+      AnarchyCORE.killsomeone: false
+      AnarchyCORE.colorsymbol: true
+      AnarchyCORE.help: true
+      AnarchyCORE.tps: true
+      AnarchyCOREQueue.regular: true
+      AnarchyCORE.version: false
+      AnarchyCORE.reload: false
+      AnarchyCORE.discord: false
+    default: true
+  AnarchyCORE.help:
+    description: Allows player to use /help.
+    default: true
+  AnarchyCORE.kill:
+    description: Allows player to use /kill or /suicide.
+    default: true
+  AnarchyCORE.killSomeone:
+    description: Allows player to use /kill on someone else.
+    default: false
+  AnarchyCORE.colorsymbol:
+    description: Allows the player to use symbol in config to write green.
+    default: true
+  AnarchyCORE.tps:
+    description: Allows player to use /tps.
+    default: true
+  AnarchyCORE.queue.regular:
+    description: Sets player priority level in queue.
+    default: true
+  AnarchyCORE.queue.priority:
+    description: Sets player priority level in queue.
+    default: false
+  AnarchyCORE.queue.admin:
+    description: Sets player priority level in queue.
+    default: false
+  AnarchyCORE.version:
+    description: Allows player to use /acore version.
+    default: false
+  AnarchyCORE.reload:
+    description: Allows player to reload the plugin.
+    default: false
+  AnarchyCORE.discord:
+    description: Allows player to use /acorediscord.
+    default: false
