@@ -1,6 +1,5 @@
 package org.matejko06.vesek.anarchycore;
 
-import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,177 +7,150 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.matejko06.vesek.anarchycore.commands.*;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public final class AnarchyCORE extends JavaPlugin implements Listener {
 
-    boolean command_preprocessing = false;
+    public static boolean command_preprocessing = false;
+
+    TPSCommand tc = new TPSCommand(this);
+    QueueCommand qc = new QueueCommand(this);
+    KillCommand kc = new KillCommand(this);
+    InfoCommand ic = new InfoCommand(this);
+    HelpCommand hc = new HelpCommand(this);
+    AcCommand ac = new AcCommand(this);
+    Events events = new Events(this);
+
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
+    private ConfigManager cfgm;
+
     @Override
     public void onEnable() {
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
         getConfig().options().copyDefaults(true);
         saveConfig();
-        getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(events, this);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a&l turned on!"));
+        loadConfigManager();
+        loadConfig();
+        getCommand("tps").setExecutor(tc);
+        getCommand("priority").setExecutor(qc);
+        getCommand("kill").setExecutor(kc);
+        getCommand("info").setExecutor(ic);
+        getCommand("help").setExecutor(hc);
+        getCommand("ac").setExecutor(ac);
+        Bukkit.getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(this, this);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', " "));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
+
+        new UpdateChecker(this, 82999).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
+            } else {
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+            }
+        });
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
+/*        new UpdateChecker(this, 82999).getVersion(version -> {
+            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+            } else {
+                if (p.hasPermission("AnarchyCORE.*") || p.isOp()) {
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                }
+            }
+        });
+*/    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        Player p = e.getPlayer();
+        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
     }
 
     @Override
     public void onDisable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c&l turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving all &6configs&a..."));
+        saveConfig();
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
+    }
+
+    public void loadConfigManager() {
+        cfgm = new ConfigManager();
+        cfgm.setup();
 
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("kill")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("kill-message")));
-                        p.setHealth(0.00);
-                    }
-                }
-                if (args.length >= 1) {
-                    if (p.hasPermission("AnarchyCORE.killSomeone") || p.isOp()) {
-                        for (String s : args) {
-                            Player victim = getServer().getPlayer(s);
-                            if (victim != null) {
-                                victim.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("killsomeone-message")));
-                                victim.setHealth(0.00);
-                            }
-                        }
-                    }
-                }
-            } else {
-                sender.sendMessage("Only players can use this command!");
-            }
-        } else if (command.getName().equalsIgnoreCase("tps")) {
-            if (sender.hasPermission("AnarchyCORE.tps") || sender.isOp()) {
-                StringBuilder sb = new StringBuilder();
-                double[] TPS = getServer().getTPS();
-                if (TPS[0] >= getConfig().getDouble("tps-green")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
-                } else if (TPS[0] >= getConfig().getDouble("tps-yellow")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
-                } else if (TPS[0] >= 0.00) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
-                }
-                sender.sendMessage(sb.toString());
-            }
-        } else if (command.getName().equalsIgnoreCase("queue")) {
-            if (sender instanceof Player) {
-                if (sender.hasPermission("AnarchyCOREQueue.admin")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("admin-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue.priority")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("priority-message")));
-                } else if (sender.hasPermission("AnarchyCOREQueue.regular")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', getConfig().getString("regular-message")));
-                } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("invalid-command")));
-                }
-            }
-        }  else if (command.getName().equalsIgnoreCase("info")) {
-            if(sender instanceof Player){
-                Player p = (Player) sender;
-                String s = this.getConfig().getString("info-message");
-                try {
-                    File world = p.getWorld().getWorldFolder();
-                    File playerData = new File(world.getAbsolutePath() + "\\playerdata");
-                    File data = new File(this.getServer().getWorldContainer().getAbsolutePath() + "/eula.txt");
-                    BasicFileAttributes attr = Files.readAttributes(data.toPath(), BasicFileAttributes.class);
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date firstDate = sdf.parse(attr.creationTime().toString());
-                    Date secondDate = sdf.parse(LocalDate.now().toString());
-                    int diffInDays = (int)((secondDate.getTime() - firstDate.getTime()) / 86400000L);
-                    StringBuilder time = new StringBuilder();
-                    String[] sa = playerData.list();
-                    int people = 0;
-                    if (sa != null) {
-                        for(String sas : sa){
-                            if(sas.split("\\.")[1].equals("dat")){
-                                people++;
-                            }
-                        }
-                    }
-                    if (diffInDays / 365 < 1) {
-                        if (diffInDays / 30 >= 1) {
-                            time.append(diffInDays / 30).append(" months and ");
-                            diffInDays %= 30;
-                        }
-                        time.append(diffInDays).append(" days");
-                    }
-                    else if (diffInDays / 365 == 1) {
-                        diffInDays -= 365;
-                        time.append("1 year and ");
-                        time.append(diffInDays / 30).append(" months");
-                    }
-                    else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365).append(" years and ");
-                        diffInDays %= 365;
-                        time.append(diffInDays / 30).append(" months");
-                    }
-                    s = s.replace("<players>", String.valueOf(people));
-                    s = s.replace("<time>", time.toString());
-                    s = s.replace("<size>", FileUtils.byteCountToDisplaySize(world.length()));
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return false;
+    public void loadConfig() {
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+    }
+
+    public ConfigManager getCfgm(){
+        return cfgm;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if(sender instanceof Player){
-            if(command.getName().equalsIgnoreCase("kill") || command.getName().equalsIgnoreCase("suicide")){
-                if(sender.hasPermission("AnarchyCORE.killSomeone") || sender.isOp()){
+        if (sender instanceof Player) {
+            if (command.getName().equalsIgnoreCase("kill") || command.getName().equalsIgnoreCase("suicide"))
+                if (sender.hasPermission("AnarchyCORE.killSomeone") || sender.isOp()) {
                     List<String> tab = new ArrayList<>();
-                    for(Player p : getServer().getOnlinePlayers()){
+                    for (Player p : getServer().getOnlinePlayers()) {
                         tab.add(p.getDisplayName());
                     }
                     return tab;
                 }
+            if (command.getName().equalsIgnoreCase("info")) {
+                List<String> tab = new ArrayList<>();
+                for (Player p : getServer().getOnlinePlayers()) {
+                    tab.add(p.getDisplayName());
+                }
+                return tab;
             }
+        } else if (command.getName().equalsIgnoreCase("acore")) {
+                    List<String> tab = new ArrayList<>();
+                    tab.add("reload");
+                    tab.add("help");
+                    tab.add("version");
+                    tab.add("discord");
+                    tab.add("adminhelp");
+                    tab.add("support");
+                    return tab;
+                } else if (command.getName().equalsIgnoreCase("ac")) {
+                    List<String> tab = new ArrayList<>();
+                    tab.add("reload");
+                    tab.add("help");
+                    tab.add("version");
+                    tab.add("discord");
+                    tab.add("adminhelp");
+                    tab.add("support");
+                    return tab;
+                }
+            return null;
         }
-        return null;
     }
-
-
-
-    @EventHandler
-    public void onCommandPreProcess(PlayerCommandPreprocessEvent event){
-        if(event.getMessage().toLowerCase().startsWith("/tps") && command_preprocessing){
-            event.setCancelled(true);
-            event.getPlayer().chat("/anarchycore:tps");
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent event){
-        String dm = event.getDeathMessage();
-        event.setDeathMessage(null);
-        for(Player p : getServer().getOnlinePlayers()){
-            p.sendMessage(dm);
-        }
-    }
-}
