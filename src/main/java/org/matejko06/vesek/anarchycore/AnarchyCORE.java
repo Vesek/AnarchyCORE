@@ -43,7 +43,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(events, this);
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
         loadConfigManager();
-        getServer().getPluginManager().registerEvents(new Events(this), this);
         loadConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);

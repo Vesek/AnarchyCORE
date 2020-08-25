@@ -21,8 +21,8 @@ public class AcCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',ac.getConfig().getString("invalid-command-message")));
             }
             else {
-                if (args[0].equalsIgnoreCase("reload") || sender.isOp()) {
-                    if (sender.hasPermission("AnarchyCORE.reload")) {
+                if (args[0].equalsIgnoreCase("reload")) {
+                    if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
                         ac.reloadConfig();
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6config.yml&a file has been reloaded!"));
                         ac.saveConfig();

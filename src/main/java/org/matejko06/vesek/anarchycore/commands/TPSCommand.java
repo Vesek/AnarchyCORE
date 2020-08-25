@@ -26,7 +26,7 @@ public class TPSCommand implements CommandExecutor {
                 } else if (TPS[0] >= 0.00) {
                     sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
                 }
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-message")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', sb.toString()));
             }
     }
         return false;
