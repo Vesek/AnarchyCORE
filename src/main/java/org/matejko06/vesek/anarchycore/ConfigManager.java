@@ -25,7 +25,7 @@ public class ConfigManager {
         if (!messagesfile.exists()) {
             try {
                 messagesfile.createNewFile();
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6players.yml&a file has been created!"));
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messagess.yml&a file has been created!"));
             } catch (IOException e) {
                 Bukkit.getServer().getConsoleSender()
                         .sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCould not create the &6messages.yml&c file!"));
