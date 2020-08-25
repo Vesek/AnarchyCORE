@@ -537,11 +537,6 @@ natural:
     - "%plrtag% died"
 unknown:
   - "%plrtag% died"
-    # if any custom plugins offer custom messages, add them below.
-    # for example: for tag "foo.bar", use
-    # foo:
-    #   bar:
-    #     - "foo.bar death message"
 
 mob-names:
   Bat: "Bat"
