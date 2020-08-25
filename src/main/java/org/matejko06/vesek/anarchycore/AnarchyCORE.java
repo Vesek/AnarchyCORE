@@ -37,10 +37,11 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
         getConfig().options().copyDefaults(true);
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
         loadConfigManager();
         loadConfig();
@@ -71,7 +72,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
-        new UpdateChecker(this, 82999).getVersion(version -> {
+/*        new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
             } else {
                 if (p.hasPermission("AnarchyCORE.*") || p.isOp()) {
@@ -81,7 +82,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                 }
             }
         });
-    }
+*/    }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
@@ -92,9 +93,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving all &6configs&a..."));
         saveConfig();
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved &6config.yml&a."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
     }
 

@@ -65,8 +65,9 @@ public class ConfigManager {
     }
     public void reloadMessages() {
         messagescfg = YamlConfiguration.loadConfiguration(messagesfile);
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6config.yml&a file has been reloaded!"));
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been reloaded!"));
         deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been reloaded!"));
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6DeathMessages.yml&a file has been reloaded!"));
     }
 }
