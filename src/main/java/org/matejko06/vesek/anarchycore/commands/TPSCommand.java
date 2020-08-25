@@ -28,7 +28,7 @@ public class TPSCommand implements CommandExecutor {
                 }
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', sb.toString()));
             }
-    }
+        }
         return false;
     }
 }
