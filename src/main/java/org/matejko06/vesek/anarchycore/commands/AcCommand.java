@@ -17,34 +17,40 @@ public class AcCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("ac")) {
-                if (args.length < 1) {
-                if (args[0].equalsIgnoreCase("reload")) {
-                        if (sender.hasPermission("AnarchyCORE.reload")) {
-                            ac.reloadConfig();
-                            Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6config.yml&a file has been reloaded!"));
-                            ac.saveConfig();
-                            ac.getCfgm().reloadMessages();
-                            AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
-                        }
-                    } else if (args[0].equalsIgnoreCase("version")) {
-                        if (sender.hasPermission("AnarchyCORE.version")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6By Matejko06 and Vesek.\n&6&l<----------------------->"));
-                        }
-                    } else if (args[0].equalsIgnoreCase("discord")) {
-                        if (sender.hasPermission("AnarchyCORE.discord")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0 &6&lSUPPORT\n&6By Matejko06 and Vesek.\n&3&lDISCORD: &1https://discord.gg/dh5u3as\n&6&l<----------------------->"));
-                        }
-                    } else if (args[0].equalsIgnoreCase("support")) {
-                        if (sender.hasPermission("AnarchyCORE.discord")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0 &6&lSUPPORT\n&6By Matejko06 and Vesek.\n&3&lDISCORD: &1https://discord.gg/dh5u3as\n&6&l<----------------------->"));
-                        }
-                    } else if (args[0].equalsIgnoreCase("adminhelp")) {
-                        if (sender.hasPermission("AnarchyCORE.adminhelp")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.&6&l/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
-                        }
+            if(args.length == 0){
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',ac.getConfig().getString("invalid-command-message")));
+            }
+            else {
+                if (args[0].equalsIgnoreCase("reload") || sender.isOp()) {
+                    if (sender.hasPermission("AnarchyCORE.reload")) {
+                        ac.reloadConfig();
+                        Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6config.yml&a file has been reloaded!"));
+                        ac.saveConfig();
+                        ac.getCfgm().reloadMessages();
+                        AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
+                    }
+                } else if (args[0].equalsIgnoreCase("version")) {
+                    if (sender.hasPermission("AnarchyCORE.version") || sender.isOp()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6By Matejko06 and Vesek.\n&6&l<----------------------->"));
+                    }
+                } else if (args[0].equalsIgnoreCase("discord")) {
+                    if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0 &6&lSUPPORT\n&6By Matejko06 and Vesek.\n&3&lDISCORD: &1https://discord.gg/dh5u3as\n&6&l<----------------------->"));
+                    }
+                } else if (args[0].equalsIgnoreCase("support")) {
+                    if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0 &6&lSUPPORT\n&6By Matejko06 and Vesek.\n&3&lDISCORD: &1https://discord.gg/dh5u3as\n&6&l<----------------------->"));
+                    }
+                } else if (args[0].equalsIgnoreCase("adminhelp")) {
+                    if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.&6&l/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                     }
                 }
+                else{
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',ac.getConfig().getString("invalid-command-message")));
+                }
+            }
         }
         return false;
     }

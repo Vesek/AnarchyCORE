@@ -25,7 +25,7 @@ public class QueueCommand implements CommandExecutor {
                 } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("regular-message")));
                 } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
                 }
             }
             else if (command.getName().equalsIgnoreCase("queuepriority")) {
@@ -37,7 +37,7 @@ public class QueueCommand implements CommandExecutor {
                     } else if (sender.hasPermission("AnarchyCORE.queue.regular")) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("regular-message")));
                     } else {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
                     }
                 }
             }
