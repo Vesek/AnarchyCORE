@@ -20,11 +20,11 @@ public class TPSCommand implements CommandExecutor {
                 StringBuilder sb = new StringBuilder();
                 double[] TPS = ac.getServer().getTPS();
                 if (TPS[0] >= ac.getConfig().getDouble("tps-green")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]));
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(String.format("%.2f", TPS[0]).replace(",","."));
                 } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]));
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", TPS[0]).replace(",","."));
                 } else if (TPS[0] >= 0.00) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]));
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", TPS[0]).replace(",","."));
                 }
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', sb.toString()));
             }
