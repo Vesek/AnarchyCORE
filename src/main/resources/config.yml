@@ -11,7 +11,7 @@ tps-yellow: 8.00
 tps-yellow-color: "&e&l"
 tps-red-color: "&c&l"
 # Help command #
-help-message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &6&o/queue &3- Shows players queue priority.\n&3<----------------------->"
+help-message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&3<----------------------->"
 # Suicide and Admin kill messages. #
 kill-message: "&6You killed yourself!"
 killsomeone-message: "&6You were killed!"
