@@ -3,7 +3,7 @@
 # VERSION 1.3.0                        #
 # ==================================== #
 # Death Messages #
-mob:
+mobs:
   Bat:
     - "&3&3%playername%&4&4 was slain by &3Bat&4."
   Bee:
@@ -186,7 +186,7 @@ mob:
     - "&3%playername%&4 was slain by Zombie Villager using [%weapon%&f]"
   ZombieHorse:
     - "&3%playername%&4 was slain by Zombie Horse"
-namedmob: # For named mobs, use %killer% as mob
+namedmobs:
   Bat:
     - "&3%playername%&4 was slain by %killer%"
   Bee:
@@ -371,7 +371,7 @@ namedmob: # For named mobs, use %killer% as mob
     - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
   ZombieHorse:
     - "&3%playername%&4 was slain by %killer%"
-pvp:
+player:
   PlayerMelee:
     - "&3%playername%&4 was slain by %killer%"
   PlayerCustom:
@@ -527,16 +527,16 @@ natural:
     - "&3%playername%&4 experienced kinetic energy"
   ElytraKill:
     - "&3%playername%&4 experienced kinetic energy whilst trying to escape %killer%"
-  Suicide: # Some plugins may use this one, /suicide and /kill for example
-    - "&3%playername%&4 died"
-  Melting: # Some plugins may use this one, orig. Snowmans + hot biomes
-    - "&3%playername%&4 died"
-  DryOut: # Some plugins may use this one, orig. fish outside water
-    - "&3%playername%&4 died"
-  Custom: # Some plugins may use this one
-    - "&3%playername%&4 died"
+  Suicide:
+    - "&3%playername%&4 died&4."
+  Melting:
+    - "&3%playername%&4 died&4."
+  DryOut:
+    - "&3%playername%&4 died&4."
+  Custom:
+    - "&3%playername%&4 died&4."
 unknown:
-  - "&3%playername%&4&4 died&4."
+  - "&3%playername%&4 died&4."
 mob-displaynames:
   Bat: "Bat"
   Bee: "Bee"
