@@ -1,34 +1,23 @@
-# ==================================== #
-# AnarchyCORE - by Vesek and Matejko06 #
-# VERSION 1.3.0                        #
-# ==================================== #
-# Death Messages #
-player:
-  PlayerMelee:
-    - "&3%playername%&4 was slain by %killer%"
-  PlayerCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
-  PlayerArrow:
-    - "&3%playername%&4 was shot by %killer%"
-  PlayerTrident:
-    - "&3%playername%&4 was impaled by %killer%"
-  PlayerTridentCustom:
-    - "&3%playername%&4 was impaled by %killer% using [%weapon%&f]"
-  PlayerFireball: # Just in case
-    - "&3%playername%&4 was fireballed by %killer%"
-  PlayerSnowball: # Just in case
-    - "&3%playername%&4 was pummeled by %killer%"
-  PlayerProjectileCustom: # Bows, plugins like CrackShot
-    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
-  PlayerPotion:
-    - "&3%playername%&4 was killed by %killer% using magic"
-natural:
-  Suicide:
-    - "&3%playername%&4 died&4."
-  Melting:
-    - "&3%playername%&4 died&4."
-  DryOut:
-    - "&3%playername%&4 died&4."
+# ===================================== #
+# >-------< DEATHMESSAGES.yml >-------< #
+# AnarchyCORE - by Vesek and Matejko06  #
+# VERSION 1.3.1                         #
+# ===================================== #
+# Suicide and Admin kill messages. #
+Suicide-Message: "&6You killed yourself!"
+Suicide: "&3%playername%&4 died&4."
+Kill-Someone-Message: "&6You were killed!"
+Kill-Command: "&3%playername%&4 died&4."
+Player-Melee: "&3%playername%&4 was slain by &3%killer%&4."
+Player-Custom: "&3%playername%&4 was slain by &3%killer%&4 using &b[&r%weapon%&b]&4."
+Player-Arrow: "&3%playername%&4 was shot by &3%killer%&4."
+Player-Trident: "&3%playername%&4 was impaled by &3%killer%&4."
+Player-Trident-Custom: "&3%playername%&4 was impaled by &3%killer%&4 using &b[&r%weapon%&b]&4."
+Player-Fireball: "&3%playername%&4 was fireballed by %killer%"
+Player-Snowball: "&3%playername%&4 was pummeled by %killer%"
+Player-Potion: "&3%playername%&4 was killed by &3%killer%&4 using magic&4."
+Melting: "&3%playername%&4 died&4."
+DryOut: "&3%playername%&4 died&4."
   Thorns:
     - "&3%playername%&4 was killed while trying to hurt %killer%"
   TNT:
@@ -40,7 +29,7 @@ natural:
   EnderCrystal:
     - "&3%playername%&4 blew up"
   Bed: # exploding beds or respawn anchors
-    - "&3%playername%&4 was killed by [Intentional Game Design]"
+    - "&3%playername%&4 was killed by &aMinecraft&4."
   Cactus:
     - "&3%playername%&4 was pricked to death"
   CactusKill:
@@ -59,15 +48,11 @@ natural:
     - "&3%playername%&4 was shot by arrow"
   DispenserFireball:
     - "&3%playername%&4 burned to death"
-  DispenserSnowball:
-    - "&3%playername%&4 died"
-  Drowning:
-    - "&3%playername%&4 drowned"
-  DrowningKill:
-    - "&3%playername%&4 drowned whilst trying to escape %killer%"
-  PotionPoison: # Normally impossible
-    - "&3%playername%&4 died"
-  PotionWither:
+DispenserSnowball: "&3%playername%&4 died&4."
+Drowning: "&3%playername%&4 drowned&4."
+DrowningKill: "&3%playername%&4 drowned whilst trying to escape &3%killer%&4."
+PotionPoison: "&3%playername%&4 died&4."
+PotionWither:
     - "&3%playername%&4 withered away"
   PotionWitherKill:
     - "&3%playername%&4 withered away whilst fighting %killer%"
