@@ -44,8 +44,8 @@ public class ConfigManager {
                 Bukkit.getServer().getConsoleSender()
                         .sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCould not create the &6deathmessages.yml&c file!"));
             }
-        deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
         }
+        deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
     }
 
     public FileConfiguration getMessages() {
