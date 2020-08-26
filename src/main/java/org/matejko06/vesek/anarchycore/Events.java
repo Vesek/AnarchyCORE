@@ -33,7 +33,7 @@ public class Events implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
         String s = e.getMessage();
-        if(s.charAt(0) == '>'){
+        if(s.charAt(0) == ac.getConfig().getString("Green-Chat-Symbol").charAt(0)){
             e.setMessage(ChatColor.GREEN + e.getMessage().substring(1,s.length()));
         }
     }
