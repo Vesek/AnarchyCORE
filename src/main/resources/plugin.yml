@@ -9,18 +9,6 @@ commands:
   ac:
     description: AnarchyCORE.
     aliases: [acore]
-  acversion:
-    description: Shows plugin version.
-    aliases: [acoreversion]
-  acdiscord:
-    description: Support Discord server.
-    aliases: [acorediscord, acsupport, acoresupport]
-  acreload:
-    description: Reloads the plugin.
-    aliases: [acorereload]
-  acadminhelp:
-    description: Reloads the plugin.
-    aliases: [acoreadminhelp]
   help:
     description: Help for players.
   kill:

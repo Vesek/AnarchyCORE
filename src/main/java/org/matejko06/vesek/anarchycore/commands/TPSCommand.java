@@ -24,7 +24,6 @@ public class TPSCommand implements CommandExecutor {
                 double[] TPS = ac.getServer().getTPS();
                 DecimalFormat df = new DecimalFormat("#.##");
                 df.setRoundingMode(RoundingMode.CEILING);
-                sender.sendMessage(String.valueOf(TPS[0]));
                 if (TPS[0] >= ac.getConfig().getDouble("tps-green")) {
                     sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(df.format(TPS[0]));
                 } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
