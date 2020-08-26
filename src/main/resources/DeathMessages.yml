@@ -4,16 +4,27 @@
 # AnarchyCORE - by Vesek and Matejko06 #
 # VERSION 1.3.1                        #
 # ==================================== #
-suicide-message: "&4You killed yourself&4."
-killedbyadmin-message: "&4You were killed&4."
-PlayerMelee: "&3%playername%&4 was slain by &3%killer%&4."
-PlayerCustom: "&3%playername%&4 was slain by &3%killer%&4 using &b[&r%weapon%&b]&4."
-PlayerArrow: "&3%playername%&4 was shot by &3%killer%&4."
-PlayerTrident: "&3%playername%&4 was impaled by &3%killer%&4."
-PlayerTridentCustom: "&3%playername%&4 was impaled by &3%killer%&4 using &b[&r%weapon%&b]&4."
-PlayerFireball: "&3%playername%&4 was fireballed by &3%killer%&4."
-PlayerSnowball: "&3%playername%&4 was snowballed by &3%killer%&4."
-PlayerPotion: "&3%playername%&4 was killed by &3%killer%&4 using magic&4."
+player:
+  PlayerSuicide:
+    - "&4You killed yourself&4."
+  PlayerKilledByAdmin:
+    - "&4You were killed&4."
+  PlayerMelee:
+    - "&3%playername%&4 was slain by &3%killer%&4."
+  PlayerCustom:
+    - "&3%playername%&4 was slain by &3%killer%&4 using &b[&r%weapon%&b]&4."
+  PlayerArrow:
+    - "&3%playername%&4 was shot by &3%killer%&4."
+  PlayerTrident:
+    - "&3%playername%&4 was impaled by &3%killer%&4."
+  PlayerTridentCustom:
+    - "&3%playername%&4 was impaled by &3%killer%&4 using &b[&r%weapon%&b]&4."
+  PlayerFireball:
+    - "&3%playername%&4 was fireballed by &3%killer%&4."
+  PlayerSnowball:
+    - "&3%playername%&4 was snowballed by &3%killer%&4."
+  PlayerPotion:
+    - "&3%playername%&4 was killed by &3%killer%&4 using magic&4."
 natural:
   Suicide:
     - "&3%playername%&4 died&4."
