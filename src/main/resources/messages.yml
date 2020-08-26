@@ -12,7 +12,7 @@ Queue-Message: "&6Your queue priority is: "
 # Join & Leave messages. #
 Player-Join-Message: "&7has joined!"
 Player-Leave-Message: "&7has left!"
-# TPS message. #
+# TPS message. # Other settings in CONFIG.yml. #
 TPS-Message: "&6Server TPS is: "
 # /info message #
 Info-Message: "&3Already <players> players have connected to the server, server runs for <time> and world has <size> so far."
