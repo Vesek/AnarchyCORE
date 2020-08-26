@@ -11,14 +11,9 @@ import org.bukkit.plugin.Plugin;
 
 public class Events implements Listener {
 
-    org.bukkit.plugin.Plugin plugin;
-
-    public Events(Plugin plugin) {
-        this.plugin = plugin;
-    }
-
-        AnarchyCORE ac;
-        public Events(AnarchyCORE ac) {
+    AnarchyCORE ac;
+    
+    public Events(AnarchyCORE ac) {
             this.ac = ac;
         }
 
