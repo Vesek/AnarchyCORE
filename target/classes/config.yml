@@ -34,7 +34,8 @@ queue-priority-message: "&6Your queue priority is: "
 #Message for /info #
 info-message: "&3Already <players> players have connected to the server, server runs for <time> and world has <size> so far."
 # Join message #
-join-message: "has joined!"
+Player:
+  JoinMessage: "has joined!"
 # Leave message #
 leave-message: "has left!"
 

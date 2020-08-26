@@ -35,19 +35,16 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aPlugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aLoading all &6configs&a..."));
         getConfig().options().copyDefaults(true);
-        /*getCfgm().messagescfg.options().copyDefaults(true);
-        */getCfgm().deathmessagescfg.options().copyDefaults(true);
         saveConfig();
-        /*getCfgm().saveMessages();
-        */getCfgm().saveDeathMessages();
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aSuccessfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        //loadConfigManager();
+        loadConfigManager();
         loadConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);
@@ -61,15 +58,19 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', " "));
         new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for updates..."));
                 log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
+                log(ChatColor.translateAlternateColorCodes('&', " "));
             } else {
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for updates..."));
                 log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                log(ChatColor.translateAlternateColorCodes('&', " "));
             }
         });
     }
@@ -77,8 +78,8 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        //e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getCfgm().messagescfg.getString("join-message")));
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
+        //e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getCfgm().messagescfg.getString("PlayerJoinMessage")));
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getConfig().getString("PlayerJoinMessage")));
 /*        new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
             } else {
@@ -94,17 +95,17 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        //e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getCfgm().messagescfg.getString("leave-message")));
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
+        //e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getCfgm().messagescfg.getString("PlayerLeaveMessage")));
+        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getConfig().getString("PlayerLeaveMessage")));
     }
 
     @Override
     public void onDisable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning off..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving all &6configs&a..."));
         saveConfig();
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin has turned off!"));
     }
 
     public void loadConfigManager() {
