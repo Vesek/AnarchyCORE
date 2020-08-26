@@ -25,11 +25,14 @@ public class TPSCommand implements CommandExecutor {
                     double[] TPS = ac.getServer().getTPS();
                     if (TPS[0] >= ac.getConfig().getDouble("tps-green")) {
                         sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
+                        //sb.append(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
                     } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
                         sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
+                        //sb.append(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
                     } else if (TPS[0] >= 0.0D) {
                         sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
-                    }
+                        //sb.append(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(String.format("%.2f", new Object[] { Double.valueOf(TPS[0]) }));
+                    } //TODO Replace , with .
                     sender.sendMessage(sb.toString());
                 }
             }

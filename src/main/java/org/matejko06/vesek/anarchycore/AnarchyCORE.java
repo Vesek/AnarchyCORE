@@ -38,7 +38,10 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aPlugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aLoading all &6configs&a..."));
         getConfig().options().copyDefaults(true);
+        getCfgm().messagescfg.options().copyDefaults(true);
+        getCfgm().deathmessagescfg.options().copyDefaults(true);
         saveConfig();
+        getCfgm().saveConfigs();
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aSuccessfully loaded all &6configs&a."));

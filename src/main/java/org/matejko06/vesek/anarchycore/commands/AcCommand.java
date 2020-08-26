@@ -22,6 +22,7 @@ public class AcCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.&6&l/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                    //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                 }
             }
             else {
@@ -40,6 +41,7 @@ public class AcCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("version")) {
                     if (sender.hasPermission("AnarchyCORE.version") || sender.isOp()) {
@@ -49,6 +51,7 @@ public class AcCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("discord")) {
                     if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
@@ -58,6 +61,7 @@ public class AcCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("support")) {
                     if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
@@ -67,6 +71,7 @@ public class AcCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("adminhelp")) {
                     if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
@@ -76,12 +81,14 @@ public class AcCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                         }
                 }} else {
                     if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                     } else {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                        //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("invalid-command-message")));
                     }
                 }
             }

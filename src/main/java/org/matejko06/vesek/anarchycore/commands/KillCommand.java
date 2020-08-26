@@ -21,7 +21,8 @@ public class KillCommand implements CommandExecutor {
                 Player p = (Player) sender;
                 if (args.length == 0) {
                     if (p.hasPermission("AnarchyCORE.kill") || p.isOp()) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("suicide-message")));
+                        //p.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("suicide-message")));
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().deathmessagescfg.getString("suicide-message")));
                         p.setHealth(0.00);
                     }
                 }
@@ -31,6 +32,7 @@ public class KillCommand implements CommandExecutor {
                             Player victim = ac.getServer().getPlayer(s);
                             if (victim != null) {
                                 victim.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("killedbyadmin-message")));
+                                //victim.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().deathmessagescfg.getString("killedbyadmin-message")));
                                 victim.setHealth(0.00);
                             }
                         }
