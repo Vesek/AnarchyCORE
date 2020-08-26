@@ -48,19 +48,30 @@ public class ConfigManager {
         }
     }
 
-    public FileConfiguration getConfigs() {
+    public FileConfiguration getMessages() {
         return messagescfg;
     }
 
-    public void saveConfigs() {
+    public FileConfiguration getDeathMessages() {
+        return deathmessagescfg;
+    }
+
+    public void saveMessages() {
         try {
             messagescfg.save(messagesfile);
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been saved!"));
+
+        } catch (IOException e) {
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save the &6messages.yml&c file!"));
+        }
+    }
+
+    public void saveDeathMessages() {
+        try {
             deathmessagescfg.save(deathmessagesfile);
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6deathmessages.yml&a file has been saved!"));
 
         } catch (IOException e) {
-            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save the &6messages.yml&c file!"));
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save the &6deathmessages.yml&c file!"));
         }
     }
