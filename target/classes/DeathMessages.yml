@@ -1,27 +1,19 @@
 # ==================================== #
+# ---------< DEATH MESSAGES >--------- #
+#                                      #
 # AnarchyCORE - by Vesek and Matejko06 #
-# VERSION 1.3.0                        #
+# VERSION 1.3.1                        #
 # ==================================== #
-# Death Messages #
-player:
-  PlayerMelee:
-    - "&3%playername%&4 was slain by %killer%"
-  PlayerCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
-  PlayerArrow:
-    - "&3%playername%&4 was shot by %killer%"
-  PlayerTrident:
-    - "&3%playername%&4 was impaled by %killer%"
-  PlayerTridentCustom:
-    - "&3%playername%&4 was impaled by %killer% using [%weapon%&f]"
-  PlayerFireball: # Just in case
-    - "&3%playername%&4 was fireballed by %killer%"
-  PlayerSnowball: # Just in case
-    - "&3%playername%&4 was pummeled by %killer%"
-  PlayerProjectileCustom: # Bows, plugins like CrackShot
-    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
-  PlayerPotion:
-    - "&3%playername%&4 was killed by %killer% using magic"
+suicide-message: "&4You killed yourself&4."
+killedbyadmin-message: "&4You were killed&4."
+PlayerMelee: "&3%playername%&4 was slain by &3%killer%&4."
+PlayerCustom: "&3%playername%&4 was slain by &3%killer%&4 using &b[&r%weapon%&b]&4."
+PlayerArrow: "&3%playername%&4 was shot by &3%killer%&4."
+PlayerTrident: "&3%playername%&4 was impaled by &3%killer%&4."
+PlayerTridentCustom: "&3%playername%&4 was impaled by &3%killer%&4 using &b[&r%weapon%&b]&4."
+PlayerFireball: "&3%playername%&4 was fireballed by &3%killer%&4."
+PlayerSnowball: "&3%playername%&4 was snowballed by &3%killer%&4."
+PlayerPotion: "&3%playername%&4 was killed by &3%killer%&4 using magic&4."
 natural:
   Suicide:
     - "&3%playername%&4 died&4."
@@ -32,15 +24,15 @@ natural:
   Thorns:
     - "&3%playername%&4 was killed while trying to hurt %killer%"
   TNT:
-    - "&3%playername%&4 blew up"
+    - "&3%playername%&4 blew up&4."
   TNTKill:
-    - "&3%playername%&4 was blown up by %killer%"
+    - "&3%playername%&4 was blown up by %killer%&4."
   WitherSkull:
-    - "&3%playername%&4 was shot by a %killer%'s skull"
+    - "&3%playername%&4 was shot by a %killer%'s skull&4."
   EnderCrystal:
     - "&3%playername%&4 blew up"
   Bed: # exploding beds or respawn anchors
-    - "&3%playername%&4 was killed by [Intentional Game Design]"
+    - "&3%playername%&4 was killed by &aMinecraft&4."
   Cactus:
     - "&3%playername%&4 was pricked to death"
   CactusKill:
@@ -54,49 +46,49 @@ natural:
   FallingBlockKill: # as above
     - "&3%playername%&4 was squashed by a falling block whilst fighting %killer%"
   UnknownArrow: # arrow from unknown entity or source, /summon?
-    - "&3%playername%&4 was shot by arrow"
+    - "&3%playername%&4 was shot by arrow&4."
   DispenserArrow:
-    - "&3%playername%&4 was shot by arrow"
+    - "&3%playername%&4 was shot by arrow&4."
   DispenserFireball:
-    - "&3%playername%&4 burned to death"
+    - "&3%playername%&4 burned to death&4."
   DispenserSnowball:
-    - "&3%playername%&4 died"
+    - "&3%playername%&4 died&4."
   Drowning:
-    - "&3%playername%&4 drowned"
+    - "&3%playername%&4 drowned&4."
   DrowningKill:
-    - "&3%playername%&4 drowned whilst trying to escape %killer%"
+    - "&3%playername%&4 drowned whilst trying to escape &3%killer%&4."
   PotionPoison: # Normally impossible
     - "&3%playername%&4 died"
   PotionWither:
     - "&3%playername%&4 withered away"
   PotionWitherKill:
-    - "&3%playername%&4 withered away whilst fighting %killer%"
+    - "&3%playername%&4 withered away whilst fighting &3%killer%"
   PotionHarming:
     - "&3%playername%&4 was killed by magic"
   PotionHarmingKill:
-    - "&3%playername%&4 was killed by magic whilst trying to escape %killer%"
+    - "&3%playername%&4 was killed by magic whilst trying to escape &3%killer%&4."
   EvokerFang:
-    - "&3%playername%&4 was killed by %killer% using magic"
+    - "&3%playername%&4 was killed by &3%killer%&4 using magic"
   FireBlock:
     - "&3%playername%&4 went up in flames"
   FireBlockKill:
-    - "&3%playername%&4 walked into a fire whilst fighting %killer%"
+    - "&3%playername%&4 walked into a fire whilst fighting &3%killer%&4."
   FireTick:
     - "&3%playername%&4 burned to death"
   FireTickKill:
-    - "&3%playername%&4 burnt into a crisp whilst fighting %killer%"
+    - "&3%playername%&4 burnt into a crisp whilst fighting &3%killer%&4."
   Magma:
-    - "&3%playername%&4 discovered floor was lava"
+    - "&3%playername%&4 discovered floor was lava&4."
   MagmaKill:
-    - "&3%playername%&4 walked into danger zone due to %killer%"
+    - "&3%playername%&4 walked into danger zone due to &3%killer%&4."
   BerryBush:
     - "&3%playername%&4 was poked to death by a sweet berry bush"
   BerryBushKill:
-    - "&3%playername%&4 was poked to death by a sweet berry bush whilst trying to escape %killer%"
+    - "&3%playername%&4 was poked to death by a sweet berry bush whilst trying to escape &3%killer%&4."
   Lava:
     - "&3%playername%&4 tried to swim in lava"
   LavaKill:
-    - "&3%playername%&4 tried to swim in lava while trying to escape %killer%"
+    - "&3%playername%&4 tried to swim in lava while trying to escape &3%killer%&4."
   Lightning: # Happens when struck by lightning, vanilla: FireTick/FireBlock
     - "&3%playername%&4 went up in flames"
   Starvation:
@@ -112,7 +104,7 @@ natural:
   VoidFall: # in DMP, if entity falls over y>=64 to the void
     - "&3%playername%&4 fell from a high place and fell out of the world"
   VoidKill:
-    - "&3%playername%&4 didn't want to live in the same world as %killer%"
+    - "&3%playername%&4 didn't want to live in the same world as &3%killer%&4."
   FallShort: # Fall distance 5 blocks or less, or ender pearl
     - "&3%playername%&4 hit the ground too hard"
   FallLong: # Fall distance over 5 blocks
@@ -140,13 +132,13 @@ natural:
   FallBerryBush:
     - "&3%playername%&4 fell into a sweet berry bush"
   FallKill:
-    - "&3%playername%&4 was doomed to fall by %killer%"
+    - "&3%playername%&4 was doomed to fall by &3%killer%&4."
   FallKillWeapon:
-    - "&3%playername%&4 was doomed to fall by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was doomed to fall by &3%killer%&4 using &b[%weapon%&b]&4."
   FallFinishKill:
     - "&3%playername%&4 fell too far and was finished by %killer%"
   FallFinishKillWeapon:
-    - "&3%playername%&4 fell too far and was finished by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 fell too far and was finished by %killer% using &b[%weapon%&b]&4"
   FallExplosionKill: # FallKill caused by entity explosion
     - "&3%playername%&4 was blown from a high place by %killer%"
   FallLadderKill:
@@ -160,7 +152,7 @@ natural:
   CrossbowFirework:
     - "&3%playername%&4 went off with a bang due to a firework fired by %killer%"
   CrossbowFireworkCustom:
-    - "&3%playername%&4 went off with a bang due to a firework fired from [%weapon%&f] by %killer%"
+    - "&3%playername%&4 went off with a bang due to a firework fired from &b[%weapon%&b]&4 by %killer%"
   Elytra:
     - "&3%playername%&4 experienced kinetic energy"
   ElytraKill:
@@ -199,9 +191,9 @@ mobs:
   DrownedTrident:
     - "&3%playername%&4 was impaled by Drowned"
   DrownedMeleeCustom:
-    - "&3%playername%&4 was slain by Drowned using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Drowned using &b[%weapon%&b]&4"
   DrownedTridentCustom:
-    - "&3%playername%&4 was impaled by Drowned using [%weapon%&f]"
+    - "&3%playername%&4 was impaled by Drowned using &b[%weapon%&b]&4"
   ElderGuardian:
     - "&3%playername%&4 was slain by Elder Guardian"
   EnderDragon:
@@ -229,7 +221,7 @@ mobs:
   HuskMelee:
     - "&3%playername%&4 was slain by Husk"
   HuskCustom:
-    - "&3%playername%&4 was slain by Husk using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Husk using &b[%weapon%&b]&4"
   Illusioner:
     - "&3%playername%&4 was shot by Illusioner"
   IronGolem:
@@ -253,19 +245,19 @@ mobs:
   PiglinMelee:
     - "&3%playername%&4 was slain by Piglin"
   PiglinCustom:
-    - "&3%playername%&4 was slain by Piglin using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Piglin using &b[%weapon%&b]&4"
   PiglinBruteMelee:
     - "&3%playername%&4 was slain by Piglin Brute"
   PiglinBruteCustom:
-    - "&3%playername%&4 was slain by Piglin Brute using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Piglin Brute using &b[%weapon%&b]&4"
   PillagerArrow:
     - "&3%playername%&4 was shot by Pillager"
   PillagerMelee:
     - "&3%playername%&4 was slain by Pillager"
   PillagerArrowCustom:
-    - "&3%playername%&4 was shot by Pillager using [%weapon%&f]"
+    - "&3%playername%&4 was shot by Pillager using &b[%weapon%&b]&4"
   PillagerCustom:
-    - "&3%playername%&4 was slain by Pillager using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Pillager using &b[%weapon%&b]&4"
   PolarBear:
     - "&3%playername%&4 was slain by Polar Bear"
   PufferFish:
@@ -285,11 +277,11 @@ mobs:
   SkeletonArrow:
     - "&3%playername%&4 was shot by Skeleton"
   SkeletonArrowCustom:
-    - "&3%playername%&4 was shot by Skeleton using [%weapon%&f]"
+    - "&3%playername%&4 was shot by Skeleton using &b[%weapon%&b]&4"
   SkeletonMelee:
     - "&3%playername%&4 was slain by Skeleton"
   SkeletonCustom:
-    - "&3%playername%&4 was slain by Skeleton using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Skeleton using &b[%weapon%&b]&4"
   SkeletonHorse:
     - "&3%playername%&4 was slain by Skeleton Horse"
   Slime:
@@ -305,7 +297,7 @@ mobs:
   StrayMelee:
     - "&3%playername%&4 was slain by Stray"
   StrayCustom:
-    - "&3%playername%&4 was slain by Stray using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Stray using &b[%weapon%&b]&4"
   Strider:
     - "&3%playername%&4 was slain by Strider"
   TropicalFish:
@@ -327,7 +319,7 @@ mobs:
   WitherSkeletonMelee:
     - "&3%playername%&4 was slain by Wither Skeleton"
   WitherSkeletonCustom:
-    - "&3%playername%&4 was slain by Wither Skeleton using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Wither Skeleton using &b[%weapon%&b]&4"
   Wolf:
     - "&3%playername%&4 was slain by Wolf"
   Zoglin:
@@ -335,19 +327,19 @@ mobs:
   ZombieMelee:
     - "&3%playername%&4 was slain by Zombie"
   ZombieCustom:
-    - "&3%playername%&4 was slain by Zombie using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Zombie using &b[%weapon%&b]&4"
   ZombiePigManMelee: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombie Pigman"
   ZombiePigManCustom: # 1.12-1.15.2
-    - "&3%playername%&4 was slain by Zombie Pigman using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Zombie Pigman using &b[%weapon%&b]&4"
   ZombifiedPiglinMelee: # 1.12-1.15.2
     - "&3%playername%&4 was slain by Zombified Piglin"
   ZombifiedPiglinCustom: # 1.12-1.15.2
-    - "&3%playername%&4 was slain by Zombified Piglin using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Zombified Piglin using &b[%weapon%&b]&4"
   ZombieVillagerMelee:
     - "&3%playername%&4 was slain by Zombie Villager"
   ZombieVillagerCustom:
-    - "&3%playername%&4 was slain by Zombie Villager using [%weapon%&f]"
+    - "&3%playername%&4 was slain by Zombie Villager using &b[%weapon%&b]&4"
   ZombieHorse:
     - "&3%playername%&4 was slain by Zombie Horse"
 namedmobs:
@@ -382,9 +374,9 @@ namedmobs:
   DrownedTrident:
     - "&3%playername%&4 was impaled by %killer%"
   DrownedMeleeCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   DrownedTridentCustom:
-    - "&3%playername%&4 was impaled by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was impaled by %killer% using &b[%weapon%&b]&4"
   ElderGuardian:
     - "&3%playername%&4 was slain by %killer%"
   EnderDragon:
@@ -412,7 +404,7 @@ namedmobs:
   HuskMelee:
     - "&3%playername%&4 was slain by %killer%"
   HuskCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   Illusioner:
     - "&3%playername%&4 was shot by %killer%"
   IronGolem:
@@ -436,19 +428,19 @@ namedmobs:
   PiglinMelee:
     - "&3%playername%&4 was slain by %killer%"
   PiglinCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   PiglinBruteMelee:
     - "&3%playername%&4 was slain by %killer%"
   PiglinBruteCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   PillagerArrow:
     - "&3%playername%&4 was shot by %killer%"
   PillagerMelee:
     - "&3%playername%&4 was slain by %killer%"
   PillagerArrowCustom:
-    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was shot by %killer% using &b[%weapon%&b]&4"
   PillagerCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   PolarBear:
     - "&3%playername%&4 was slain by %killer%"
   PufferFish:
@@ -470,9 +462,9 @@ namedmobs:
   SkeletonMelee:
     - "&3%playername%&4 was slain by %killer%"
   SkeletonArrowCustom:
-    - "&3%playername%&4 was shot by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was shot by %killer% using &b[%weapon%&b]&4"
   SkeletonCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   SkeletonHorse:
     - "&3%playername%&4 was slain by %killer%"
   Slime:
@@ -488,7 +480,7 @@ namedmobs:
   StrayMelee:
     - "&3%playername%&4 was slain by %killer%"
   StrayCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   Strider:
     - "&3%playername%&4 was slain by %killer%"
   TropicalFish:
@@ -512,7 +504,7 @@ namedmobs:
   WitherSkeletonMelee:
     - "&3%playername%&4 was slain by %killer%"
   WitherSkeletonCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   Wolf:
     - "&3%playername%&4 was slain by %killer%"
   Zoglin:
@@ -520,19 +512,19 @@ namedmobs:
   ZombieMelee:
     - "&3%playername%&4 was slain by %killer%"
   ZombieCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   ZombiePigManMelee: # used in versions older than 1.16
     - "&3%playername%&4 was slain by %killer%"
   ZombiePigManCustom: # used in versions older than 1.16
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   ZombifiedPiglinMelee: # used in 1.16 and newer
     - "&3%playername%&4 was slain by %killer%"
   ZombifiedPiglinCustom: # used in 1.16 and newer
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   ZombieVillagerMelee:
     - "&3%playername%&4 was slain by %killer%"
   ZombieVillagerCustom:
-    - "&3%playername%&4 was slain by %killer% using [%weapon%&f]"
+    - "&3%playername%&4 was slain by %killer% using &b[%weapon%&b]&4"
   ZombieHorse:
     - "&3%playername%&4 was slain by %killer%"
 mob-displaynames:

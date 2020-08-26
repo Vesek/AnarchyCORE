@@ -27,7 +27,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
 
-
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
@@ -36,12 +35,13 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aPlugin is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aLoading all &6configs&a..."));
         getConfig().options().copyDefaults(true);
         saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
+        log(ChatColor.translateAlternateColorCodes('&', " "));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aSuccessfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
         loadConfigManager();
         loadConfig();
@@ -53,14 +53,16 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aPlugin has turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
-
         new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for updates..."));
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
+                log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for updates..."));
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
@@ -71,6 +73,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
+        //e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getCfgm().messagescfg.getString("join-message")));
         e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
 /*        new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
@@ -87,6 +90,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
+        //e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getCfgm().messagescfg.getString("leave-message")));
         e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
     }
 

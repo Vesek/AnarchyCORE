@@ -1,5 +1,6 @@
 org\matejko06\vesek\anarchycore\commands\HelpCommand.class
 org\matejko06\vesek\anarchycore\ConfigManager.class
+org\matejko06\vesek\anarchycore\DeathMessages.class
 org\matejko06\vesek\anarchycore\Events.class
 org\matejko06\vesek\anarchycore\commands\TPSCommand.class
 org\matejko06\vesek\anarchycore\UpdateChecker.class
@@ -7,4 +8,5 @@ org\matejko06\vesek\anarchycore\commands\AcCommand.class
 org\matejko06\vesek\anarchycore\commands\KillCommand.class
 org\matejko06\vesek\anarchycore\commands\QueueCommand.class
 org\matejko06\vesek\anarchycore\commands\InfoCommand.class
+org\matejko06\vesek\anarchycore\commands\ChatToggleCommand.class
 org\matejko06\vesek\anarchycore\AnarchyCORE.class

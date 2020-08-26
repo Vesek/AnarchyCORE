@@ -24,11 +24,11 @@ public class Events implements Listener {
         }
     }
 
-    /*@EventHandler
-    public void onChat(AsyncPlayerChatEvent e){
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent e) {
         String s = e.getMessage();
-        if(s.charAt(0) == '>'){
-            e.setMessage(ChatColor.GREEN + e.getMessage().substring(1,s.length()));
+        if (s.charAt(0) == '>') {
+            e.setMessage(ChatColor.GREEN + e.getMessage().substring(1, s.length()));
         }
-    }*/
+    }
 }

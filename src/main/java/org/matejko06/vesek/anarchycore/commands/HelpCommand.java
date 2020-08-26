@@ -20,7 +20,7 @@ public class HelpCommand implements CommandExecutor {
             if (sender.hasPermission("AnarchyCORE.help"))
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("help-message")));
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("help-message")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-message")));
     }
         return false;
     }

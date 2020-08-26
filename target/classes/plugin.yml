@@ -1,5 +1,5 @@
 name: AnarchyCORE
-version: 1.3.0
+version: 1.3.1
 authors: [Matejko06, Vesek]
 softdepend: [AnarchyCOREQueue]
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
