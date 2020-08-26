@@ -19,25 +19,25 @@ public class QueueCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("priority")) {
             if (sender instanceof Player) {
                 if (sender.hasPermission("AnarchyCOREQueue.admin")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Admin-Priority")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Admin-Priority")));
                 } else if (sender.hasPermission("AnarchyCOREQueue.priority")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Priority-Priority")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Priority-Priority")));
                 } else if (sender.hasPermission("AnarchyCOREQueue.regular")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Regular-Priority")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Regular-Priority")));
                 } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Invalid-Command-Message")));
                 }
             }
             else if (command.getName().equalsIgnoreCase("queuepriority")) {
                 if (sender instanceof Player) {
                     if (sender.hasPermission("AnarchyCOREQueue.admin")) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Admin-Priority")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Admin-Priority")));
                     } else if (sender.hasPermission("AnarchyCOREQueue.priority")) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Priority-Priority")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Priority-Priority")));
                     } else if (sender.hasPermission("AnarchyCOREQueue.regular")) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Queue-message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Regular-Priority")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Queue-Message")) + ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Regular-Priority")));
                     } else {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Invalid-Command-Message")));
                     }
                 }
             }

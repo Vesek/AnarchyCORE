@@ -74,7 +74,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getConfig().getString("Player-Join-Message")));
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', getCfgm().messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
 /*        new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
             } else {
@@ -90,7 +90,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
+        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', getCfgm().messagescfg.getString("Player-Quit-Message").replace("%playername%", p.getDisplayName())));
     }
 
     @Override

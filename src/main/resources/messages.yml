@@ -10,8 +10,8 @@ Help-Message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/kill
 # Queue priority message. # Priorities can be set in config.yml. #
 Queue-Message: "&6Your queue priority is: "
 # Join & Leave messages. #
-Player-Join-Message: "&7has joined!"
-Player-Leave-Message: "&7has left!"
+Player-Join-Message: "&3%playername% &7has joined!"
+Player-Leave-Message: "&3%playername% &7has left!"
 # TPS message. # Other settings in CONFIG.yml. #
 TPS-Message: "&6Server TPS is: "
 # /info message #
