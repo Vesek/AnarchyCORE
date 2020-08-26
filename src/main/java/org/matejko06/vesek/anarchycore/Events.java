@@ -10,10 +10,10 @@ import org.bukkit.plugin.Plugin;
 
 public class Events implements Listener {
 
-    org.bukkit.plugin.Plugin plugin;
+    AnarchyCORE ac;
 
-    public Events(Plugin plugin) {
-        this.plugin = plugin;
+    public Events(AnarchyCORE ac) {
+        this.ac = ac;
     }
 
     @EventHandler
@@ -24,11 +24,11 @@ public class Events implements Listener {
         }
     }
 
-    /*@EventHandler
+    @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
         String s = e.getMessage();
-        if(s.charAt(0) == '>'){
+        if(s.charAt(0) == ac.getConfig().getString("chat-colorsymbol").charAt(0)){
             e.setMessage(ChatColor.GREEN + e.getMessage().substring(1,s.length()));
         }
-    }*/
+    }
 }
