@@ -15,3 +15,6 @@ Priority-Priority: "&6&lPriority"
 Admin-Priority: "&c&lAdmin"
 # If false, commands needs to set /tps and /help to /anarchycore:tps and /anarchycore:help in commands.yml. #
 Command-Preprocessing:  true
+# ============================= #
+# THIS IS THE END OF CONFIG.yml #
+# ============================= #

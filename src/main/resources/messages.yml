@@ -16,3 +16,6 @@ Player-Leave-Message: "&7has left!"
 TPS-Message: "&6Server TPS is: "
 # /info message #
 Info-Message: "&3Already <players> players have connected to the server, server runs for <time> and world has <size> so far."
+# =============================== #
+# THIS IS THE END OF MESSAGES.yml #
+# =============================== #
