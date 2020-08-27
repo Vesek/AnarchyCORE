@@ -1,14 +1,11 @@
 package org.matejko06.vesek.anarchycore;
-
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
 
@@ -32,7 +29,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-    private ConfigManager cfgm;
+    @Getter private ConfigManager cfgm;
 
     @Override
     public void onEnable() {
@@ -43,8 +40,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
-        loadConfigManager();
-        loadConfig();
+        loadConfigs();
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
@@ -68,28 +64,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         });
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("join-message")));
-/*        new UpdateChecker(this, 82999).getVersion(version -> {
-            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-            } else {
-                if (p.hasPermission("AnarchyCORE.*") || p.isOp()) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
-                }
-            }
-        });
-*/    }
-
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
-    }
-
     @Override
     public void onDisable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
@@ -99,20 +73,20 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
     }
 
-    public void loadConfigManager() {
+    public void loadConfigs() {
         cfgm = new ConfigManager();
         cfgm.setup();
-
-    }
-
-    public void loadConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+        if(cfgm.deathmessagescfg == null){
+            log(ChatColor.translateAlternateColorCodes('&', "&6&lGEIIIIIIIIII"));
+        }
+        cfgm.deathmessagescfg.options().copyDefaults(true);
+        cfgm.saveConfigs();
+        cfgm.messagescfg.options().copyDefaults(true);
+        cfgm.saveConfigs();
     }
 
-    public ConfigManager getCfgm(){
-        return cfgm;
-    }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
