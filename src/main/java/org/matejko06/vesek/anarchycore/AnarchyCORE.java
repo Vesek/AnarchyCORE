@@ -78,9 +78,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         cfgm.setup();
         getConfig().options().copyDefaults(true);
         saveConfig();
-        if(cfgm.deathmessagescfg == null){
-            log(ChatColor.translateAlternateColorCodes('&', "&6&lGEIIIIIIIIII"));
-        }
         cfgm.deathmessagescfg.options().copyDefaults(true);
         cfgm.saveConfigs();
         cfgm.messagescfg.options().copyDefaults(true);
