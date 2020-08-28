@@ -7,21 +7,21 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
-public class HelpCommand implements CommandExecutor {
+public class RulesCommand implements CommandExecutor {
     AnarchyCORE ac;
 
-    public HelpCommand(AnarchyCORE ac) {
+    public RulesCommand (AnarchyCORE ac) {
         this.ac = ac;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("help")) {
+        if (command.getName().equalsIgnoreCase("rules")) {
             if (sender.hasPermission("AnarchyCORE.help"))
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Help-Message")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Rules-Message")));
         } else {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Invalid-Command-Message")));
-    }
+        }
         return false;
     }
 }

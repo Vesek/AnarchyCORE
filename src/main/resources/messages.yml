@@ -7,6 +7,8 @@
 Invalid-Command-Message: "&4This command does not exist! Use &6/help&4 for help."
 # Help command. #
 Help-Message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&3<----------------------->"
+# Server "rules" #
+Rules-Message: "&3<----------------------->\n&6[&a1&6] &3There are no rules.\n&3<----------------------->"
 # Queue priority message. # Priorities can be set in config.yml. #
 Queue-Message: "&6Your queue priority is: "
 # Join & Leave messages. #

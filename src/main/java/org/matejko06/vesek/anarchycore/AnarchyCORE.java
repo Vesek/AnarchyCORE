@@ -21,6 +21,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
     HelpCommand hc = new HelpCommand(this);
+    RulesCommand rc = new RulesCommand(this);
     AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
 
@@ -45,6 +46,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
         getCommand("help").setExecutor(hc);
+        getCommand("rules").setExecutor(rc);
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
