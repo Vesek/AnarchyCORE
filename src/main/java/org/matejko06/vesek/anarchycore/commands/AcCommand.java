@@ -1,5 +1,6 @@
 package org.matejko06.vesek.anarchycore.commands;
 
+import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,11 +15,11 @@ public class AcCommand implements CommandExecutor {
         this.ac = ac;
     }
 
+    @SneakyThrows
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("ac")) {
             if(args.length == 0){
-                sender.sendMessage(ac.getCfgm().messagescfg.getString("mob.Bat"));
                 if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows this.\n&6&o/kill &3- Kills the player.\n&6&o/tps &3- Shows server TPS.\n&6&o/info &3- Shows some info about the server.\n&6&o/priority &3or &3- Shows players queue priority.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.&6&l/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                 } else {
@@ -29,9 +30,8 @@ public class AcCommand implements CommandExecutor {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-                        ac.reloadConfig();
-                        ac.saveConfig();
-                        ac.getCfgm().reloadConfigs();
+                        ac.deathmessagescfg.load(ac.deathmessagesfile);
+                        ac.messagescfg.load(ac.messagesfile);
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
