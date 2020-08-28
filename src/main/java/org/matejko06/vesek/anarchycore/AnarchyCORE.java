@@ -1,4 +1,5 @@
 package org.matejko06.vesek.anarchycore;
+
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
