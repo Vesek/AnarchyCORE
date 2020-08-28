@@ -1,5 +1,6 @@
 package org.matejko06.vesek.anarchycore.commands;
 
+import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,6 +15,7 @@ public class AcCommand implements CommandExecutor {
         this.ac = ac;
     }
 
+    @SneakyThrows
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("ac")) {
@@ -28,9 +30,8 @@ public class AcCommand implements CommandExecutor {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-                        ac.reloadConfig();
-                        ac.saveConfig();
-                        ac.getCfgm().reloadMessages();
+                        ac.deathmessagescfg.load(ac.deathmessagesfile);
+                        ac.messagescfg.load(ac.messagesfile);
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
