@@ -55,7 +55,7 @@ public class InfoCommand implements CommandExecutor {
                         time.append(diffInDays).append(" " + ac.getCfgm().messagescfg.getString("Info-Days"));
                     } else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
-                        time.append("1 " + ac.getCfgm().messagescfg.getString("Info-Year") + " ");
+                        time.append("1 " + ac.getCfgm().messagescfg.getString("Info-Year") + " " + ac.getCfgm().messagescfg.getString("Info-And") + " " + ac.getCfgm().messagescfg.getString("Info-Months" + " "));
                         time.append(diffInDays / 30).append(" " + ac.getCfgm().messagescfg.getString("Info-Months"));
                     } else if (diffInDays / 365 > 1) {
                         time.append(diffInDays / 365).append(ac.getCfgm().messagescfg.getString("Info-Years") + " " + ac.getCfgm().messagescfg.getString("Info-And") + " ");
