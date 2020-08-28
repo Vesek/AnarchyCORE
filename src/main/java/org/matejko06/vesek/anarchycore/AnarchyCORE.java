@@ -33,7 +33,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
         loadConfigs();
         saveConfigs();
@@ -48,7 +48,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
 
@@ -65,11 +65,11 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin is turning off..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving all &6configs&a..."));
         saveConfig();
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin turned off!"));
     }
 
     public void loadConfigs() {
