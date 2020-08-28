@@ -4,19 +4,13 @@
 # VERSION 1.3.1                        #
 # ==================================== #
 # Symbol used to type green in chat #
-Green-Chat-Symbol: ">"
-# TPS color is from amount up to next color. # Message configuration is in MESSAGES.yml. #
-TPS-Green: 16.00
-TPS-Green-Color: "&a&l"
-TPS-Yellow: 8.00
-TPS-Yellow-Color: "&e&l"
-TPS-Red-Color: "&c&l"
-# Queue priorities. # Message can be set in MESSAGES.yml. #
-Regular-Priority: "&7&lRegular"
-Priority-Priority: "&6&lPriority"
-Admin-Priority: "&c&lAdmin"
-# If false, commands needs to set /tps and /help to /anarchycore:tps and /anarchycore:help in commands.yml. #
-Command-Preprocessing:  true
-# ============================= #
-# THIS IS THE END OF CONFIG.yml #
-# ============================= #
+Green-Chat-Symbol: '>'
+TPS-Green: 16.0
+TPS-Green-Color: '&a&l'
+TPS-Yellow: 8.0
+TPS-Yellow-Color: '&e&l'
+TPS-Red-Color: '&c&l'
+Regular-Priority: '&7&lRegular'
+Priority-Priority: '&6&lPriority'
+Admin-Priority: '&c&lAdmin'
+Command-Preprocessing: true

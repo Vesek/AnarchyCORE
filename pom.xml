@@ -6,7 +6,7 @@
 
     <groupId>org.matejko06.vesek</groupId>
     <artifactId>AnarchyCORE</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <name>AnarchyCORE</name>
@@ -65,6 +65,12 @@
             <groupId>com.destroystokyo.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

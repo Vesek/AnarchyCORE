@@ -16,6 +16,8 @@ public class ConfigManager {
     public File messagesfile;
     public FileConfiguration deathmessagescfg;
     public File deathmessagesfile;
+    public FileConfiguration tabconfigcfg;
+    public File tabconfigfile;
 
     public void setup() {
         if (!plugin.getDataFolder().exists()) {
@@ -24,6 +26,7 @@ public class ConfigManager {
 
         messagesfile = new File(plugin.getDataFolder(), "messages.yml");
         deathmessagesfile = new File(plugin.getDataFolder(), "deathmessages.yml");
+        //tabconfigfile = new File(plugin.getDataFolder(), "tabconfig.yml");
 
         if (!messagesfile.exists()) {
             try {
@@ -39,35 +42,45 @@ public class ConfigManager {
         if (!deathmessagesfile.exists()) {
             try {
                 deathmessagesfile.createNewFile();
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6deathmessagess.yml&a file has been created!"));
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6deathmessages.yml&a file has been created!"));
             } catch (IOException e) {
                 Bukkit.getServer().getConsoleSender()
                         .sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCould not create the &6deathmessages.yml&c file!"));
             }
-        deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
         }
+            deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
+
+/*        if (!tabconfigfile.exists()) {
+            try {
+                tabconfigfile.createNewFile();
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6tabconfig.yml&a file has been created!"));
+            } catch (IOException e) {
+                Bukkit.getServer().getConsoleSender()
+                        .sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCould not create the &6tabconfig.yml&c file!"));
+            }
+            tabconfigcfg = YamlConfiguration.loadConfiguration(tabconfigfile);
+        }*/
     }
 
-    public FileConfiguration getMessages() {
-        return messagescfg;
-    }
-
-    public void saveMessages() {
+    public void saveConfigs() {
         try {
             messagescfg.save(messagesfile);
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been saved!"));
             deathmessagescfg.save(deathmessagesfile);
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6deathmessages.yml&a file has been saved!"));
-
+/*            tabconfigcfg.save(tabconfigfile);
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6tabconfig.yml&a file has been saved!"));
+*/
         } catch (IOException e) {
-            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save the &6messages.yml&c file!"));
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save config files!"));
         }
     }
-    public void reloadMessages() {
+    public void reloadConfigs() {
         messagescfg = YamlConfiguration.loadConfiguration(messagesfile);
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6config.yml&a file has been reloaded!"));
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been reloaded!"));
         deathmessagescfg = YamlConfiguration.loadConfiguration(deathmessagesfile);
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6DeathMessages.yml&a file has been reloaded!"));
-    }
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6deathmessages.yml&a file has been reloaded!"));
+/*        tabconfigcfg = YamlConfiguration.loadConfiguration(tabconfigfile);
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6tabconfig.yml&a file has been reloaded!"));
+    */}
 }

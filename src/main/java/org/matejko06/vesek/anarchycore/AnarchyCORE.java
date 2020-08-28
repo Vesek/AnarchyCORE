@@ -1,5 +1,5 @@
 package org.matejko06.vesek.anarchycore;
-
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.util.ArrayList;
@@ -30,19 +29,17 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-    private ConfigManager cfgm;
+    @Getter private ConfigManager cfgm;
 
     @Override
     public void onEnable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        loadConfigs();
+        saveConfigs();
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
-        command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
-        loadConfigManager();
-        loadConfig();
+        command_preprocessing = getConfig().getBoolean("command-preprocessing");
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
@@ -51,20 +48,17 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
 
         new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
-                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
-                log(ChatColor.translateAlternateColorCodes('&', " "));
             }
         });
     }
@@ -78,20 +72,22 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
     }
 
-    public void loadConfigManager() {
+    public void loadConfigs() {
         cfgm = new ConfigManager();
         cfgm.setup();
-
-    }
-
-        public ConfigManager getCfgm(){
-        return cfgm;
-    }
-
-    public void loadConfig() {
         getConfig().options().copyDefaults(true);
-        saveConfig();
+        cfgm.deathmessagescfg.options().copyDefaults(true);
+        cfgm.messagescfg.options().copyDefaults(true);
     }
+
+    public void saveConfigs() {
+        cfgm = new ConfigManager();
+        cfgm.setup();
+        saveConfig();
+        cfgm.saveConfigs();
+        cfgm.saveConfigs();
+    }
+
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

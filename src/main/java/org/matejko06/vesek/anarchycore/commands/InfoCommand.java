@@ -49,23 +49,23 @@ public class InfoCommand implements CommandExecutor {
                     }
                     if (diffInDays / 365 < 1) {
                         if (diffInDays / 30 >= 1) {
-                            time.append(diffInDays / 30).append(" months and ");
+                            time.append(diffInDays / 30).append(ac.getCfgm().messagescfg.getString(ac.getCfgm().messagescfg.getString("Info-Months)") + ac.getCfgm().messagescfg.getString("Info-And")));
                             diffInDays %= 30;
                         }
-                        time.append(diffInDays).append(" days");
+                        time.append(diffInDays).append(" " + ac.getCfgm().messagescfg.getString("Info-Days"));
                     } else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
-                        time.append("1 year and ");
-                        time.append(diffInDays / 30).append(" months");
+                        time.append("1 " + ac.getCfgm().messagescfg.getString("Info-Year") + " ");
+                        time.append(diffInDays / 30).append(" " + ac.getCfgm().messagescfg.getString("Info-Months"));
                     } else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365).append(" years and ");
+                        time.append(diffInDays / 365).append(ac.getCfgm().messagescfg.getString("Info-Years") + " " + ac.getCfgm().messagescfg.getString("Info-And") + " ");
                         diffInDays %= 365;
-                        time.append(diffInDays / 30).append(" months");
+                        time.append(diffInDays / 30).append(" " + ac.getCfgm().messagescfg.getString("Info-And"));
                     }
                     Long length = folderSize(world);
                     StringBuilder sb = new StringBuilder();
                     if((length >= 1073741824)){
-                        sb.append(length/1073741824).append(" GB and ");
+                        sb.append(length/1073741824).append(" GB" + " " + ac.getCfgm().messagescfg.getString("Info-And") + " ");
                         length %= 1073741824;
                     }
                     sb.append(length/1048576).append(" MB");
