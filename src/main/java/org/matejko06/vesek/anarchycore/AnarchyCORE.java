@@ -25,7 +25,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
 
-
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
     }
@@ -40,14 +39,20 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
-        loadCommands();
+        getCommand("tps").setExecutor(tc);
+        getCommand("priority").setExecutor(qc);
+        getCommand("kill").setExecutor(kc);
+        getCommand("info").setExecutor(ic);
+        getCommand("help").setExecutor(hc);
+        getCommand("rules").setExecutor(rc);
+        getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
 
-/*        new UpdateChecker(this, 82999).getVersion(version -> {
+        new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
@@ -55,7 +60,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
             }
-        });*/
+        });
     }
 
     @Override
@@ -73,16 +78,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         cfgm.saveConfigs();
         getConfig().options().copyDefaults(true);
         saveConfig();
-    }
-
-    public void loadCommands() {
-        getCommand("tps").setExecutor(tc);
-        getCommand("priority").setExecutor(qc);
-        getCommand("kill").setExecutor(kc);
-        getCommand("info").setExecutor(ic);
-        getCommand("help").setExecutor(hc);
-        getCommand("rules").setExecutor(rc);
-        getCommand("ac").setExecutor(ac);
     }
 
     @Override

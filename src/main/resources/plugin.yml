@@ -4,13 +4,14 @@ authors: [Matejko06, Vesek]
 softdepend: [AnarchyCOREQueue]
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
 loadbefore: [WorldEdit]
-
 commands:
   ac:
     description: AnarchyCORE.
     aliases: [acore, anarchycore]
   help:
     description: Help for players.
+  rules:
+    description: Shows server "rules".
   kill:
     description: Suicide.
     aliases: [suicide, killme]

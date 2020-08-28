@@ -10,7 +10,7 @@ import org.matejko06.vesek.anarchycore.AnarchyCORE;
 public class RulesCommand implements CommandExecutor {
     AnarchyCORE ac;
 
-    public RulesCommand (AnarchyCORE ac) {
+    public RulesCommand(AnarchyCORE ac) {
         this.ac = ac;
     }
 
