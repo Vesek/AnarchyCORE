@@ -76,6 +76,7 @@ public class ConfigManager {
             Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCCORE&7: &cCould not save config files!"));
         }
     }
+
     public void reloadConfigs() {
         messagescfg = YamlConfiguration.loadConfiguration(messagesfile);
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThe &6messages.yml&a file has been reloaded!"));
