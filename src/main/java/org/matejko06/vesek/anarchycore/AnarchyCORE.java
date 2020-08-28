@@ -37,7 +37,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
         loadConfigs();
-        saveConfigs();
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("command-preprocessing");
@@ -76,20 +75,11 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
     public void loadConfigs() {
         cfgm = new ConfigManager();
-        cfgm.setup();
+        cfgm.setupConfigs();
         getConfig().options().copyDefaults(true);
-        cfgm.deathmessagescfg.options().copyDefaults(true);
-        cfgm.messagescfg.options().copyDefaults(true);
-    }
-
-    public void saveConfigs() {
-        cfgm = new ConfigManager();
-        cfgm.setup();
         saveConfig();
         cfgm.saveConfigs();
-        cfgm.saveConfigs();
     }
-
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

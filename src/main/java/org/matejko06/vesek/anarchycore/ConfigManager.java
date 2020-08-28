@@ -3,6 +3,7 @@ package org.matejko06.vesek.anarchycore;
 import java.io.File;
 import java.io.IOException;
 
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,7 +20,7 @@ public class ConfigManager {
     public FileConfiguration tabconfigcfg;
     public File tabconfigfile;
 
-    public void setup() {
+    public void setupConfigs() {
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdir();
         }
