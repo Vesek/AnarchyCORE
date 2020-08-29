@@ -80,7 +80,6 @@ public class InfoCommand implements CommandExecutor {
         }
         return false;
     }
-
     public static long folderSize(File directory) {
         long length = 0;
         for (File file : directory.listFiles()) {
