@@ -5,14 +5,22 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
+
+import java.io.File;
 
 public class AcCommand implements CommandExecutor {
     AnarchyCORE ac;
     public AcCommand (AnarchyCORE ac){
         this.ac = ac;
     }
+
+    public FileConfiguration messagescfg;
+    public File messagesfile;
+    public FileConfiguration deathmessagescfg;
+    public File deathmessagesfile;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,13 +35,17 @@ public class AcCommand implements CommandExecutor {
             else {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Starting reload process..."));
                         ac.reloadConfig();
                         ac.saveConfig();
-                        AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
+                        messagescfg.load();
+                        messagescfg.save();
+                        deathmessagescfg.load();
+                        deathmessagescfg.save();
+                        AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("Command-Preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
-                        Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a has been reloaded!"));
+                        Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
                     } else {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
                         }
