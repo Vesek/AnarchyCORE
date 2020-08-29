@@ -42,11 +42,10 @@ public class Events implements Listener {
     if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp());
         new UpdateChecker(ac, 82999).getVersion(version -> {
             if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
-                ac.log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
-                ac.log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
-                ac.log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + ac.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
-                ac.log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + ac.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
             }
         });
     }
