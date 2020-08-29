@@ -17,11 +17,6 @@ public class AcCommand implements CommandExecutor {
         this.ac = ac;
     }
 
-    public FileConfiguration messagescfg;
-    public File messagesfile;
-    public FileConfiguration deathmessagescfg;
-    public File deathmessagesfile;
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("ac")) {
@@ -38,10 +33,6 @@ public class AcCommand implements CommandExecutor {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Starting reload process..."));
                         ac.reloadConfig();
                         ac.saveConfig();
-                        messagescfg.load();
-                        messagescfg.save();
-                        deathmessagescfg.load();
-                        deathmessagescfg.save();
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("Command-Preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));

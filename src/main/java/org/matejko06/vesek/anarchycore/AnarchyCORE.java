@@ -23,6 +23,8 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public File messagesfile;
     public FileConfiguration deathmessagescfg;
     public File deathmessagesfile;
+    public FileConfiguration tabconfigcfg;
+    public File tabconfigfile;
 
     public static boolean command_preprocessing = false;
 
@@ -46,8 +48,10 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
         messagesfile = new File(getDataFolder(), "messages.yml");
         deathmessagesfile = new File(getDataFolder(), "deathmessages.yml");
+        tabconfigfile = new File(getDataFolder(), "tabconfig.yml");
         messagescfg = new YamlConfiguration();
         deathmessagescfg = new YamlConfiguration();
+        tabconfigcfg = new YamlConfiguration();
         if (!messagesfile.exists()) {
             saveResource("messages.yml",false);
         }
@@ -56,12 +60,19 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             saveResource("deathmessages.yml",false);
         }
         deathmessagescfg.load(deathmessagesfile);
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        if (!tabconfigfile.exists()) {
+            saveResource("tabconfig.yml",false);
+        }
+        tabconfigcfg.load(tabconfigfile);
+
         deathmessagescfg.options().copyDefaults(true);
         deathmessagescfg.save(deathmessagesfile);
         messagescfg.options().copyDefaults(true);
         messagescfg.save(messagesfile);
+        tabconfigcfg.options().copyDefaults(true);
+        tabconfigcfg.save(tabconfigfile);
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");

@@ -10,7 +10,7 @@ Help-Message: "&3<----------------------->\n&6&o/help &3- Shows this.\n&6&o/help
 # Server "rules" #
 Rules-Message: "&3<----------------------->\n&6[&a1&6] &3Wtf, youre on an anarchy server, there are no rules.\n&3<----------------------->"
 # Queue priority message. # Priorities can be set in config.yml. #
-Queue-Message: "&6Your queue priority is: "
+Priority-Message: "&6Your queue priority is: "
 # Join & Leave messages. #
 Player-Join-Message: "&3%playername% &7has joined!"
 Player-Leave-Message: "&3%playername% &7has left!"
