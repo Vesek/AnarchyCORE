@@ -14,10 +14,10 @@ header:
   - ''
 footer:
   - ''
-  - '&3%server_tps_1_colored% &3TPS - %player_ping% Ping - %server_online% Hraci - %server_uptime% Uptime'
-  #- '&3%server_ram_used%/%server_ram_max% RAM'
+  - '&3%tps% &3TPS - %players% Players - %ping% Ping - %uptime% Uptime'
+#  - '&8TPS &f&l%server_tps_1% &8Ping &f&l%player_ping% &8Players &f&l%players%'
   - ''
-  - '&7Contact : ServerName@gmail.com'
+  - '&7Contact: ServerName@gmail.com'
   - '&7Discussion: reddit.com/r/ServerName'
   - '&7Website: www.ServerName.org (Currently Down)'
   - '&7These are the only official ServerName sites and contacts.'
@@ -28,26 +28,8 @@ group-sorting-priority-list:
   - Regular
 Groups:
   Admin:
-    tabprefix: '&4&lAdmin &7'
-    tagprefix: '&4&lAdmin &7'
-    header:
-      - ''
-      - '&7&l&o NAME'
-      - '&7&l&oNAME '
-      #- '&4Server&3Name'
-      - ''
-      - '&6Updating to 1.14 PRETTY soon...'
-      - ''
-    footer:
-      - ''
-      - '&3%server_tps_1_colored% &3TPS - %player_ping% Ping - %server_online% Hraci - %server_uptime% Uptime'
-      #- '&3%server_ram_used%/%server_ram_max% RAM'
-      - ''
-      - '&7Contact : ServerName@gmail.com'
-      - '&7Discussion: reddit.com/r/ServerName'
-      - '&7Website: www.ServerName.org (Currently Down)'
-      - '&7These are the only official ServerName sites and contacts.'
-      - ''
+    tabprefix: '&c'
+    tagprefix: '&c'
   Priority:
     tabprefix: '&6'
     tagprefix: '&6'

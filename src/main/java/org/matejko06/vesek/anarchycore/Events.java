@@ -38,7 +38,7 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
     if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp());
         new UpdateChecker(ac, 82999).getVersion(version -> {
             if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
@@ -54,6 +54,6 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
+        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
     }
 }

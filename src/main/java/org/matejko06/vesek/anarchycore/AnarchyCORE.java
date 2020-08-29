@@ -1,19 +1,28 @@
 package org.matejko06.vesek.anarchycore;
 
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class AnarchyCORE extends JavaPlugin implements Listener {
+
+    public FileConfiguration messagescfg;
+    public File messagesfile;
+    public FileConfiguration deathmessagescfg;
+    public File deathmessagesfile;
 
     public static boolean command_preprocessing = false;
 
@@ -30,13 +39,29 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-    @Getter private ConfigManager cfgm;
-
+    @SneakyThrows
     @Override
     public void onEnable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-        loadConfigs();
+        messagesfile = new File(getDataFolder(), "messages.yml");
+        deathmessagesfile = new File(getDataFolder(), "deathmessages.yml");
+        messagescfg = new YamlConfiguration();
+        deathmessagescfg = new YamlConfiguration();
+        if (!messagesfile.exists()) {
+            saveResource("messages.yml",false);
+        }
+        messagescfg.load(messagesfile);
+        if (!deathmessagesfile.exists()) {
+            saveResource("deathmessages.yml",false);
+        }
+        deathmessagescfg.load(deathmessagesfile);
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        deathmessagescfg.options().copyDefaults(true);
+        deathmessagescfg.save(deathmessagesfile);
+        messagescfg.options().copyDefaults(true);
+        messagescfg.save(messagesfile);
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
@@ -71,14 +96,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         saveConfig();
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin turned off!"));
-    }
-
-    public void loadConfigs() {
-        cfgm = new ConfigManager();
-        cfgm.setupConfigs();
-        cfgm.saveConfigs();
-        getConfig().options().copyDefaults(true);
-        saveConfig();
     }
 
     @Override

@@ -5,12 +5,15 @@
 # ==================================== #
 # Symbol used to type green in chat #
 Green-Chat-Symbol: '>'
+# TPS colors. #
 TPS-Green: 16.0
 TPS-Green-Color: '&a&l'
 TPS-Yellow: 8.0
 TPS-Yellow-Color: '&e&l'
 TPS-Red-Color: '&c&l'
+# Queue priorities. #
 Regular-Priority: '&7&lRegular'
 Priority-Priority: '&6&lPriority'
 Admin-Priority: '&c&lAdmin'
+# If false, set /tps and /help as anarchycore:tps and anarchycore:help in the commands.yml file #
 Command-Preprocessing: true

@@ -18,9 +18,9 @@ public class RulesCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("rules")) {
             if (sender.hasPermission("AnarchyCORE.help"))
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Rules-Message")));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Rules-Message")));
         } else {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getCfgm().messagescfg.getString("Invalid-Command-Message")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
         }
         return false;
     }
