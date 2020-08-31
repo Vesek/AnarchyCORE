@@ -5,13 +5,24 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
+
+import java.io.File;
 
 public class AnarchyCORECommand implements CommandExecutor {
     AnarchyCORE ac;
     public AnarchyCORECommand (AnarchyCORE ac){
         this.ac = ac;
     }
+
+    public FileConfiguration messagescfg;
+    public File messagesfile;
+    public FileConfiguration deathmessagescfg;
+    public File deathmessagesfile;
+    public FileConfiguration tabconfigcfg;
+    public File tabconfigfile;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -26,7 +37,6 @@ public class AnarchyCORECommand implements CommandExecutor {
             else {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
                         ac.reloadConfig();
                         ac.saveConfig();
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
