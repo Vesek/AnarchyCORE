@@ -1,6 +1,5 @@
 package org.matejko06.vesek.anarchycore;
 
-import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -53,7 +52,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         deathmessagescfg = new YamlConfiguration();
         tabconfigcfg = new YamlConfiguration();
         if (!messagesfile.exists()) {
-            saveResource("messages.yml",false);
+            saveResource("messages.yml", false);
         }
         messagescfg.load(messagesfile);
         if (!deathmessagesfile.exists()) {
