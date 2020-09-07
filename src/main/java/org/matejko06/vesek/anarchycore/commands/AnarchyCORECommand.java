@@ -1,5 +1,6 @@
 package org.matejko06.vesek.anarchycore.commands;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,6 +13,7 @@ import org.matejko06.vesek.anarchycore.AnarchyCORE;
 import java.io.File;
 
 public class AnarchyCORECommand implements CommandExecutor {
+
     AnarchyCORE ac;
     public AnarchyCORECommand (AnarchyCORE ac){
         this.ac = ac;
@@ -40,6 +42,32 @@ public class AnarchyCORECommand implements CommandExecutor {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Starting reload process..."));
                         ac.reloadConfig();
                         ac.saveConfig();
+                        ac.getDataFolder();
+                        messagesfile = new File(getDataFolder(), "messages.yml");
+                        deathmessagesfile = new File(getDataFolder(), "deathmessages.yml");
+                        tabconfigfile = new File(getDataFolder(), "tabconfig.yml");
+                        messagescfg = new YamlConfiguration();
+                        deathmessagescfg = new YamlConfiguration();
+                        tabconfigcfg = new YamlConfiguration();
+                        if (!messagesfile.exists()) {
+                            saveResource("messages.yml", false);
+                        }
+                        messagescfg.load(messagesfile);
+                        if (!deathmessagesfile.exists()) {
+                            saveResource("deathmessages.yml",false);
+                        }
+                        deathmessagescfg.load(deathmessagesfile);
+                        if (!tabconfigfile.exists()) {
+                            saveResource("tabconfig.yml",false);
+                        }
+                        tabconfigcfg.load(tabconfigfile);
+
+                        deathmessagescfg.options().copyDefaults(true);
+                        deathmessagescfg.save(deathmessagesfile);
+                        messagescfg.options().copyDefaults(true);
+                        messagescfg.save(messagesfile);
+                        tabconfigcfg.options().copyDefaults(true);
+                        tabconfigcfg.save(tabconfigfile);
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("Command-Preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
