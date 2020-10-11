@@ -63,7 +63,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             saveResource("tabconfig.yml",false);
         }
         tabconfigcfg.load(tabconfigfile);
-
         deathmessagescfg.options().copyDefaults(true);
         deathmessagescfg.save(deathmessagesfile);
         messagescfg.options().copyDefaults(true);

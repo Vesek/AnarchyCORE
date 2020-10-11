@@ -1,7 +1,6 @@
 package org.matejko06.vesek.anarchycore;
 
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,8 +8,6 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.io.File;
 
 public class Events implements Listener {
 
@@ -29,10 +26,10 @@ public class Events implements Listener {
     }
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent e){
+    public void onChat(AsyncPlayerChatEvent e) {
         String s = e.getMessage();
-        if(s.charAt(0) == ac.getConfig().getString("Green-Chat-Symbol").charAt(0)){
-            e.setMessage(ChatColor.GREEN + ">" + e.getMessage().substring(1,s.length()));
+        if (s.charAt(0) == ac.getConfig().getString("Green-Chat-Symbol").charAt(0)) {
+            e.setMessage(ChatColor.GREEN + ">" + e.getMessage().substring(1, s.length()));
         }
     }
 
@@ -40,7 +37,8 @@ public class Events implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
-    if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp());
+        ac.log(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
+        if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp()) ;
         new UpdateChecker(ac, 82999).getVersion(version -> {
             if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
@@ -54,5 +52,6 @@ public class Events implements Listener {
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
+        ac.log(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
     }
 }
