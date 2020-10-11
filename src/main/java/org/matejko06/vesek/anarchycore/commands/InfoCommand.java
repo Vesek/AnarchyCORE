@@ -27,7 +27,7 @@ public class InfoCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("info")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                String s = ac.getConfig().getString("info-message");
+                String s = ac.getConfig().getString("Info-Message");
                 try {
                     File world = p.getWorld().getWorldFolder();
                     File playerData = new File(world.getAbsolutePath() + "/playerdata");

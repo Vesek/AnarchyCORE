@@ -29,7 +29,7 @@ public class TPSCommand implements CommandExecutor {
                 } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
                     sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(df.format(TPS[0]));
                 } else if (TPS[0] >= 0.00) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-red-color"))).append(df.format(TPS[0]));
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Red-Color"))).append(df.format(TPS[0]));
                 }
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', sb.toString()));
             }

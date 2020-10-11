@@ -42,7 +42,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     @SneakyThrows
     @Override
     public void onEnable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning on..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
 
         messagesfile = new File(getDataFolder(), "messages.yml");
@@ -69,7 +69,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
 
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
-        command_preprocessing = getConfig().getBoolean("command-preprocessing");
+        command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
+        loadConfigManager();
+        loadConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
@@ -78,21 +80,24 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
 
         new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
+                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                log(ChatColor.translateAlternateColorCodes('&', " "));
             }
         });
     }
-
+  
     @Override
     public void onDisable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));

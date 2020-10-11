@@ -40,7 +40,7 @@ public class AcCommand implements CommandExecutor {
                         if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("version")) {
                     if (sender.hasPermission("AnarchyCORE.version") || sender.isOp()) {
@@ -49,7 +49,7 @@ public class AcCommand implements CommandExecutor {
                         if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("discord")) {
                     if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
@@ -58,7 +58,7 @@ public class AcCommand implements CommandExecutor {
                         if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("support")) {
                     if (sender.hasPermission("AnarchyCORE.discord") || sender.isOp()) {
@@ -67,7 +67,7 @@ public class AcCommand implements CommandExecutor {
                         if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                         }
                 }} else if (args[0].equalsIgnoreCase("adminhelp")) {
                     if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
@@ -76,13 +76,13 @@ public class AcCommand implements CommandExecutor {
                         if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                         } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                         }
                 }} else {
                     if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows server help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&ln/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
                     } else {
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("invalid-command-message")));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("Invalid-Command-Message")));
                     }
                 }
             }

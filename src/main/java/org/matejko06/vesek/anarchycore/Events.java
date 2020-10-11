@@ -1,6 +1,7 @@
 package org.matejko06.vesek.anarchycore;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +19,7 @@ public class Events implements Listener {
     public Events(AnarchyCORE ac) {
         this.ac = ac;
     }
-
+  
     @EventHandler
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event) {
         if (event.getMessage().toLowerCase().startsWith("/tps") && AnarchyCORE.command_preprocessing) {
@@ -38,7 +39,15 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + ac.getConfig().getString("join-message")));
+        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
+        if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp());
+            new UpdateChecker(ac, 82999).getVersion(version -> {
+                if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + ac.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                }
+            });
     }
 
     @EventHandler
