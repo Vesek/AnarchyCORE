@@ -3,6 +3,7 @@ package org.matejko06.vesek.anarchycore;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -16,12 +17,16 @@ public class Events implements Listener {
     public Events(AnarchyCORE ac) {
         this.ac = ac;
     }
-
-    @EventHandler
+  
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event) {
         if (event.getMessage().toLowerCase().startsWith("/tps") && AnarchyCORE.command_preprocessing) {
             event.setCancelled(true);
             event.getPlayer().chat("/anarchycore:tps");
+        }
+        else if (event.getMessage().toLowerCase().startsWith("/info") && AnarchyCORE.command_preprocessing) {
+            event.setCancelled(true);
+            event.getPlayer().chat("/anarchycore:info");
         }
     }
 
