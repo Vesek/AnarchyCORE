@@ -1,21 +1,28 @@
 package org.matejko06.vesek.anarchycore;
-
+import lombok.Getter;
+import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class AnarchyCORE extends JavaPlugin implements Listener {
+
+    public FileConfiguration messagescfg;
+    public File messagesfile;
+    public FileConfiguration deathmessagescfg;
+    public File deathmessagesfile;
 
     public static boolean command_preprocessing = false;
 
@@ -32,14 +39,34 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(text);
     }
 
-    private ConfigManager cfgm;
-
+    @SneakyThrows
     @Override
     public void onEnable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
+
+        messagesfile = new File(getDataFolder(), "messages.yml");
+        deathmessagesfile = new File(getDataFolder(), "DeathMessages.yml");
+        messagescfg = new YamlConfiguration();
+        deathmessagescfg = new YamlConfiguration();
+
+        if (!messagesfile.exists()) {
+            saveResource("messages.yml",false);
+        }
+        messagescfg.load(messagesfile);
+
+        if (!deathmessagesfile.exists()) {
+            saveResource("DeathMessages.yml",false);
+        }
+        deathmessagescfg.load(deathmessagesfile);
+
         getConfig().options().copyDefaults(true);
         saveConfig();
+        deathmessagescfg.options().copyDefaults(true);
+        deathmessagescfg.save(deathmessagesfile);
+        messagescfg.options().copyDefaults(true);
+        messagescfg.save(messagesfile);
+
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
@@ -70,29 +97,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
             }
         });
     }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + " " + getConfig().getString("Player-Join-Message")));
-/*        new UpdateChecker(this, 82999).getVersion(version -> {
-            if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-            } else {
-                if (p.hasPermission("AnarchyCORE.*") || p.isOp()) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
-                }
-            }
-        });
-*/    }
-
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', "&3" + p.getDisplayName() + "&7 " + getConfig().getString("leave-message")));
-    }
-
+  
     @Override
     public void onDisable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
@@ -102,20 +107,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
     }
 
-    public void loadConfigManager() {
-        cfgm = new ConfigManager();
-        cfgm.setup();
-
-    }
-
-    public void loadConfig() {
-        getConfig().options().copyDefaults(true);
-        saveConfig();
-    }
-
-    public ConfigManager getCfgm(){
-        return cfgm;
-    }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

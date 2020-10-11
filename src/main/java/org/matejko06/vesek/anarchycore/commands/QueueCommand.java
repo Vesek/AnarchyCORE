@@ -8,7 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
-public class QueueCommand implements CommandExecutor {
+public class
+QueueCommand implements CommandExecutor {
     AnarchyCORE ac;
     public QueueCommand(AnarchyCORE ac) {
         this.ac = ac;

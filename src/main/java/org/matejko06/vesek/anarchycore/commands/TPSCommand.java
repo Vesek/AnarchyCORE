@@ -24,11 +24,10 @@ public class TPSCommand implements CommandExecutor {
                 double[] TPS = ac.getServer().getTPS();
                 DecimalFormat df = new DecimalFormat("#.##");
                 df.setRoundingMode(RoundingMode.CEILING);
-                sender.sendMessage(String.valueOf(TPS[0]));
-                if (TPS[0] >= ac.getConfig().getDouble("TPS-Green")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Green-Color"))).append(df.format(TPS[0]));
-                } else if (TPS[0] >= ac.getConfig().getDouble("TPS-Yellow")) {
-                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Yellow-Color"))).append(df.format(TPS[0]));
+                if (TPS[0] >= ac.getConfig().getDouble("tps-green")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-green-color"))).append(df.format(TPS[0]));
+                } else if (TPS[0] >= ac.getConfig().getDouble("tps-yellow")) {
+                    sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("tps-yellow-color"))).append(df.format(TPS[0]));
                 } else if (TPS[0] >= 0.00) {
                     sb.append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Message"))).append(ChatColor.translateAlternateColorCodes('&', ac.getConfig().getString("TPS-Red-Color"))).append(df.format(TPS[0]));
                 }
