@@ -41,22 +41,31 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
-        ac.log(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
-        if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp()) ;
-        new UpdateChecker(ac, 82999).getVersion(version -> {
-            if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + ac.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+        for(Player pl:ac.getServer().getOnlinePlayers()){
+            if(!ac.getIgnore_jl().contains(pl.getUniqueId())){
+                pl.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
             }
-        });
+        }
+        ac.log(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Join-Message").replace("%playername%", p.getDisplayName())));
+        if (p.hasPermission("AnarchyCOREQueue.admin") || p.isOp()) {
+            new UpdateChecker(ac, 82999).getVersion(version -> {
+                if (ac.getDescription().getVersion().equalsIgnoreCase(version)) {
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + ac.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
+                }
+            });
+        }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
+        for(Player pl:ac.getServer().getOnlinePlayers()){
+            if(!ac.getIgnore_jl().contains(pl.getUniqueId())){
+                pl.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
+            }
+        }
         ac.log(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Player-Leave-Message").replace("%playername%", p.getDisplayName())));
     }
 }

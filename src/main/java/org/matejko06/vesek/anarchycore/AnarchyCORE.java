@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public final class AnarchyCORE extends JavaPlugin implements Listener {
 
@@ -27,6 +28,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public File deathmessagesfile;
     public FileConfiguration tabconfigcfg;
     public File tabconfigfile;
+
+    @Getter
+    private List<UUID> ignore_jl = new ArrayList<>();
 
     public static boolean command_preprocessing = false;
 
