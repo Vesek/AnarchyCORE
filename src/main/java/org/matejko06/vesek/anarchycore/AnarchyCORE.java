@@ -1,5 +1,6 @@
 package org.matejko06.vesek.anarchycore;
 
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,6 +14,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.io.File;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +73,7 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         messagescfg.save(messagesfile);
         tabconfigcfg.options().copyDefaults(true);
         tabconfigcfg.save(tabconfigfile);
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
