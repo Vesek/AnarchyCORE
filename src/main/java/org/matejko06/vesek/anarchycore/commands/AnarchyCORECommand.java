@@ -43,31 +43,15 @@ public class AnarchyCORECommand implements CommandExecutor {
                         ac.reloadConfig();
                         ac.saveConfig();
                         ac.getDataFolder();
-                        messagesfile = new File(getDataFolder(), "messages.yml");
-                        deathmessagesfile = new File(getDataFolder(), "deathmessages.yml");
-                        tabconfigfile = new File(getDataFolder(), "tabconfig.yml");
-                        messagescfg = new YamlConfiguration();
-                        deathmessagescfg = new YamlConfiguration();
-                        tabconfigcfg = new YamlConfiguration();
-                        if (!messagesfile.exists()) {
-                            saveResource("messages.yml", false);
-                        }
-                        messagescfg.load(messagesfile);
-                        if (!deathmessagesfile.exists()) {
-                            saveResource("deathmessages.yml",false);
-                        }
-                        deathmessagescfg.load(deathmessagesfile);
-                        if (!tabconfigfile.exists()) {
-                            saveResource("tabconfig.yml",false);
-                        }
-                        tabconfigcfg.load(tabconfigfile);
-
-                        deathmessagescfg.options().copyDefaults(true);
-                        deathmessagescfg.save(deathmessagesfile);
-                        messagescfg.options().copyDefaults(true);
-                        messagescfg.save(messagesfile);
-                        tabconfigcfg.options().copyDefaults(true);
-                        tabconfigcfg.save(tabconfigfile);
+                        ac.deathmessagescfg.options().copyDefaults(true);
+                        ac.deathmessagescfg.save(ac.deathmessagesfile);
+                        ac.messagescfg.load(ac.messagesfile);
+                        ac.messagescfg.options().copyDefaults(true);
+                        ac.messagescfg.save(ac.messagesfile);
+                        ac.messagescfg.load(ac.messagesfile);
+                        ac.tabconfigcfg.options().copyDefaults(true);
+                        ac.tabconfigcfg.save(ac.tabconfigfile);
+                        ac.tabconfigcfg.load(ac.tabconfigfile);
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("Command-Preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
