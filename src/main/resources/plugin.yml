@@ -1,16 +1,17 @@
+
 name: AnarchyCORE
 version: ${project.version}
 authors: [Matejko06, Vesek]
-softdepend: [AnarchyCOREQueue]
 main: org.matejko06.vesek.anarchycore.AnarchyCORE
 loadbefore: [WorldEdit]
-
 commands:
   ac:
     description: AnarchyCORE.
-    aliases: [acore]
+    aliases: [acore, anarchycore]
   help:
     description: Help for players.
+  rules:
+    description: Shows server "rules".
   kill:
     description: Suicide.
     aliases: [suicide, killme]
@@ -22,7 +23,7 @@ commands:
     aliases: [queuepriority]
   info:
     description: Shows info about the server.
-    aliases: [stats, statistics, serverstats, serverstatistics]
+    aliases: [stats, statistics, serverstats, serverstatistics, serverinfo]
 permissions:
   AnarchyCORE.*:
     children:

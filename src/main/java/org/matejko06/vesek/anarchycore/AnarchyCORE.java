@@ -70,8 +70,6 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
         command_preprocessing = getConfig().getBoolean("Command-Preprocessing");
-        loadConfigManager();
-        loadConfig();
         getCommand("tps").setExecutor(tc);
         getCommand("priority").setExecutor(qc);
         getCommand("kill").setExecutor(kc);
