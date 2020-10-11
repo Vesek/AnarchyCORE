@@ -35,6 +35,7 @@ public class AcCommand implements CommandExecutor {
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
                         ac.deathmessagescfg.load(ac.deathmessagesfile);
                         ac.messagescfg.load(ac.messagesfile);
+                        ac.tabconfigcfg.load(ac.tabconfigfile);
                         AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));

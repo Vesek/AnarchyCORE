@@ -50,23 +50,24 @@ public class InfoCommand implements CommandExecutor {
                     }
                     if (diffInDays / 365 < 1) {
                         if (diffInDays / 30 >= 1) {
-                            time.append(diffInDays / 30).append(ac.messagescfg.getString("Info-Months)") + " " + ac.messagescfg.getString("Info-And"));
+                            time.append(diffInDays / 30).append(ac.messagescfg.getString("Info-Months)")).append(" ").append(ac.messagescfg.getString("Info-And"));
                             diffInDays %= 30;
                         }
-                        time.append(diffInDays).append(" " + ac.messagescfg.getString("Info-Days"));
+                        time.append(diffInDays).append(" ").append(ac.messagescfg.getString("Info-Days"));
                     } else if (diffInDays / 365 == 1) {
                         diffInDays -= 365;
-                        time.append("1 " + ac.messagescfg.getString("Info-Year") + " " + ac.messagescfg.getString("Info-And") + " " + ac.messagescfg.getString("Info-Months" + " "));
-                        time.append(diffInDays / 30).append(" " + ac.messagescfg.getString("Info-Months"));
+                        time.append("1 ").append(ac.messagescfg.getString("Info-Year")).append(" ").append(ac.messagescfg.getString("Info-And")).append(" ");
+                        time.append(diffInDays / 30).append(" ").append(ac.messagescfg.getString("Info-Months"));
                     } else if (diffInDays / 365 > 1) {
-                        time.append(diffInDays / 365).append(ac.messagescfg.getString("Info-Years") + " " + ac.messagescfg.getString("Info-And") + " ");
+                        time.append(diffInDays / 365).append(ac.messagescfg.getString("Info-Years")).append(" ").append(ac.messagescfg.getString("Info-And")).append(" ");
                         diffInDays %= 365;
-                        time.append(diffInDays / 30).append(" " + ac.messagescfg.getString("Info-And"));
+                        sender.sendMessage(time.toString());
+                        time.append(diffInDays / 30).append(" ").append(ac.messagescfg.getString("Info-And"));
                     }
                     long length = folderSize(world);
                     StringBuilder sb = new StringBuilder();
                     if((length >= 1073741824)){
-                        sb.append(length/1073741824).append(" GB" + " " + ac.messagescfg.getString("Info-And") + " ");
+                        sb.append(length / 1073741824).append(" GB" + " ").append(ac.messagescfg.getString("Info-And")).append(" ");
                         length %= 1073741824;
                     }
                     sb.append(length/1048576).append(" MB");
