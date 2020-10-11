@@ -62,7 +62,7 @@ Starvation: "&3%playername%&4 starved to death&4"
 Suffocation: "&3%playername%&4 suffocated in a wall&4"
 Cramming: "&3%playername%&4 was squished too much&4"
 CrammingKill: "&3%playername%&4 was squished too much&4"
-# FALL #
+# FALLING #
 Void: "&3%playername%&4 fell out of the world&4"
 VoidFall: "&3%playername%&4 fell from a high place and fell out of the world&4"
 VoidKill: "&3%playername%&4 didn't want to live in the same world as &3%killer%&4"

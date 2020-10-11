@@ -1,27 +1,34 @@
 package org.matejko06.vesek.anarchycore.commands;
 
-import lombok.SneakyThrows;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.matejko06.vesek.anarchycore.AnarchyCORE;
 
 import java.io.File;
 
-public class AcCommand implements CommandExecutor {
+public class AnarchyCORECommand implements CommandExecutor {
+
     AnarchyCORE ac;
-    public AcCommand (AnarchyCORE ac){
+    public AnarchyCORECommand (AnarchyCORE ac){
         this.ac = ac;
     }
 
-    @SneakyThrows
+    public FileConfiguration messagescfg;
+    public File messagesfile;
+    public FileConfiguration deathmessagescfg;
+    public File deathmessagesfile;
+    public FileConfiguration tabconfigcfg;
+    public File tabconfigfile;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("ac")) {
+        if (command.getName().equalsIgnoreCase("anarchycore")) {
             if(args.length == 0){
                 if (sender.hasPermission("AnarchyCORE.adminhelp") || sender.isOp()) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6by Matejko06 & Vesek\n \n&6&o/help &3- Shows public help.\n&6&l/ac adminhelp &3- Shows this.\n&6&l/ac version &3- Shows plugin version.\n&6&l/ac support &3- Sends you support discord link.\n&6&l/ac reload &3- Reloads the plugin.\n&6&l<----------------------->"));
@@ -32,17 +39,27 @@ public class AcCommand implements CommandExecutor {
             else {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (sender.hasPermission("AnarchyCORE.reload") || sender.isOp()) {
-                        Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-                        ac.deathmessagescfg.load(ac.deathmessagesfile);
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Starting reload process..."));
+                        ac.reloadConfig();
+                        ac.saveConfig();
+                        ac.getDataFolder();
+                        ac.deathmessagescfg.options().copyDefaults(true);
+                        ac.deathmessagescfg.save(ac.deathmessagesfile);
                         ac.messagescfg.load(ac.messagesfile);
-                        AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("command-preprocessing");
+                        ac.messagescfg.options().copyDefaults(true);
+                        ac.messagescfg.save(ac.messagesfile);
+                        ac.messagescfg.load(ac.messagesfile);
+                        ac.tabconfigcfg.options().copyDefaults(true);
+                        ac.tabconfigcfg.save(ac.tabconfigfile);
+                        ac.tabconfigcfg.load(ac.tabconfigfile);
+                        AnarchyCORE.command_preprocessing = ac.getConfig().getBoolean("Command-Preprocessing");
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
                         Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has been reloaded!"));
                     } else {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
-                        }
-                    } else if (args[0].equalsIgnoreCase("version")) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ac.messagescfg.getString("Invalid-Command-Message")));
+                    }
+                } else if (args[0].equalsIgnoreCase("version")) {
                     if (sender.hasPermission("AnarchyCORE.version") || sender.isOp()) {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l<----------------------->\n&6&lAnarchyCORE &a&lV1.3.0\n&6By Matejko06 and Vesek.\n&6&l<----------------------->"));
                     } else {

@@ -1,6 +1,7 @@
 package org.matejko06.vesek.anarchycore;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,8 +11,11 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
 import org.bukkit.plugin.Plugin;
 
+
+import java.io.File;
 
 public class Events implements Listener {
 
@@ -36,8 +40,8 @@ public class Events implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
         String s = e.getMessage();
-        if(s.charAt(0) == ac.getConfig().getString("chat-colorsymbol").charAt(0)){
-            e.setMessage(ChatColor.GREEN + e.getMessage().substring(1,s.length()));
+        if(s.charAt(0) == ac.getConfig().getString("Green-Chat-Symbol").charAt(0)){
+            e.setMessage(ChatColor.GREEN + ">" + e.getMessage().substring(1,s.length()));
         }
     }
 

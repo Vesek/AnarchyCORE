@@ -1,0 +1,49 @@
+# ===================================== #
+# >---------< TABCONFIG.yml >---------< #
+# AnarchyCORE - by Vesek and Matejko06  #
+# VERSION 1.3.1                         #
+# ===================================== #
+# TAB SETTINGS #
+header:
+  - ''
+  - '&7&l&o NAME'
+  - '&7&l&oNAME '
+  #- '&4Server&3Name'
+  - ''
+  - '&6Updating to 1.14 PRETTY soon...'
+  - ''
+footer:
+  - ''
+  - '&3%tps% &3TPS - %players% Players - %ping% Ping - %uptime% Uptime'
+#  - '&8TPS &f&l%server_tps_1% &8Ping &f&l%player_ping% &8Players &f&l%players%'
+  - ''
+  - '&7Contact: ServerName@gmail.com'
+  - '&7Discussion: reddit.com/r/ServerName'
+  - '&7Website: www.ServerName.org (Currently Down)'
+  - '&7These are the only official ServerName sites and contacts.'
+  - ''
+group-sorting-priority-list:
+  - Admin
+  - Priority
+  - Regular
+Groups:
+  Admin:
+    tabprefix: '&c'
+    tagprefix: '&c'
+  Priority:
+    tabprefix: '&6'
+    tagprefix: '&6'
+  Regular:
+    tabprefix: '&7'
+    tagprefix: '&7'
+  _OtherGroups_:
+    customtabname: '%essentialsnick%%vault_suffix%%afk%'
+    customtagname: '%essentialsnick%%vault_suffix%%afk%'
+Aliases:
+  Admin: '&c'
+  Priority: '&c'
+  Regular: '&7'
+  _OtherGroups_: '&7'
+# ================================ #
+# THIS IS THE END OF TABCONFIG.yml #
+# ================================ #

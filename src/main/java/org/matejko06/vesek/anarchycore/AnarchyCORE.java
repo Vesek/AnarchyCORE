@@ -1,4 +1,5 @@
 package org.matejko06.vesek.anarchycore;
+
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
@@ -13,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.matejko06.vesek.anarchycore.commands.*;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,8 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public File messagesfile;
     public FileConfiguration deathmessagescfg;
     public File deathmessagesfile;
+    public FileConfiguration tabconfigcfg;
+    public File tabconfigfile;
 
     public static boolean command_preprocessing = false;
 
@@ -31,9 +35,9 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     KillCommand kc = new KillCommand(this);
     InfoCommand ic = new InfoCommand(this);
     HelpCommand hc = new HelpCommand(this);
+    RulesCommand rc = new RulesCommand(this);
     AcCommand ac = new AcCommand(this);
     Events events = new Events(this);
-
 
     public void log(String text) {
         Bukkit.getConsoleSender().sendMessage(text);
@@ -44,28 +48,31 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
     public void onEnable() {
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin is turning on..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Loading all &6configs&a..."));
-
         messagesfile = new File(getDataFolder(), "messages.yml");
-        deathmessagesfile = new File(getDataFolder(), "DeathMessages.yml");
+        deathmessagesfile = new File(getDataFolder(), "deathmessages.yml");
+        tabconfigfile = new File(getDataFolder(), "tabconfig.yml");
         messagescfg = new YamlConfiguration();
         deathmessagescfg = new YamlConfiguration();
-
+        tabconfigcfg = new YamlConfiguration();
         if (!messagesfile.exists()) {
-            saveResource("messages.yml",false);
+            saveResource("messages.yml", false);
         }
         messagescfg.load(messagesfile);
-
         if (!deathmessagesfile.exists()) {
-            saveResource("DeathMessages.yml",false);
+            saveResource("deathmessages.yml",false);
         }
         deathmessagescfg.load(deathmessagesfile);
+        if (!tabconfigfile.exists()) {
+            saveResource("tabconfig.yml",false);
+        }
+        tabconfigcfg.load(tabconfigfile);
 
-        getConfig().options().copyDefaults(true);
-        saveConfig();
         deathmessagescfg.options().copyDefaults(true);
         deathmessagescfg.save(deathmessagesfile);
         messagescfg.options().copyDefaults(true);
         messagescfg.save(messagesfile);
+        tabconfigcfg.options().copyDefaults(true);
+        tabconfigcfg.save(tabconfigfile);
 
         getServer().getPluginManager().registerEvents(events, this);
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully loaded all &6configs&a."));
@@ -75,36 +82,33 @@ public final class AnarchyCORE extends JavaPlugin implements Listener {
         getCommand("kill").setExecutor(kc);
         getCommand("info").setExecutor(ic);
         getCommand("help").setExecutor(hc);
+        getCommand("rules").setExecutor(rc);
         getCommand("ac").setExecutor(ac);
         Bukkit.getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(this, this);
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin turned on!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Plugin has turned on!"));
         log(ChatColor.translateAlternateColorCodes('&', " "));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aChecking for update..."));
 
         new UpdateChecker(this, 82999).getVersion(version -> {
             if (this.getDescription().getVersion().equalsIgnoreCase(version)) {
-                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cThere is no new update available."));
             } else {
-                log(ChatColor.translateAlternateColorCodes('&', " "));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aThere is a new update available!"));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &cCurrent version: &6" + this.getDescription().getVersion() + " &7&l| &aNew version: &6" + version));
                 log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7: &aDownload it at: &3https://www.spigotmc.org/resources/anarchycore.82999"));
-                log(ChatColor.translateAlternateColorCodes('&', " "));
             }
         });
     }
-  
+
     @Override
     public void onDisable() {
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&a is turning off..."));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin is turning off..."));
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Saving all &6configs&a..."));
         saveConfig();
         log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&a Successfully saved all &6configs&a."));
-        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&c turned off!"));
+        log(ChatColor.translateAlternateColorCodes('&', "&6&lAnarchyCORE&7:&c Plugin turned off!"));
     }
-
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
