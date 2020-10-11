@@ -14,6 +14,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 public class InfoCommand implements CommandExecutor {
     AnarchyCORE ac;
@@ -27,7 +28,7 @@ public class InfoCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("info")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                String s = ac.getConfig().getString("Info-Message");
+                String s = ac.messagescfg.getString("Info-Message");
                 try {
                     File world = p.getWorld().getWorldFolder();
                     File playerData = new File(world.getAbsolutePath() + "/playerdata");
@@ -62,7 +63,7 @@ public class InfoCommand implements CommandExecutor {
                         diffInDays %= 365;
                         time.append(diffInDays / 30).append(" months");
                     }
-                    Long length = folderSize(world);
+                    long length = folderSize(world);
                     StringBuilder sb = new StringBuilder();
                     if((length >= 1073741824)){
                         sb.append(length/1073741824).append(" GB and ");
@@ -83,7 +84,7 @@ public class InfoCommand implements CommandExecutor {
 
     public static long folderSize(File directory) {
         long length = 0;
-        for (File file : directory.listFiles()) {
+        for (File file : Objects.requireNonNull(directory.listFiles())) {
             if (file.isFile())
                 length += file.length();
             else
